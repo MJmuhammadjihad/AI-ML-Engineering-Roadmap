@@ -1,0 +1,282 @@
+[
+  {
+    "id": "E01",
+    "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+    "url": "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs",
+    "publisher": "METR",
+    "published": "2025-07-10 (announcement date linked by source)",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "empirical research",
+    "claim": "The study repository reports a 0.188 ratio-minus-one estimate: approximately 18.8% more time with AI access. Its published data contains 246 issues and 16 unique developers.",
+    "scope": "A randomized study of experienced open-source developers using early-2025 AI tools on their own repositories.",
+    "caveat": "This is not an estimate for beginners, every developer, all tasks, or later AI tools. Repository README and sample counts were verified; this task did not reproduce the regression. It does not measure hiring demand.",
+    "implications": [
+      "Measure quality and time on matched tasks before assuming an AI productivity gain.",
+      "Require unaided explanation, debugging, tests, and reproduction alongside AI-assisted work."
+    ],
+    "excerpt": "0.188 = E(Time with AI) / E(Time without AI) - 1"
+  },
+  {
+    "id": "E02",
+    "title": "OpenAI Evals",
+    "url": "https://github.com/openai/evals",
+    "publisher": "OpenAI",
+    "published": "Living repository; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "OpenAI’s evaluation framework supports existing and custom evaluations for LLMs and systems built with them, including private use-case data.",
+    "scope": "Primary engineering documentation for LLM evaluation.",
+    "caveat": "Vendor guidance establishes useful practices, not job-opening counts, universal tooling requirements, or future labor demand.",
+    "implications": [
+      "Build a versioned evaluation set before comparing prompts, retrieval pipelines, or models.",
+      "Report quality, latency, cost, and failure cases for a specific user workflow."
+    ],
+    "excerpt": "the ability to write your own custom evals for use cases you care about"
+  },
+  {
+    "id": "E03",
+    "title": "Anthropic courses",
+    "url": "https://github.com/anthropics/courses",
+    "publisher": "Anthropic",
+    "published": "Living repository; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "Anthropic’s course sequence includes API fundamentals, prompting, real-world prompting, prompt evaluations, and tool use.",
+    "scope": "Primary vendor educational material.",
+    "caveat": "The README mentions older model examples; verify current APIs and prices. Course coverage does not prove employer demand.",
+    "implications": [
+      "Study structured API use, output validation, evaluations, and constrained tools after programming foundations.",
+      "Use model-agnostic concepts and benchmark simpler workflows before adding agents."
+    ],
+    "excerpt": "learn how to write production prompt evaluations to measure the quality of your prompts"
+  },
+  {
+    "id": "E04",
+    "title": "Common pitfalls and recommended practices",
+    "url": "https://github.com/scikit-learn/scikit-learn/blob/main/doc/common_pitfalls.rst",
+    "publisher": "scikit-learn maintainers",
+    "published": "Living documentation; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "Information unavailable at prediction time creates data leakage and optimistic evaluation. Fit preprocessing only on training data; pipelines help keep transformations correctly scoped.",
+    "scope": "Primary documentation for reliable conventional ML evaluation.",
+    "caveat": "Random splitting is not sufficient for every data-generating process; time, entity grouping, and deployment context still require reasoning.",
+    "implications": [
+      "Teach train/validation/test boundaries before model selection.",
+      "Require a leakage audit, an appropriate split, a baseline, and held-out evaluation in the first ML portfolio project."
+    ],
+    "excerpt": "The general rule is to never call fit on the test data"
+  },
+  {
+    "id": "E05",
+    "title": "Deep Learning Tuning Playbook",
+    "url": "https://github.com/google-research/tuning_playbook",
+    "publisher": "Google Research and Harvard-affiliated authors",
+    "published": "Living document; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "The playbook frames tuning as a scientific process: choose experimental goals, design runs, track results, inspect failure modes, and consider compute costs.",
+    "scope": "Practitioner guidance focused on supervised or similar deep-learning training.",
+    "caveat": "The authors explicitly describe it as their evolving opinions, not an objectively optimal recipe or supported Google product.",
+    "implications": [
+      "Teach hypothesis-driven experiments and one interpretable intervention at a time.",
+      "Log seeds, data versions, configurations, curves, budget, and unsuccessful runs."
+    ],
+    "excerpt": "This document represents the opinions of the authors at the time of writing, not any sort of objective truth"
+  },
+  {
+    "id": "E06",
+    "title": "What to look for in a code review",
+    "url": "https://github.com/google/eng-practices/blob/master/review/reviewer/looking-for.md",
+    "publisher": "Google Engineering Practices",
+    "published": "Living documentation; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "Google’s code-review guidance covers design, functionality, complexity, tests, naming, comments, style, and documentation.",
+    "scope": "Primary software-engineering practice guidance.",
+    "caveat": "This is a review framework, not a survey of all employers or a claim that certificates substitute for demonstrated work.",
+    "implications": [
+      "Evaluate portfolio work for understandable design, behavior, useful tests, and documentation.",
+      "Practice a concise design memo and review another implementation."
+    ],
+    "excerpt": "Make sure that the tests in the CL are correct, sensible, and useful"
+  },
+  {
+    "id": "E07",
+    "title": "vLLM: inference and serving",
+    "url": "https://github.com/vllm-project/vllm",
+    "publisher": "vLLM project",
+    "published": "Living repository; foundational PagedAttention paper cited as 2023",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "The serving project documents KV-memory management, continuous batching, quantization, streaming, distributed inference, structured output, and tool calling.",
+    "scope": "Primary implementation documentation for LLM serving.",
+    "caveat": "Supported features and hardware evolve. Feature lists and contributor counts are not employment statistics. Learn serving tradeoffs before committing to a framework.",
+    "implications": [
+      "Measure latency distributions, throughput, memory, quality, and cost together.",
+      "Treat distributed inference and GPU kernels as a later systems specialization."
+    ],
+    "excerpt": "Continuous batching of incoming requests, chunked prefill, prefix caching"
+  },
+  {
+    "id": "E08",
+    "title": "OpenAI Agents SDK",
+    "url": "https://github.com/openai/openai-agents-python",
+    "publisher": "OpenAI",
+    "published": "Living repository; no single publication date established",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "The SDK exposes tools, handoffs, input/output guardrails, human involvement, sessions, and tracing as explicit workflow components.",
+    "scope": "Primary documentation for one agent framework.",
+    "caveat": "A feature is not a guarantee of safety or usefulness. This does not establish that every product needs agents or this SDK.",
+    "implications": [
+      "Use allowlisted tools, typed inputs, bounded budgets, approval boundaries, and trace-based debugging.",
+      "Compare an agent against a simpler deterministic or retrieval workflow on the same evaluation set."
+    ],
+    "excerpt": "Tracing: Built-in tracking of agent runs, allowing you to view, debug and optimize your workflows"
+  },
+  {
+    "id": "E09",
+    "title": "MLOps with Vertex AI",
+    "url": "https://github.com/GoogleCloudPlatform/mlops-with-vertex-ai",
+    "publisher": "Google Cloud sample authors",
+    "published": "2021 copyright; older educational sample",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "engineering guidance",
+    "claim": "The end-to-end sample separates dataset management, model development, pipeline tests and deployment, continuous training, serving, monitoring, and metadata tracking.",
+    "scope": "Primary older educational implementation of an ML lifecycle.",
+    "caveat": "The source states it is not an official Google product and has outdated dependencies. Use its lifecycle concepts, not its old install commands. It does not prove current cloud market share.",
+    "implications": [
+      "Teach data validation, reproducibility, CI/CD, serving, monitoring, and rollback as separate responsibilities.",
+      "Use local tools first; map the same responsibilities to one cloud only when a project needs it."
+    ],
+    "excerpt": "Run unit tests; Run a local e2e test of the TFX pipeline"
+  },
+  {
+    "id": "E10",
+    "title": "How Adaptable Are American Workers to AI-Induced Job Displacement? — replication package",
+    "url": "https://github.com/t6aguirre/adaptive-capacity-index",
+    "publisher": "Sam Manning and Tomás Aguirre",
+    "published": "2025 paper attribution in repository; repository inspected 2026-10-28",
+    "accessed": "2026-10-28",
+    "verified": true,
+    "status": "Retrieved and read from the publisher or research author’s GitHub source",
+    "kind": "research-method reference",
+    "claim": "The author-maintained replication package constructs occupation-level adaptive capacity conditional on AI displacement; it distinguishes exposure from workers’ ability to adapt.",
+    "scope": "United States occupation-level research using SIPP, O*NET, OEWS, ACS, and other sources described in the repository.",
+    "caveat": "This task verified the README and provenance metadata, not the full paper or results. It does not predict the user’s job outcome and cannot be generalized directly to a global market.",
+    "implications": [
+      "Separate task exposure, adoption, displacement, hiring, and individual employability.",
+      "Build transferable software, statistics, communication, and domain skills as a hedge against changing tools."
+    ],
+    "excerpt": null
+  },
+  {
+    "id": "U01",
+    "title": "Occupational Outlook Handbook: Data Scientists",
+    "url": "https://www.bls.gov/ooh/math/data-scientists.htm",
+    "publisher": "U.S. Bureau of Labor Statistics",
+    "published": null,
+    "accessed": null,
+    "attempted": "2026-10-28",
+    "verified": false,
+    "status": "Not verified in this research session",
+    "kind": "unverified follow-up source",
+    "claim": null,
+    "scope": "Follow-up source only; not evidence for numerical claims in this roadmap.",
+    "caveat": "Direct request blocked: proxy CONNECT returned 403 Forbidden.",
+    "implications": [
+      "Revisit when network access is available; record publication date, geography, observation period, and sampling limits before using."
+    ]
+  },
+  {
+    "id": "U02",
+    "title": "Occupational Outlook Handbook: Software Developers, Quality Assurance Analysts, and Testers",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+    "publisher": "U.S. Bureau of Labor Statistics",
+    "published": null,
+    "accessed": null,
+    "attempted": "2026-10-28",
+    "verified": false,
+    "status": "Not verified in this research session",
+    "kind": "unverified follow-up source",
+    "claim": null,
+    "scope": "Follow-up source only; not evidence for numerical claims in this roadmap.",
+    "caveat": "Domain is excluded by the enforced network policy; no repeated request after confirmed BLS denial.",
+    "implications": [
+      "Revisit when network access is available; record publication date, geography, observation period, and sampling limits before using."
+    ]
+  },
+  {
+    "id": "U03",
+    "title": "The Future of Jobs Report 2025",
+    "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/",
+    "publisher": "World Economic Forum",
+    "published": null,
+    "accessed": null,
+    "attempted": "2026-10-28",
+    "verified": false,
+    "status": "Not verified in this research session",
+    "kind": "unverified follow-up source",
+    "claim": null,
+    "scope": "Follow-up source only; not evidence for numerical claims in this roadmap.",
+    "caveat": "Domain is outside the enforced allowlist; no report text retrieved.",
+    "implications": [
+      "Revisit when network access is available; record publication date, geography, observation period, and sampling limits before using."
+    ]
+  },
+  {
+    "id": "U04",
+    "title": "AI Index report hub",
+    "url": "https://hai.stanford.edu/ai-index",
+    "publisher": "Stanford HAI",
+    "published": null,
+    "accessed": null,
+    "attempted": "2026-10-28",
+    "verified": false,
+    "status": "Not verified in this research session",
+    "kind": "unverified follow-up source",
+    "claim": null,
+    "scope": "Follow-up source only; not evidence for numerical claims in this roadmap.",
+    "caveat": "Domain is outside the enforced allowlist. Located official GitHub material from 2018 and 2020, which cannot establish current market statistics.",
+    "implications": [
+      "Revisit when network access is available; record publication date, geography, observation period, and sampling limits before using."
+    ]
+  },
+  {
+    "id": "U05",
+    "title": "Current employer hiring requirements",
+    "url": "https://openai.com/careers/",
+    "publisher": "Employer career pages",
+    "published": null,
+    "accessed": null,
+    "attempted": "2026-10-28",
+    "verified": false,
+    "status": "Not verified in this research session",
+    "kind": "unverified follow-up source",
+    "claim": null,
+    "scope": "Follow-up source only; not evidence for numerical claims in this roadmap.",
+    "caveat": "Employer sites are outside the enforced allowlist. No current job-posting sample was collected.",
+    "implications": [
+      "Revisit when network access is available; record publication date, geography, observation period, and sampling limits before using."
+    ]
+  }
+]

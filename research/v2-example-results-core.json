@@ -1,0 +1,228 @@
+[
+  {
+    "id": "c01",
+    "result": "conceptually reviewed",
+    "reason": "not executable code"
+  },
+  {
+    "id": "c02",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "weekly_hours 36.0\npace intensive",
+    "expected": "weekly_hours 36.0\npace intensive",
+    "stderr": ""
+  },
+  {
+    "id": "c03",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "[('Python', 105), ('SQL', 45)]\ndistinct_topics 2",
+    "expected": "[('Python', 105), ('SQL', 45)]\ndistinct_topics 2",
+    "stderr": ""
+  },
+  {
+    "id": "c04",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "3 checks passed",
+    "expected": "3 checks passed",
+    "stderr": ""
+  },
+  {
+    "id": "c05",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "X (2, 2)\nrow_totals (2, 1)\n[[0.333 0.667]\n [0.429 0.571]]",
+    "expected": "X (2, 2)\nrow_totals (2, 1)\n[[0.333 0.667]\n [0.429 0.571]]",
+    "stderr": ""
+  },
+  {
+    "id": "c06",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "[('Ada', 30), ('Bo', 7)]",
+    "expected": "[('Ada', 30), ('Bo', 7)]",
+    "stderr": ""
+  },
+  {
+    "id": "c07",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "h=1.00 derivative=28.0000 error=1.0000\nh=0.10 derivative=27.0100 error=0.0100\nh=0.01 derivative=27.0001 error=0.0001",
+    "expected": "h=1.00 derivative=28.0000 error=1.0000\nh=0.10 derivative=27.0100 error=0.0100\nh=0.01 derivative=27.0001 error=0.0001",
+    "stderr": ""
+  },
+  {
+    "id": "c08",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "projection (3.0, 0.0)\nresidual (0.0, 4.0)\nresidual_dot_v 0.0\nsquared_lengths 25.0 25.0",
+    "expected": "projection (3.0, 0.0)\nresidual (0.0, 4.0)\nresidual_dot_v 0.0\nsquared_lengths 25.0 25.0",
+    "stderr": ""
+  },
+  {
+    "id": "c09",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "true_flags 90\nfalse_flags 495\nP(event | flag) = 15.38%",
+    "expected": "true_flags 90\nfalse_flags 495\nP(event | flag) = 15.38%",
+    "stderr": ""
+  },
+  {
+    "id": "c10",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "observed_difference 6.0\npossible_assignments 20\ntwo_sided_p 0.1",
+    "expected": "observed_difference 6.0\npossible_assignments 20\ntwo_sided_p 0.1",
+    "stderr": ""
+  },
+  {
+    "id": "c11",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "n 7\nmean 23.71\nmedian 11\nminimum 10\nmaximum 100\nlargest_share 0.602",
+    "expected": "n 7\nmean 23.71\nmedian 11\nminimum 10\nmaximum 100\nlargest_share 0.602",
+    "stderr": ""
+  },
+  {
+    "id": "c12",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "row_split_overlap ['A', 'B']\ngroup_split_overlap []",
+    "expected": "row_split_overlap ['A', 'B']\ngroup_split_overlap []",
+    "stderr": ""
+  },
+  {
+    "id": "c13",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "step=0 w=0.0000 loss=18.6667 gradient=-18.6667\nstep=1 w=1.8667 loss=0.0830 gradient=-1.2444",
+    "expected": "step=0 w=0.0000 loss=18.6667 gradient=-18.6667\nstep=1 w=1.8667 loss=0.0830 gradient=-1.2444",
+    "stderr": ""
+  },
+  {
+    "id": "c14",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "parent_impurity 0.5\nchild_impurity 0.0\ntraining_gain 0.5",
+    "expected": "parent_impurity 0.5\nchild_impurity 0.0\ntraining_gain 0.5",
+    "stderr": ""
+  },
+  {
+    "id": "c15",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "threshold=0.5 TP=1 FP=1 TN=1 FN=1 cost=9\nthreshold=0.3 TP=2 FP=1 TN=1 FN=0 cost=1",
+    "expected": "threshold=0.5 TP=1 FP=1 TN=1 FN=1 cost=9\nthreshold=0.3 TP=2 FP=1 TN=1 FN=0 cost=1",
+    "stderr": ""
+  },
+  {
+    "id": "c16",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "training_center 1.0\ntrain [-1.0, 1.0]\ntest [99.0]\nleaky_center 34.0",
+    "expected": "training_center 1.0\ntrain [-1.0, 1.0]\ntest [99.0]\nleaky_center 34.0",
+    "stderr": ""
+  },
+  {
+    "id": "c17",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "A: dot=2.000 cosine=1.000\nB: dot=10.000 cosine=0.707\ndot_winner B\ncosine_winner A",
+    "expected": "A: dot=2.000 cosine=1.000\nB: dot=10.000 cosine=0.707\ndot_winner B\ncosine_winner A",
+    "stderr": ""
+  },
+  {
+    "id": "c18",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "prediction 6.0 loss 1.0\ngradient_w 12.0 gradient_v 4.0",
+    "expected": "prediction 6.0 loss 1.0\ngradient_w 12.0 gradient_v 4.0",
+    "stderr": ""
+  },
+  {
+    "id": "c19",
+    "result": "unrun",
+    "reason": "dependency unavailable: torch"
+  },
+  {
+    "id": "c20",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "overlap ['photo_A', 'photo_B', 'photo_C']\nsplit_before_augmentation True",
+    "expected": "overlap ['photo_A', 'photo_B', 'photo_C']\nsplit_before_augmentation True",
+    "stderr": ""
+  },
+  {
+    "id": "c21",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "[0.269, 0.731, 0.0, 0.0]\nsum 1.0",
+    "expected": "[0.269, 0.731, 0.0, 0.0]\nsum 1.0",
+    "stderr": ""
+  },
+  {
+    "id": "c22",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "[('A', 'Refunds are accepted within 30 days.')]",
+    "expected": "[('A', 'Refunds are accepted within 30 days.')]",
+    "stderr": ""
+  },
+  {
+    "id": "c23",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "blocked: requires an authorized review",
+    "expected": "blocked: requires an authorized review",
+    "stderr": ""
+  },
+  {
+    "id": "c24",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "status budget_exhausted\ntrace [(1, 'temporary_error'), (2, 'temporary_error')]",
+    "expected": "status budget_exhausted\ntrace [(1, 'temporary_error'), (2, 'temporary_error')]",
+    "stderr": ""
+  },
+  {
+    "id": "b01",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "1\n0",
+    "expected": "1\n0",
+    "stderr": ""
+  },
+  {
+    "id": "b02",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "0 5",
+    "expected": "0 5",
+    "stderr": ""
+  },
+  {
+    "id": "b03",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "Python",
+    "expected": "Python",
+    "stderr": ""
+  },
+  {
+    "id": "b04",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "[1, 2, 3, 6]\n[2.4, 2.0, 1.6, 8.8]\nbase parameters: 12 adapter parameters: 7",
+    "expected": "[1, 2, 3, 6]\n[2.4, 2.0, 1.6, 8.8]\nbase parameters: 12 adapter parameters: 7",
+    "stderr": ""
+  },
+  {
+    "id": "b05",
+    "result": "passed",
+    "returncode": 0,
+    "actual": "plain loss: 0.40895347\nscaled loss: 4.816e-05",
+    "expected": "plain loss: 0.40895347\nscaled loss: 4.816e-05",
+    "stderr": ""
+  }
+]

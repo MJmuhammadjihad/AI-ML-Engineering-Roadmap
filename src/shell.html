@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f1" />
+    <meta
+      name="description"
+      content="A first-principles learning atlas for a complete beginner: AI, machine learning, software and production systems. Portable, private, and usable offline."
+    />
+    <title>First Principles — An AI & ML Learning Atlas</title>
+    <style>
+      /*__STYLES__*/
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="layout">
+      <aside class="sidebar" aria-label="Learning atlas navigation">
+        <a href="#overview" class="brand" aria-label="First Principles home"
+          ><span class="brand-mark">f<span>p</span></span
+          ><span
+            >FIRST<br />PRINCIPLES<span class="brand-caption"
+              >THE LEARNING ATLAS · 02</span
+            ></span
+          ></a
+        >
+        <div class="sidebar-label">YOUR WORKSPACE</div>
+        <nav id="navigation"></nav>
+        <div class="sidebar-bottom">
+          <div class="status-dot">Offline by design</div>
+          <p>
+            Your progress stays in this browser. Export a backup to move between
+            devices.
+          </p>
+          <button class="text-btn" data-action="export">
+            Export progress <span aria-hidden="true">→</span></button
+          ><label class="text-btn import-label"
+            >Import progress
+            <input type="file" id="import-file" accept="application/json,.json"
+          /></label>
+          <div class="edition">
+            INDEPENDENT STUDY EDITION<br />EDITION 02 · 29 Oct 2026
+          </div>
+        </div>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="breadcrumb">THE ATLAS</span
+            ><span class="crumb-divider">/</span
+            ><span id="page-name">Overview</span>
+          </div>
+          <div class="topbar-right">
+            <button
+              class="search-trigger"
+              data-action="search"
+              aria-label="Search the atlas"
+            >
+              <span aria-hidden="true">⌕</span> Find a concept
+              <kbd>⌘ K</kbd></button
+            ><span class="pill"
+              ><span class="dot"></span> LEARN WITH INTENTION</span
+            ><button
+              class="icon-btn"
+              data-action="print"
+              title="Print the current view"
+              aria-label="Print the current view"
+            >
+              ⎙
+            </button>
+          </div>
+        </header>
+        <main id="main" tabindex="-1"></main>
+        <footer class="footer">
+          <span>Understand it. Build it. Test it. Explain it.</span
+          ><span>One file. No account. No hidden services.</span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="command-dialog" aria-labelledby="command-title">
+      <div class="command-panel">
+        <div class="row spread">
+          <h2 id="command-title">Find your next idea.</h2>
+          <button
+            class="icon-btn"
+            data-action="close-search"
+            aria-label="Close search"
+          >
+            ×
+          </button>
+        </div>
+        <label class="sr-only" for="command-search"
+          >Search modules and concepts</label
+        ><input
+          id="command-search"
+          type="search"
+          placeholder="Try probability, APIs, or fine-tuning…"
+          autocomplete="off"
+        />
+        <div id="command-results" aria-live="polite"></div>
+        <p class="micro">Type to explore · Tab to navigate · Escape to close</p>
+      </div>
+    </dialog>
+    <dialog id="lesson-dialog" aria-labelledby="dialog-title">
+      <div id="dialog-content"></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="no-script">
+        This atlas needs JavaScript for its local planner and curriculum. Enable
+        JavaScript; no internet connection or account is required.
+      </p></noscript
+    >
+    <script>
+      /*__DATA__*/
+    </script>
+    <script>
+      /*__APP__*/
+    </script>
+  </body>
+</html>

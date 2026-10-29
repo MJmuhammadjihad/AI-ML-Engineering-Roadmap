@@ -1,0 +1,229 @@
+{
+  "note": "These hashes identify retrieved public source bytes retained during research. Third-party source documents are not redistributed in this bundle. Canonical websites and videos were not all live-checked.",
+  "sources": [
+    {
+      "id": "python",
+      "url": "https://raw.githubusercontent.com/python/cpython/main/Doc/tutorial/controlflow.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 40620,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "3d0ca7d818cf84cdeee42e3735ae78d3b82025f62c7ef36f5c1c14b9ef6eeeb8"
+    },
+    {
+      "id": "progit",
+      "url": "https://raw.githubusercontent.com/progit/progit2/main/README.asc",
+      "retrieved": "2026-10-28",
+      "bytes": 2034,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "cc3b82115b64207b791c21efea4d953fb73383534ab7d6b8b2521998bc9380f5"
+    },
+    {
+      "id": "numpy",
+      "url": "https://raw.githubusercontent.com/numpy/numpy/main/doc/source/user/absolute_beginners.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 52653,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "945a0a598d080ee7526c9bd5459ce615a5b49fe0331adfdf8bbd8812e908e7e3"
+    },
+    {
+      "id": "pandas",
+      "url": "https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/source/getting_started/intro_tutorials/index.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 356,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "f9d50a9c5570e605bd492e5c37cc71f866e2e71b21809e1b898a489048c29148"
+    },
+    {
+      "id": "sql",
+      "url": "https://raw.githubusercontent.com/postgres/postgres/master/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 989,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "f8f3f3b5e7f522c8b4d8e49679ccab090b26fd0a0b4bcf6fd54e22fec6a88b2a"
+    },
+    {
+      "id": "3b1b",
+      "url": "https://raw.githubusercontent.com/3b1b/videos/master/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 5253,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "f9cbf1bab8d9181220a111fef4671c823206cb9fc0e8add7bf1bdaa0955ad096"
+    },
+    {
+      "id": "isl",
+      "url": "https://raw.githubusercontent.com/intro-stat-learning/ISLP/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 4081,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "d01387a7fad1fc00ecd1c20d1fd296ddd1bf6cb286b0bc7480d2fe74effa7199"
+    },
+    {
+      "id": "sklearn",
+      "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/doc/common_pitfalls.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 25066,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "6e2b42374fbb521c35f29eeab05bcbfa9744eed344b5f92e41013338ff60a2f5"
+    },
+    {
+      "id": "pytorch",
+      "url": "https://raw.githubusercontent.com/pytorch/tutorials/main/beginner_source/basics/intro.py",
+      "retrieved": "2026-10-28",
+      "bytes": 2465,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "8ce0c6c6f2c59431cbb0bc1f0a4cc05e6436caf9f6de74b034ed22947a624911"
+    },
+    {
+      "id": "d2l",
+      "url": "https://raw.githubusercontent.com/d2l-ai/d2l-en/master/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 4757,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "ac8a41264bf01b977896dba88c8a6bda5a1027b657736cb279608756c1971c12"
+    },
+    {
+      "id": "hf-course",
+      "url": "https://raw.githubusercontent.com/huggingface/course/main/chapters/en/chapter1/1.mdx",
+      "retrieved": "2026-10-28",
+      "bytes": 21652,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "7d3aec4963f8b89fc22d8f99da074c334c9551f0eaeef351f10fa7515bd389a1"
+    },
+    {
+      "id": "owasp-llm",
+      "url": "https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 3960,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "3119793148239835dadf3dfd89060b4643799cc17a024a831cc15f6965458366"
+    },
+    {
+      "id": "mdn",
+      "url": "https://raw.githubusercontent.com/mdn/content/main/files/en-us/learn_web_development/core/accessibility/index.md",
+      "retrieved": "2026-10-28",
+      "bytes": 5720,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "3d621698f9092ba505c5fad7d0b2286ce9ea5d8a2c55d3f76769b9ab9a0bd603"
+    },
+    {
+      "id": "fastapi",
+      "url": "https://raw.githubusercontent.com/fastapi/fastapi/master/docs/en/docs/tutorial/first-steps.md",
+      "retrieved": "2026-10-28",
+      "bytes": 14155,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "ecc419c9e4ccf1e996db0b196301aab93a8f43d52ddc59a180d4e88f8290c858"
+    },
+    {
+      "id": "postgres",
+      "url": "https://raw.githubusercontent.com/postgres/postgres/master/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 989,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "f8f3f3b5e7f522c8b4d8e49679ccab090b26fd0a0b4bcf6fd54e22fec6a88b2a"
+    },
+    {
+      "id": "docker",
+      "url": "https://raw.githubusercontent.com/docker/docs/main/content/get-started/docker-overview.md",
+      "retrieved": "2026-10-28",
+      "bytes": 9939,
+      "scope": "Retrieved and inspected substantive documentation in the official source repository. The canonical website itself was not live-checked.",
+      "sha256_of_retrieved_source": "9624ef1839c96183b6d71ca5c513c52dc6fa90da78d62e482adba3710a5e7243"
+    },
+    {
+      "id": "github-actions",
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/actions/get-started/understand-github-actions.md",
+      "retrieved": "2026-10-28",
+      "bytes": 8277,
+      "scope": "Retrieved official repository material; canonical course website not live-checked.",
+      "sha256_of_retrieved_source": "776bbb7fc72f0f62e2e6c9c6119a55bc365a7f4f89f1acd390ab5dd8e84482cf"
+    },
+    {
+      "id": "kubernetes",
+      "url": "https://raw.githubusercontent.com/kubernetes/website/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 9325,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "137204e113b46747a754fb8d850a57f5260158179cdd349a3fc85be022cae6e9"
+    },
+    {
+      "id": "made-with-ml",
+      "url": "https://raw.githubusercontent.com/GokuMohandas/Made-With-ML/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 23563,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "de3c1169085f5092d203330e50c442004f0939217f6aed123857d08253aff450"
+    },
+    {
+      "id": "designingml",
+      "url": "https://raw.githubusercontent.com/chiphuyen/dmls-book/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 7049,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "539b123b012e4d8aaf55dd227feb8e811e0f9dbe8d399a6021d9b6aaba9d4926"
+    },
+    {
+      "id": "pytest",
+      "url": "https://raw.githubusercontent.com/pytest-dev/pytest/main/README.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 5454,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "37c713f12b48774c77c40accfe3a6a28c25d7e763c9c5e34266261cf738713b5"
+    },
+    {
+      "id": "git",
+      "url": "https://raw.githubusercontent.com/git/git/master/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 3808,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "da0bd9ed3f4ef6046ba391493911a36284db2515f9ee1771d4f02adeb2de8b05"
+    },
+    {
+      "id": "math",
+      "url": "https://raw.githubusercontent.com/openstax/osbooks-college-algebra-bundle/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 1396,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "0a3fc4a7f54104889bfe0bc7a412782b4ede7a2e2a4d5b5d2c738d2a854cc26a"
+    },
+    {
+      "id": "calculus",
+      "url": "https://raw.githubusercontent.com/openstax/osbooks-calculus-bundle/main/README.md",
+      "retrieved": "2026-10-28",
+      "bytes": 1082,
+      "scope": "Retrieved the linked primary repository/document. A repository mirror verifies source provenance; it does not verify that every canonical website link or latest installation instruction works.",
+      "sha256_of_retrieved_source": "3f441b4c3b55eeb7799e96a4b87fa2dd0945e509c68323182434c31dac93e28a"
+    },
+    {
+      "id": "sqlite",
+      "url": "https://raw.githubusercontent.com/python/cpython/main/Doc/library/sqlite3.rst",
+      "retrieved": "2026-10-28",
+      "bytes": 94612,
+      "scope": "Retrieved and inspected the official CPython sqlite3 documentation source; canonical website was not live-checked.",
+      "sha256_of_retrieved_source": "11aee8b31479ed09660784e6e354d091c2cf79cd299a5e42d83762f62e0f06e7"
+    },
+    {
+      "id": "typescript",
+      "url": "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/packages/documentation/copy/en/handbook-v2/Everyday%20Types.md",
+      "retrieved": "2026-10-29",
+      "bytes": 29892,
+      "sha256_of_retrieved_source": "adc9483f9e39d222ea9288666ab8e483e5c0f6576370642b0296923a72a74d7a",
+      "scope": "Retrieved and inspected the author-maintained source repository document. This verifies the exact source link; linked canonical sites and all examples were not independently runtime-tested."
+    },
+    {
+      "id": "peft",
+      "url": "https://raw.githubusercontent.com/huggingface/peft/main/README.md",
+      "retrieved": "2026-10-29",
+      "bytes": 12244,
+      "sha256_of_retrieved_source": "65958fdf047de668cb2abd1c34dace3082d46680b98ae781b8bd2db38486e13e",
+      "scope": "Retrieved and inspected the author-maintained source repository document. This verifies the exact source link; linked canonical sites and all examples were not independently runtime-tested."
+    },
+    {
+      "id": "ostep",
+      "url": "https://raw.githubusercontent.com/remzi-arpacidusseau/ostep-homework/master/README.md",
+      "retrieved": "2026-10-29",
+      "bytes": 6243,
+      "sha256_of_retrieved_source": "a6bb3209df25e11e47d34a8c41a392448b538e20fa01e09b441c3679beb4e779",
+      "scope": "Retrieved and inspected the author-maintained source repository document. This verifies the exact source link; linked canonical sites and all examples were not independently runtime-tested."
+    }
+  ]
+}

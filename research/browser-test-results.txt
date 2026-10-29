@@ -1,0 +1,26 @@
+test_all_views_offline_and_responsive (__main__.AtlasBrowserTests.test_all_views_offline_and_responsive) ... ok
+test_block_length_changes_granularity_not_total_work (__main__.AtlasBrowserTests.test_block_length_changes_granularity_not_total_work) ... ok
+test_calendar_export_contains_every_planned_day (__main__.AtlasBrowserTests.test_calendar_export_contains_every_planned_day) ... ok
+test_command_search_and_focus_reading (__main__.AtlasBrowserTests.test_command_search_and_focus_reading) ... ok
+test_day_budget_and_rest_days_change_without_losing_work (__main__.AtlasBrowserTests.test_day_budget_and_rest_days_change_without_losing_work) ... ok
+test_diagnostic_explains_misconception_and_persists (__main__.AtlasBrowserTests.test_diagnostic_explains_misconception_and_persists) ... ok
+test_every_module_opens_five_substantive_sessions (__main__.AtlasBrowserTests.test_every_module_opens_five_substantive_sessions) ... ok
+test_export_import_round_trip_and_rejects_inherited_route (__main__.AtlasBrowserTests.test_export_import_round_trip_and_rejects_inherited_route) ... ok
+test_html_example_download_preserves_source_characters (__main__.AtlasBrowserTests.test_html_example_download_preserves_source_characters) ... ok
+test_import_date_limits_and_mastery_consistency (__main__.AtlasBrowserTests.test_import_date_limits_and_mastery_consistency) ... ok
+test_labs_use_correct_numeric_models (__main__.AtlasBrowserTests.test_labs_use_correct_numeric_models) ... ok
+test_logged_time_reduces_today_capacity_and_undo_preserves_notes (__main__.AtlasBrowserTests.test_logged_time_reduces_today_capacity_and_undo_preserves_notes) ... ok
+test_malformed_progress_cannot_create_unknown_activity_keys (__main__.AtlasBrowserTests.test_malformed_progress_cannot_create_unknown_activity_keys) ... ok
+test_manual_progress_is_preserved_after_prior_time_log (__main__.AtlasBrowserTests.test_manual_progress_is_preserved_after_prior_time_log) ... ok
+test_old_progress_migrates_without_losing_work (__main__.AtlasBrowserTests.test_old_progress_migrates_without_losing_work) ... ok
+test_overdue_recall_stays_until_recorded (__main__.AtlasBrowserTests.test_overdue_recall_stays_until_recorded) ... ok
+test_partial_capstone_logging_survives_rebase_and_reload (__main__.AtlasBrowserTests.test_partial_capstone_logging_survives_rebase_and_reload) ... ok
+test_practice_mastery_evidence_and_persistence (__main__.AtlasBrowserTests.test_practice_mastery_evidence_and_persistence) ... ok
+test_review_time_is_loggable_without_claiming_mastery (__main__.AtlasBrowserTests.test_review_time_is_loggable_without_claiming_mastery) ... ok
+test_routes_obey_dependencies_and_conserve_study_minutes (__main__.AtlasBrowserTests.test_routes_obey_dependencies_and_conserve_study_minutes) ... ok
+test_search_keeps_focus_and_filters_results (__main__.AtlasBrowserTests.test_search_keeps_focus_and_filters_results) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 30.388s
+
+OK

@@ -1,0 +1,20 @@
+{
+  "artifact": "first-principles-atlas-v1.html",
+  "bytes": 490112,
+  "sha256": "a372140c72a7cba3a559de0c47aada4658c84a5cd259798747ac31c30ae620e0",
+  "validated": "2026-10-29",
+  "browserTests": {
+    "passed": 13,
+    "failed": 0,
+    "transport": "loopback HTTP with external requests blocked"
+  },
+  "content": {
+    "modules": 36,
+    "sessions": 180,
+    "capstones": 4,
+    "interactiveLabs": 5,
+    "resourceEntries": 33,
+    "evidenceEntries": 15
+  },
+  "edition": "1.0"
+}
