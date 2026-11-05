@@ -1,0 +1,46 @@
+name: Improve a lesson or source
+description: Suggest a clearer explanation, corrected example, better exercise, or source update.
+title: "[Learning] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Beginner feedback is welcome. You do not need to know the solution to identify a confusing step. Search existing issues first so related feedback stays together.
+  - type: input
+    id: location
+    attributes:
+      label: Lesson, module, or source
+      description: Include the edition and title or ID so we can find it.
+      placeholder: "Edition 03, foundations.day02, worked example"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What could improve?
+      options:
+        - Confusing explanation or missing prerequisite
+        - Incorrect example, output, or assessment
+        - Broken or outdated resource
+        - Source claim or research limitation
+        - Exercise, pacing, or accessibility
+        - Other suggestion
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is the learner's problem?
+      description: Quote the relevant passage or describe the point where you got stuck. For code, include the smallest failing input and Python version if available.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested improvement
+      description: Optional. A proposed explanation, exercise, correction, or example is helpful, but reporting the problem is enough.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting sources or verification
+      description: Optional. Link primary sources and include relevant dates, geography, or expected output. Distinguish measured runtimes from suggested study budgets.

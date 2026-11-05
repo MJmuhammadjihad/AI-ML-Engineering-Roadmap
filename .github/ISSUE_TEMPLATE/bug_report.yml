@@ -1,0 +1,54 @@
+name: Report a bug
+description: Something in the roadmap does not work as expected.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the atlas. Search existing issues first, then share a small reproduction. Remove private notes and credentials from screenshots or progress exports.
+  - type: input
+    id: location
+    attributes:
+      label: Where does it happen?
+      description: Include the edition and the view, lesson title, or module ID.
+      placeholder: "Edition 03, Today → foundation day 1"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What should someone do to see the problem?
+      placeholder: |
+        1. Open…
+        2. Select…
+        3. Enter…
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Describe what you expected and what happened instead. Screenshots are optional.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      description: Browser name/version and operating system; include assistive technology when relevant.
+      placeholder: "Firefox 144, Windows 11; keyboard navigation"
+  - type: dropdown
+    id: transport
+    attributes:
+      label: How did you open the atlas?
+      options:
+        - Hosted website
+        - Downloaded HTML file
+        - Local development server
+        - Other / unsure
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional console errors, whether the issue follows a progress import, or a workaround. Do not include your full progress export unless it is needed and you have removed private data.

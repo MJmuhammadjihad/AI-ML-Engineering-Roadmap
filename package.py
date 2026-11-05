@@ -44,7 +44,7 @@ def package():
     }
     (ROOT / 'dist/manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     (ROOT / 'dist/manifest-v3.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-    files = [ROOT / name for name in ['README.md', 'VALIDATION.md', 'CHANGELOG.md', 'build.py', 'package.py', '.gitignore']]
+    files = [ROOT / name for name in ['README.md', 'CONTRIBUTING.md', 'VALIDATION.md', 'CHANGELOG.md', 'build.py', 'build_site.py', 'package.py', '.gitignore']]
     files += [html, versioned_html, ROOT / 'dist/manifest.json', ROOT / 'dist/manifest-v3.json']
     for edition in (1, 2):
         files += [ROOT / 'dist' / f'first-principles-atlas-v{edition}.html',
@@ -52,6 +52,9 @@ def package():
                   ROOT / 'dist' / f'manifest-v{edition}.json']
     files += sorted((ROOT / 'tests').glob('test*.*'))
     files += sorted((ROOT / 'src').glob('*')) + sorted((ROOT / 'research').glob('*'))
+    for directory in ['docs', 'site', 'scripts', '.github']:
+        files += sorted(path for path in (ROOT / directory).rglob('*') if path.is_file() and '__pycache__' not in path.parts)
+    files += sorted(ROOT.glob('LICENSE*'))
     bundle = ROOT / 'dist/first-principles-atlas-v3-source.zip'
     with ZipFile(bundle, 'w', ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
@@ -61,6 +64,10 @@ def package():
         assert archive.testzip() is None
         assert archive.read('first-principles-atlas/dist/' + versioned_html.name) == html.read_bytes()
     shutil.copyfile(bundle, ROOT / 'dist/first-principles-atlas-source.zip')
+    checksummed = [versioned_html, bundle, ROOT / 'dist/manifest-v3.json']
+    (ROOT / 'dist/checksums-v3.txt').write_text(''.join(
+        f'{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}\n' for path in checksummed
+    ), encoding='utf-8')
     print(f'Packaged {versioned_html.name} and {bundle.name}; archive integrity verified.')
 
 

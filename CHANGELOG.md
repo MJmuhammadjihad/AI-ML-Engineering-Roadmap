@@ -1,3 +1,14 @@
+# Repository showcase — 5 November 2026
+
+- Rewrote the README around the beginner experience, accurate feature counts, real screenshots, direct downloads, and contribution entry points.
+- Added a responsive light-themed showcase, social-sharing metadata, a 1200 × 630 preview image, and a reproducible screenshot script.
+- Added contribution guidance, issue forms, a pull-request template, and ready-to-adapt sharing materials.
+- Added continuous build/content/engine/browser checks and eight checks for the showcase under the GitHub Pages project path.
+- Added Pages deployment configuration and exact owner setup instructions. Deployment waits until Pages is enabled in repository settings.
+- Expanded source packaging to include the showcase and community materials; added release checksums. The edition 03 HTML and all edition 01/02 artifacts remain byte-identical.
+
+---
+
 # Edition 03 — 5 November 2026
 
 ## Learning and evidence

@@ -1,63 +1,89 @@
-# First Principles — An AI & ML Learning Atlas
+# AI & ML Engineering Roadmap · First Principles
 
-Edition 03 is a portable, light-themed learning application for a complete beginner with a six-hour active-study budget. It combines six fully guided foundation days with 41 modules, 205 further learning sessions, four capstones, five interactive concept labs, and five career routes.
+[![Verify roadmap](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/actions/workflows/validate.yml/badge.svg)](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/actions/workflows/validate.yml)
 
-**[Download the edition 03 HTML](dist/first-principles-atlas-v3.html)** and open the saved file in a modern browser. The application embeds its curriculum, styles, and JavaScript. It needs no account, API key, external font, CDN, or runtime installation. External learning resources require internet access.
+**An interactive AI/ML roadmap you can keep in a single HTML file.**
+
+Start from zero with six guided foundation days. Build toward machine learning and AI engineering through 41 modules, 205 further learning sessions, hands-on projects, and checks that ask you to explain what you built.
+
+**[Download edition 03](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3.html)** · [Preview the interface](docs/assets/atlas-today.png) · [Explore the curriculum](src/data.json) · [Contribute](CONTRIBUTING.md)
+
+No account. No API key. No install to use the app. Progress stays in your browser, with JSON export when you want to move it.
+
+[![First Principles daily workspace, showing the first beginner lesson and a six-hour active-study plan](docs/assets/atlas-today.png)](docs/assets/atlas-today.png)
+
+## Start in three steps
+
+1. **Download the HTML** and open the saved file in a modern browser.
+2. **Choose Today → Start this lesson.** The first lesson walks you through saving and running a small Python program. Adjust your study budget to fit your day; the default is six active hours, with breaks additional.
+3. **Build, explain, and keep your evidence.** Work through the checks, record what you can do independently, and export a progress backup before switching browsers or devices.
+
+The six foundation days are an on-ramp, not a job-readiness promise. Work at the pace your understanding supports. External courses and source links need internet access; the downloaded learning application does not.
+
+## What you get
+
+| Inside the atlas | What it helps you do |
+| --- | --- |
+| **6 guided beginner days** | Follow 42 authored work blocks, six runnable Python examples, and 18 misconception checks. |
+| **41 modules · 205 further sessions** | Connect prerequisites, concepts, practice, deliverables, and review across a larger curriculum. |
+| **5 career routes** | Choose AI product engineering, ML engineering, research-oriented engineering, full-stack AI, or the complete atlas. |
+| **41 transfer tasks** | Apply an idea to a new problem using an explicit rubric, repair exercise, and reviewer question. |
+| **4 capstones · 5 concept labs** | Practice with larger projects and interactive explanations. |
+| **A daily workspace** | Plan study blocks, log actual time, keep an evidence notebook, and export progress or calendar events. |
+| **Dated research and sources** | Inspect the evidence behind market context and distinguish observations from planning assumptions. |
+
+The planner keeps time spent, completion, assisted practice, and self-reported independent evidence distinct. Reading ahead is available; recommended work follows recorded prerequisite evidence.
+
+<details>
+<summary><strong>Preview the guided lesson reader</strong></summary>
+
+![Guided lesson reader with a lesson outline, clear learning outcomes, work blocks, and a local notebook](docs/assets/atlas-lesson.png)
+
+</details>
 
 ## Choose an edition
 
-Earlier HTML files and source archives are preserved byte for byte. GitHub links below are repository files; this repository does not configure a GitHub Pages deployment.
-
-| Edition | What it contains | HTML | Source archive |
+| Edition | Focus | Portable HTML | Editable source |
 | --- | --- | --- | --- |
-| 01 — original | 36 modules, 180 sessions | [HTML](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v1.html) | [Sources](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v1-source.zip) |
-| 02 — expanded | 41 modules, 205 sessions, worked examples and diagnostics | [HTML](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v2.html) | [Sources](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v2-source.zip) |
-| **03 — guided learning** | Six beginner days, stronger transfer assessments, a redesigned daily workspace, and current market evidence | [HTML](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v3.html) | [Sources](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/dist/first-principles-atlas-v3-source.zip) |
+| **03 · current** | Guided foundations, daily workspace, deeper transfer checks | [Download](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3.html) | [ZIP](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3-source.zip) |
+| 02 | Expanded curriculum, worked examples, diagnostics | [HTML](dist/first-principles-atlas-v2.html) | [ZIP](dist/first-principles-atlas-v2-source.zip) |
+| 01 | Original 36-module atlas | [HTML](dist/first-principles-atlas-v1.html) | [ZIP](dist/first-principles-atlas-v1-source.zip) |
 
-`dist/first-principles-atlas.html` and `dist/first-principles-atlas-source.zip` are aliases for the latest edition. Editable `src/` files now build edition 03. Versioned manifests identify the artifacts; earlier source archives retain their original code and validation records.
+Earlier editions are preserved byte for byte. The unversioned files in [`dist/`](dist/) are aliases for edition 03. Edition 01/02 progress can be imported into edition 03; the earlier browser storage key is preserved. See [the changelog](CHANGELOG.md).
 
-## What changed in edition 03
+## Built to be inspectable
 
-- **Today, Path, Practice, Library:** four primary destinations, with the full curriculum, calendar, labs, portfolio, research, and learning method still available.
-- **A complete beginning:** six 360-minute study plans, 42 authored work blocks, runnable Python examples, 18 misconception checks, independent tasks, transfer problems, and explicit repair exercises. One study-budget program grows from a saved file into a validated command-line tool.
-- **A dedicated reading room:** clear outcomes, operating-system setup instructions, formatted source and expected output, progressive disclosures, a lesson outline, actual-time logging, and a local evidence notebook.
-- **Deeper work throughout the atlas:** every one of the 41 modules has a new transfer task, observable rubric, specific misconception repair, reviewer question, readiness explanation, and scope limit.
-- **Evidence-aware planning:** whole foundation work blocks are recommended only when their prerequisites have recorded demonstrations. Reading ahead remains available. Completion, time spent, assisted practice, and self-reported independent evidence remain distinct.
-- **Honest time accounting:** the default is 360 active minutes, with breaks additional. An explicit elapsed-time mode includes breaks. Foundation and core-curriculum logs share the same remaining daily capacity. Reopening practice preserves earlier time records.
-- **A dated research refresh:** nine primary-source entries and ten inspected job descriptions from three employers, with geography, seniority, eligibility, and sampling limits visible.
-- **Safer continuity:** edition-01/02 progress can be imported or recovered from the earlier browser key. The old key is not overwritten; an exact legacy snapshot travels with edition-03 exports. New assessments begin separately.
+The HTML embeds its curriculum, styles, and JavaScript. It makes no analytics or background API requests and uses no runtime CDN, external font, or framework. Local progress storage depends on browser permissions; JSON export remains available if storage is blocked. Keep a backup before moving files or changing browsers.
 
-The five routes cover AI product engineering, machine learning engineering, research-oriented engineering, full-stack AI development, and the complete reference atlas. Optional video minutes are study budgets, not claimed video runtimes or timestamps.
+The published edition 03 has **48 passing browser tests, 22 content tests, and 74 engine checks** recorded in [VALIDATION.md](VALIDATION.md), including 500 seeded scheduling scenarios and execution of the six new Python examples. The report identifies the exact artifact hash and the limits of those checks. Direct-file storage was not verified in the managed test browser, which blocks `file://` navigation.
 
-## Build and verify
+The [November 2026 market analysis](research/v3-market-research.md) uses nine primary-source entries and a targeted sample of ten job descriptions from three employers. It is not a representative global hiring survey. Study budgets and review intervals are authored planning heuristics; the roadmap does not promise employment or a fixed completion date. Video allocations are study budgets, not verified video durations.
 
-Rebuilding requires Python 3.10+. Engine checks require Node.js 18+; browser checks require Python Playwright and Chromium. The finished HTML has none of these runtime dependencies.
+## Run or build locally
+
+Using the downloaded HTML requires only a browser. To edit and rebuild, use Python 3.10+:
 
 ```sh
-python3 package.py
-node --check src/app.js
-node tests/test_v3_engines.js
-python3 tests/test_v3_content.py
-python3 tests/test_atlas.py
-python3 tests/test_v3_browser.py
+git clone https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap.git
+cd AI-ML-Engineering-Roadmap
+python3 build.py
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-`build.py` validates content and embeds all local source into one HTML file. `src/v3.js` is deliberately inserted inside the application closure through a build marker; it shares the application's state and rendering helpers. The standalone planner and assessment modules also support CommonJS for tests. `package.py` builds the versioned HTML, latest aliases, manifests, and complete source archive. Packaging does not run the browser tests.
+Open `http://127.0.0.1:8000/dist/first-principles-atlas.html`.
 
-Browser suites serve the exact distributed HTML on loopback and block all external requests. `CHROMIUM_PATH` can select a browser. `ATLAS_TEST_TRANSPORT=file` requests direct-file testing when the selected browser permits it. The managed browser used for this release blocks `file://` navigation by administrative policy, so direct-file storage behavior remains unverified here. See [VALIDATION.md](VALIDATION.md) for the tested artifact hash and precise coverage.
+- **Curriculum and interface:** [`src/`](src/)
+- **Research and source ledger:** [`research/`](research/)
+- **Showcase website:** [`site/`](site/) — build with `python3 build_site.py`, then serve `_site/`.
+- **Release packaging:** `python3 package.py` builds versioned artifacts, manifests, and source ZIPs.
+- **Development and checks:** [CONTRIBUTING.md](CONTRIBUTING.md) and [VALIDATION.md](VALIDATION.md).
 
-## Research and learning boundaries
+The showcase and GitHub Pages workflow are included. Hosted access is pending repository-owner enablement; [publishing instructions](docs/MAINTAINER-LAUNCH.md) cover the remaining settings.
 
-The November 4, 2026 refresh retrieved BLS occupational projections, the World Economic Forum's 2025 report, Stanford's 2026 AI Index economy chapter, primary ML engineering guidance, and public employer job feeds. The sample spans three employers and five listed countries. It is a targeted qualitative sample, not a representative global vacancy survey. US projections, employer expectations, current role requirements, and future scenarios are labeled separately. No salary, job probability, or personal completion deadline is inferred from them.
+## Help the next learner
 
-Read [the research analysis](research/v3-market-research.md) and [the source ledger](research/v3-market-evidence.json). Earlier technical research remains available as a dated archive. The curriculum order, duration budgets, review intervals, and contingency suggestions are authored planning heuristics; they have not been established as a universally optimal learning algorithm or validated in a longitudinal learner study.
+Try a lesson and tell us where you got stuck. [Report a bug](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/issues/new?template=bug_report.yml), [improve a lesson](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/issues/new?template=lesson_improvement.yml), or [contribute a focused change](CONTRIBUTING.md).
 
-The six new worked Python examples have reproducible execution checks. Earlier examples retain their documented validation scope: 38 were executed, two were reviewed conceptually, and the PyTorch example was not executed in the original environment. A working example does not certify a learner's independently written implementation. Criterion records are explicitly self-reported unless externally verified evidence is separately obtained.
+If the atlas is useful to you, **star the repository** to bookmark it and share it with someone learning AI or ML. Specific feedback is especially valuable: which lesson you tried, what you built, and what would make the next step clearer.
 
-## Progress, privacy, and portability
-
-The application sends no analytics or background API requests. It stores progress locally when the browser permits it. Export JSON before moving the HTML file or changing browsers; storage behavior for local files varies. Imports validate data before asking to replace current progress. Keep an exported backup if both records are needed. A blocked or full storage system leaves the app usable in memory with export available.
-
-The new storage key is `first-principles-atlas-v3`; the original `first-principles-atlas-v1` key is read only as a fallback and is preserved. Downloaded progress includes source-edition history where applicable. Notes are rendered as text. Do not put credentials in notes or source files.
-
-Calendar exports use all-day study events. Repeated imports can create duplicates in a calendar application. Printing captures the current view or open lesson. Each cloud task is already isolated: use the existing checkout unless a separate worktree is explicitly needed.
+[Shareable introductions and a demo script](docs/SHARING.md) · [Release notes](CHANGELOG.md) · [Validation details](VALIDATION.md)

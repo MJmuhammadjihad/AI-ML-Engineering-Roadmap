@@ -1,0 +1,74 @@
+name: Verify roadmap
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, content, engines, and browser checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild and verify the published HTML
+        run: |
+          python3 build.py
+          git diff --exit-code -- dist/first-principles-atlas.html
+          cmp dist/first-principles-atlas.html dist/first-principles-atlas-v3.html
+
+      - name: Check JavaScript and learning engines
+        run: |
+          node --check src/app.js
+          node --check src/v3.js
+          node --check src/planner.js
+          node --check src/assessment.js
+          node tests/test_v3_engines.js
+
+      - name: Verify curriculum and execute worked examples
+        run: python3 tests/test_v3_content.py
+
+      - name: Install the browser test runner
+        run: |
+          python3 -m pip install 'playwright==1.62.0'
+          python3 -m playwright install --with-deps chromium
+          python3 - <<'PY'
+          import os
+          from playwright.sync_api import sync_playwright
+
+          with sync_playwright() as playwright:
+              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
+                  env.write(f'CHROMIUM_PATH={playwright.chromium.executable_path}\n')
+          PY
+
+      - name: Run original browser regressions
+        run: python3 tests/test_atlas.py
+
+      - name: Run edition 03 browser regressions
+        run: python3 tests/test_v3_browser.py
+
+      - name: Verify the public showcase under the Pages project path
+        run: python3 tests/test_site.py
