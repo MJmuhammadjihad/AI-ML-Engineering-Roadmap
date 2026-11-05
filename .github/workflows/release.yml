@@ -1,0 +1,52 @@
+name: Publish edition 03 release
+
+on:
+  push:
+    tags: [v3.0.0]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-v3.0.0
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the tagged release
+        uses: actions/checkout@v4
+        with:
+          ref: v3.0.0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify the committed release artifacts
+        run: |
+          python3 build.py
+          git diff --exit-code -- dist/first-principles-atlas.html
+          cmp dist/first-principles-atlas.html dist/first-principles-atlas-v3.html
+          cd dist
+          sha256sum -c checksums-v3.txt
+      - name: Upload assets and publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! gh release view v3.0.0 >/dev/null 2>&1; then
+            gh release create v3.0.0 --verify-tag --draft \
+              --title 'First Principles · Edition 03 — AI & ML Learning Atlas' \
+              --notes-file docs/RELEASE-v3.0.0.md
+          fi
+          gh release upload v3.0.0 --clobber \
+            dist/first-principles-atlas-v3.html \
+            dist/first-principles-atlas-v3-source.zip \
+            dist/manifest-v3.json \
+            dist/checksums-v3.txt
+          gh release edit v3.0.0 --draft=false --latest

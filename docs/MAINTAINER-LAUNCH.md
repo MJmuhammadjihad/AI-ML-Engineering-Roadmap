@@ -54,6 +54,8 @@ On your GitHub profile, choose **Customize your pins** and pin this repository i
 
 ## 4. Make sharing useful
 
+The **Publish edition 03 release** workflow uploads the committed, checksum-verified HTML, source ZIP, manifest, and checksums when the `v3.0.0` tag is pushed. It uses GitHub's repository token because the cloud environment's credential was rejected by GitHub's separate asset-upload endpoint. The workflow can also be rerun manually on the existing tag; a draft is published after all asset uploads succeed.
+
 Use [SHARING.md](SHARING.md) for a short introduction, a technical-community draft, a LinkedIn draft, and a 45-second demo script. Adapt one to the audience, disclose your connection, and invite feedback on a specific lesson. No promotional messages have been sent on your behalf.
 
 Choose a license deliberately before describing the project as open source. Source visibility alone does not grant general reuse rights. Until a license is added, the launch copy says the source is editable and available rather than claiming an open-source license.

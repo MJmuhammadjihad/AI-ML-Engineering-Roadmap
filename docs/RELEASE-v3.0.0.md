@@ -6,7 +6,7 @@ An interactive AI/ML roadmap you can keep in a single HTML file. Edition 03 star
 
 Download **`first-principles-atlas-v3.html`** below, then open the saved file in a modern browser. Choose **Today → Start this lesson**. No account, API key, or runtime installation is required for the app. Linked courses and resources need internet access.
 
-Download **`first-principles-atlas-v3-source.zip`** for the editable source, build scripts, research records, tests, showcase website, and preserved editions 01/02. Use **`manifest-v3.json`** to verify the HTML hash.
+Download **`first-principles-atlas-v3-source.zip`** for the editable source, build scripts, research records, tests, showcase website, and preserved editions 01/02. Use **`manifest-v3.json`** to verify the HTML hash, or **`checksums-v3.txt`** to verify all three release files with `sha256sum -c checksums-v3.txt` after downloading them to the same folder.
 
 ## Inside this edition
 
