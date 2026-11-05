@@ -12,7 +12,8 @@
   };
   const resources = D.resources,
     sourceById = Object.fromEntries(resources.map((r) => [r.id, r]));
-  const KEY = "first-principles-atlas-v1";
+  const KEY = "first-principles-atlas-v3";
+  const LEGACY_KEY = "first-principles-atlas-v1";
   const $ = (s) => document.querySelector(s),
     esc = (s) =>
       String(s ?? "").replace(
@@ -75,14 +76,16 @@
       modules.flatMap((m) => m.lessons.map((_, i) => lessonId(m, i))),
     );
   const nav = [
+    ["today", "◉", "Today"],
+    ["journey", "→", "Path"],
+    ["practice", "◇", "Practice"],
+    ["library", "▧", "Library"],
     ["overview", "◈", "Overview"],
-    ["journey", "→", "Your journey"],
     ["curriculum", "▤", "The curriculum"],
     ["planner", "▦", "Daily planner"],
     ["lab", "⌁", "Concept lab"],
     ["portfolio", "◇", "Proof of skill"],
     ["evidence", "◎", "Research & outlook"],
-    ["library", "▧", "Resource library"],
     ["method", "→", "How to learn"],
   ];
   const core = Array.from(
@@ -409,8 +412,16 @@
     ),
   ]);
   for (const m of modules) activityLimits[m.id + ":gate:gate"] = 90;
+  /*__V3_APP__*/
   const defaults = () => ({
-    version: 2,
+    version: 3,
+    foundationBlocks: [],
+    foundationLogs: [],
+    foundationChecks: {},
+    foundationNotes: {},
+    foundationTimeMode: "active",
+    foundationBreakMinutes: 90,
+    legacySnapshot: null,
     blockMinutes: 60,
     dailyWork: {},
     assessments: {},
@@ -431,7 +442,7 @@
   let migrated = false,
     storageOK = true,
     state = defaults(),
-    view = "overview",
+    view = "today",
     query = "",
     phase = "all",
     planPage = 0,
@@ -444,7 +455,7 @@
       !x ||
       typeof x !== "object" ||
       Array.isArray(x) ||
-      ![1, 2].includes(x.version)
+      ![1, 2, 3].includes(x.version)
     )
       throw Error("This is not a supported atlas progress file.");
     const s = defaults();
@@ -555,13 +566,14 @@
     }
     for (const id of Object.keys(s.masteryDates))
       if (!s.mastered.includes(id)) delete s.masteryDates[id];
+    validateV3(x, s);
     return s;
   }
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(KEY) || localStorage.getItem(LEGACY_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      migrated = parsed.version === 1;
+      migrated = parsed.version < 3;
       state = validateState(parsed);
     }
   } catch {
@@ -575,6 +587,8 @@
       storageOK = false;
       toast("Browser storage is unavailable. Export progress before closing.");
     }
+    const status = $("#storage-status");
+    if (status) status.textContent = storageOK ? "Saved locally on this device" : "Not saved · export your progress";
   }
   let toastTimer;
   function toast(t) {
@@ -672,17 +686,20 @@
   function navRender() {
     $("#navigation").innerHTML = nav
       .map(
-        ([id, icon, title]) =>
-          `<a class="nav-item ${view === id ? "active" : ""}" href="#${id}" ${view === id ? 'aria-current="page"' : ""}><span class="nav-icon" aria-hidden="true">${icon}</span>${title}${id === "curriculum" ? `<span class="nav-number">${modules.length}</span>` : ""}</a>`,
+        ([id, icon, title], index) =>
+          `${index === 4 ? '<div class="v3-nav-utilities"><span class="sidebar-label">EXPLORE THE ATLAS</span>' : ''}<a class="nav-item ${view === id ? "active" : ""}" href="#${id}" ${view === id ? 'aria-current="page"' : ""}><span class="nav-icon" aria-hidden="true">${icon}</span>${title}${id === "curriculum" ? `<span class="nav-number">${modules.length}</span>` : ""}</a>`,
       )
-      .join("");
+      .join("") + "</div>";
     $("#page-name").textContent =
-      nav.find((x) => x[0] === view)?.[2] || "Overview";
+      nav.find((x) => x[0] === view)?.[2] || "Reading room";
   }
   function render(focus = false) {
     navRender();
     const fn =
       {
+        today: todayView,
+        foundation: foundationLessonView,
+        practice: practiceView,
         overview: overview,
         journey: journey,
         curriculum: curriculum,
@@ -692,16 +709,18 @@
         evidence: evidence,
         library: library,
         method: method,
-      }[view] || overview;
+      }[view] || todayView;
     $("#main").innerHTML =
       (migrated
-        ? '<div class="notice green">Welcome to edition 02. Your earlier sessions and notes are retained. New prerequisites may reopen mastery gates; inspect your journey before advancing. <button class="btn small" data-action="dismiss-upgrade">Understood</button></div>'
+        ? '<div class="notice green">Welcome to edition 03. Earlier progress is retained, with the original record included in your next export. New foundation checks begin separately; historical completion is not converted into new assessment evidence. <button class="btn small" data-action="dismiss-upgrade">Understood</button></div>'
         : "") +
       (!storageOK
         ? '<div class="notice storage-warning">Persistent browser storage is unavailable or an old save could not be loaded. Export progress before closing this page.</div>'
         : "") +
       fn();
     if (view === "lab") updateLabs();
+    const status = $("#storage-status");
+    if (status) status.textContent = storageOK ? "Progress stays on this device" : "Not saved · export your progress";
     if (focus) $("#main").focus({ preventScroll: true });
   }
   function heroArt() {
@@ -722,15 +741,15 @@
     const stages = stageGroups(ms),
       remaining = Math.max(
         0,
-        state.hours * 60 - 30 - (state.dailyWork[today()] || 0),
+        foundationCapacity() - 30 - foundationDayMinutes(today()),
       ),
       scheduled = buildPlan(),
       weeks = Math.ceil(scheduled.length / state.days);
-    return `<section class="v2-hero"><div class="hero-copy"><div class="hero-kicker"><span class="eyebrow">THE FIRST PRINCIPLES ATLAS</span><span class="edition-badge">EDITION 02</span></div><h1 class="hero-title">Understand deeply.<br><em>Build with purpose.</em></h1><p class="hero-intro">Your path from a blank file to reliable AI systems. Clear dependencies. Deliberate practice. Work you can explain and someone else can verify.</p><div class="hero-actions"><button class="btn primary" data-action="continue">${next?.gate ? "Review your next gate" : "Continue learning"} <span aria-hidden="true">→</span></button><a href="#journey" class="btn">See the whole journey</a></div><div class="hero-footnote"><span class="dot"></span> DESIGNED FOR YOUR START · Zero experience · ${state.hours} focused hours/day</div></div><aside class="hero-stageboard" aria-label="Learning approach"><div class="stage-label">THE PROCESS, NOT THE PROMISE</div><div class="stage-tile"><span class="stage-index">01</span><div><h3>Understand the mechanism</h3><p>Make a prediction. Trace the steps. Find the assumption.</p></div><span class="stage-meta">THINK</span></div><div class="stage-connector" aria-hidden="true"></div><div class="stage-tile"><span class="stage-index">02</span><div><h3>Make it work</h3><p>Build from a blank file. Test the result. Inspect the failure.</p></div><span class="stage-meta">BUILD</span></div><div class="stage-connector" aria-hidden="true"></div><div class="stage-tile"><span class="stage-index">03</span><div><h3>Make it trustworthy</h3><p>Explain the limits. Reproduce the evidence. Invite review.</p></div><span class="stage-meta">PROVE</span></div><div class="stageboard-foot"><span>Small steps. Inspectable progress.</span><span aria-hidden="true">→</span></div></aside></section>
+    return `<section class="v2-hero"><div class="hero-copy"><div class="hero-kicker"><span class="eyebrow">THE FIRST PRINCIPLES ATLAS</span><span class="edition-badge">EDITION 03</span></div><h1 class="hero-title">Understand deeply.<br><em>Build with purpose.</em></h1><p class="hero-intro">Your path from a blank file to reliable AI systems. Clear dependencies. Deliberate practice. Work you can explain and someone else can verify.</p><div class="hero-actions"><button class="btn primary" data-action="continue">${next?.gate ? "Review your next gate" : "Continue learning"} <span aria-hidden="true">→</span></button><a href="#journey" class="btn">See the whole journey</a></div><div class="hero-footnote"><span class="dot"></span> DESIGNED FOR YOUR START · Zero experience · ${state.hours} focused hours/day</div></div><aside class="hero-stageboard" aria-label="Learning approach"><div class="stage-label">THE PROCESS, NOT THE PROMISE</div><div class="stage-tile"><span class="stage-index">01</span><div><h3>Understand the mechanism</h3><p>Make a prediction. Trace the steps. Find the assumption.</p></div><span class="stage-meta">THINK</span></div><div class="stage-connector" aria-hidden="true"></div><div class="stage-tile"><span class="stage-index">02</span><div><h3>Make it work</h3><p>Build from a blank file. Test the result. Inspect the failure.</p></div><span class="stage-meta">BUILD</span></div><div class="stage-connector" aria-hidden="true"></div><div class="stage-tile"><span class="stage-index">03</span><div><h3>Make it trustworthy</h3><p>Explain the limits. Reproduce the evidence. Invite review.</p></div><span class="stage-meta">PROVE</span></div><div class="stageboard-foot"><span>Small steps. Inspectable progress.</span><span aria-hidden="true">→</span></div></aside></section>
  <div class="readiness-strip"><div><strong>${ms.length}<small> / ${modules.length}</small></strong><span>modules on your path</span></div><div><strong>${practice}<small> / ${lessonCount}</small></strong><span>sessions practiced</span></div><div><strong>${done}<small> / ${ms.length}</small></strong><span>mastery gates met</span></div><div><strong>${selectedProjects().length}</strong><span>capstones to make your case</span></div></div>
  <div class="section-heading"><div><span class="eyebrow">YOUR WORKBENCH</span><h2>One clear next step.</h2></div><a class="text-btn" href="#planner">Open the daily plan →</a></div>
  <div class="overview-grid"><article class="focus-card"><div class="card-top"><span class="eyebrow">${next?.gate ? "REVIEW BEFORE ADVANCING" : "UP NEXT"}</span><span class="pill">${next ? esc(next.m.id.toUpperCase()) : "WELL PRACTICED"}</span></div><h3>${next ? esc(next.gate ? next.m.project.title : next.m.lessons[next.i].title) : "Let a reviewer challenge your evidence."}</h3><p>${next ? esc(next.gate ? next.m.project.brief : next.m.lessons[next.i].practice) : "The planned sessions are practiced. Inspect the capstones, revisit weak concepts and seek independent review."}</p><div class="focus-card-meta"><span>${next ? esc(next.m.title) : "Portfolio review"}</span><span>${next ? (next.gate ? "90 min · review budget" : minutes(next.m.lessons[next.i]) + " min · full session") : "Keep the evidence current"}</span></div><button class="btn primary" data-action="continue">${next?.gate ? "Inspect the evidence gate" : "Open your learning brief"} →</button></article>
- <article class="route-summary"><div class="eyebrow">YOUR DIRECTION</div>${routeSelect()}<p>${tracks[state.track].description}</p><div class="progress-track"><div class="progress-fill" style="width:${(done / ms.length) * 100}%"></div></div><div class="row spread micro"><span>${done} gates met</span><span>Self-assessed against artifacts</span></div><div class="today-budget"><div><strong>${remaining}<small> min</small></strong><span>activity capacity left today</span></div><div><strong>${state.dailyWork[today()] || 0}<small> min</small></strong><span>activity work logged today</span></div></div><p class="micro">Plus 20 minutes of recall and 10 minutes of reflection. Breaks are additional. Logged minutes are your estimates, not a background timer.</p></article></div>
+ <article class="route-summary"><div class="eyebrow">YOUR DIRECTION</div>${routeSelect()}<p>${tracks[state.track].description}</p><div class="progress-track"><div class="progress-fill" style="width:${(done / ms.length) * 100}%"></div></div><div class="row spread micro"><span>${done} gates met</span><span>Self-assessed against artifacts</span></div><div class="today-budget"><div><strong>${remaining}<small> min</small></strong><span>activity capacity left today</span></div><div><strong>${foundationDayMinutes(today())}<small> min</small></strong><span>activity work logged today</span></div></div><p class="micro">Plus 20 minutes of recall and 10 minutes of reflection. Breaks are additional. Logged minutes are your estimates, not a background timer.</p></article></div>
  <div class="section-heading"><div><span class="eyebrow">THE PATH AHEAD</span><h2>Each stage earns the next.</h2></div><a href="#journey" class="text-btn">Explore prerequisites →</a></div><div class="milestone-ribbon">${stages.map((g, i) => `<a class="milestone-step" href="#journey"><span>${String(i + 1).padStart(2, "0")}</span><b>${g.title}</b><small>${g.modules.filter((m) => state.mastered.includes(m.id)).length} / ${g.modules.length} gates</small></a>`).join("")}</div>
  <div class="planning-note"><span class="eyebrow">A FORECAST YOU CAN CHANGE</span><p>Your remaining route contains approximately <b>${Math.ceil(remainingMinutes() / 60)} hours</b> of lessons, project work and artifact review. At this cadence, the first pass spans roughly <b>${weeks} study weeks</b>. Add time for repetition and feedback; completion is not an employment guarantee.</p></div>
  <div class="grid-3"><article class="card"><div class="eyebrow">EXPLORE A MECHANISM</div><h3>Make intuition visible.</h3><p>Change a learning rate, a threshold, or a base rate. Predict the effect before observing it.</p><a class="btn small" href="#lab">Open the concept lab →</a></article><article class="card peach"><div class="eyebrow">BUILD YOUR CASE</div><h3>Evidence over checkmarks.</h3><p>Four capstones turn study into reproducible results, failure analysis and professional judgment.</p><a class="btn small" href="#portfolio">Read the project briefs →</a></article><article class="card"><div class="eyebrow">READ THE FOOTNOTES</div><h3>Know what is known.</h3><p>Inspect primary sources, research limitations and conditional scenarios for a changing market.</p><a class="btn small" href="#evidence">Inspect the research →</a></article></div>`;
@@ -897,7 +916,7 @@
               )
               .join(" ")}.</div>`
           : ""
-      }${beginnerSetup(id)}${javascriptBridge(id)}<h3>What you will be able to do</h3><ul>${m.outcomes.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>${enrichment(m)}</div><div class="study-toolbar"><h3>The five learning sessions</h3><button class="btn small" data-action="focus-mode" aria-pressed="${focusMode}">${focusMode ? "Show module context" : "Focus on the open lesson"}</button><div class="focus-navigation"><button class="btn small" data-action="focus-prev" data-id="${id}" ${!index ? "disabled" : ""}>← Previous session</button><button class="btn small" data-action="focus-next" data-id="${id}" ${(index || 0) >= 4 ? "disabled" : ""}>Next session →</button></div></div><p class="muted">Sessions are units of work, not fixed days. The daily planner divides their activities to fit your available time. Minutes are estimates; stop and investigate when the mechanism is unclear.</p>${m.lessons.map((l, i) => lessonMarkup(m, l, i, index === i || (index === null && i === 0))).join("")}<div class="module-project"><h3>Module project · ${esc(m.project.title)}</h3><p>${esc(m.project.brief)}</p><ul>${m.project.deliverables.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><h3>Common failure modes</h3><ul>${m.pitfalls.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="mastery-card"><div class="eyebrow">A gate, not a gold star</div><h3>Demonstrate the result.</h3><ul>${m.project.rubric.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><label><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""}>I have inspected my artifact against every criterion, attempted the questions without notes, and can explain a failure case.</label><label class="note-label" for="module-note">Evidence log · artifact location, result, uncertainty, next correction</label><textarea class="note-area" id="module-note" data-note="${id}" maxlength="5000" placeholder="Record what you can now demonstrate. Local text only; no secrets.">${esc(state.notes[id] || "")}</textarea><p class="micro">This is self-assessment, not an external certification. Ask a peer to reproduce your work when possible.</p><button id="mastery-button" class="btn ${mastered ? "" : "primary"}" data-action="mastery" data-id="${id}" ${!mastered && (!ready || !practiced || !state.checks[id]) ? "disabled" : ""}>${mastered ? "Reopen this mastery gate" : "Mark mastery gate met"}</button><p class="micro" style="margin-top:9px">Requires all five sessions practiced, prerequisite gates met, and the evidence checklist confirmed. Recording mastery is separate from logging time; use planner blocks for time accounting.</p><button class="btn small" data-action="repeat-review" data-id="${id}">Schedule another 90-minute review</button></div></div>`;
+      }${beginnerSetup(id)}${javascriptBridge(id)}<h3>What you will be able to do</h3><ul>${m.outcomes.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>${enrichment(m)}${guidanceMarkup(m)}</div><div class="study-toolbar"><h3>The five learning sessions</h3><button class="btn small" data-action="focus-mode" aria-pressed="${focusMode}">${focusMode ? "Show module context" : "Focus on the open lesson"}</button><div class="focus-navigation"><button class="btn small" data-action="focus-prev" data-id="${id}" ${!index ? "disabled" : ""}>← Previous session</button><button class="btn small" data-action="focus-next" data-id="${id}" ${(index || 0) >= 4 ? "disabled" : ""}>Next session →</button></div></div><p class="muted">Sessions are units of work, not fixed days. The daily planner divides their activities to fit your available time. Minutes are estimates; stop and investigate when the mechanism is unclear.</p>${m.lessons.map((l, i) => lessonMarkup(m, l, i, index === i || (index === null && i === 0))).join("")}<div class="module-project"><h3>Module project · ${esc(m.project.title)}</h3><p>${esc(m.project.brief)}</p><ul>${m.project.deliverables.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><h3>Common failure modes</h3><ul>${m.pitfalls.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="mastery-card"><div class="eyebrow">A gate, not a gold star</div><h3>Demonstrate the result.</h3><ul>${m.project.rubric.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><label><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""}>I have inspected my artifact against every criterion, attempted the questions without notes, and can explain a failure case.</label><label class="note-label" for="module-note">Evidence log · artifact location, result, uncertainty, next correction</label><textarea class="note-area" id="module-note" data-note="${id}" maxlength="5000" placeholder="Record what you can now demonstrate. Local text only; no secrets.">${esc(state.notes[id] || "")}</textarea><p class="micro">This is self-assessment, not an external certification. Ask a peer to reproduce your work when possible.</p><button id="mastery-button" class="btn ${mastered ? "" : "primary"}" data-action="mastery" data-id="${id}" ${!mastered && (!ready || !practiced || !state.checks[id]) ? "disabled" : ""}>${mastered ? "Reopen this mastery gate" : "Mark mastery gate met"}</button><p class="micro" style="margin-top:9px">Requires all five sessions practiced, prerequisite gates met, and the evidence checklist confirmed. Recording mastery is separate from logging time; use planner blocks for time accounting.</p><button class="btn small" data-action="repeat-review" data-id="${id}">Schedule another 90-minute review</button></div></div>`;
     const dialog = $("#lesson-dialog");
     if (!dialog.open) dialog.showModal();
     if (index !== null)
@@ -995,8 +1014,9 @@
   }
   function buildPlan() {
     const queue = taskQueue(),
-      budget = state.hours * 60 - 30,
+      budget = Math.max(0, foundationCapacity() - 30),
       days = [];
+    if (budget === 0) return days;
     let current = null;
     function advance() {
       const idx = days.length,
@@ -1004,7 +1024,7 @@
           state.start,
           Math.floor(idx / state.days) * 7 + (idx % state.days),
         ),
-        logged = state.dailyWork[date] || 0;
+        logged = foundationDayMinutes(date);
       current = {
         number: idx + 1,
         date,
@@ -1085,7 +1105,7 @@
         )
         .join(
           "",
-        )}</select></label><label class="field">Focused hours / day<input type="number" min="1" max="12" step=".5" data-setting="hours" value="${state.hours}"></label><label class="field">Study days / week<select data-setting="days">${[1, 2, 3, 4, 5, 6, 7].map((n) => `<option ${n === state.days ? "selected" : ""}>${n}</option>`).join("")}</select></label><label class="field">Focus block<select data-setting="blockMinutes">${[45, 60, 90].map((n) => `<option value="${n}" ${n === state.blockMinutes ? "selected" : ""}>${n} min</option>`).join("")}</select></label><label class="field">Start of remaining work<input type="date" data-setting="start" value="${state.start}"></label></div><label class="row micro" style="margin-top:15px"><input type="checkbox" data-setting="video" ${state.video ? "checked" : ""}> Include optional video study budgets. Turning this off reallocates those minutes to practice.</label></section><div class="planner-tools"><div><b>${plan.length} planned study days</b><p class="micro">${plan.length ? dateLabel(plan[0].date) + " → " + dateLabel(plan.at(-1).date) : "Your scheduled work is complete."} · ${7 - state.days} rest ${7 - state.days === 1 ? "day" : "days"} after each ${state.days}-day study block</p></div><div class="row flex-wrap"><button class="btn small" data-action="rebase">Rebase remaining work to today</button><button class="btn small" data-action="calendar">Export calendar (.ics)</button><button class="btn small" data-action="export">Back up progress</button></div></div><div class="notice">Dates are a first-pass forecast, not permission to skip a gate. Long projects appear as several work blocks; their stated minutes are planning budgets. Logging a block reduces both its remaining work and today’s available activity time. The day will not refill itself. You can undo the last logged block during this visit. After a missed day, rebase the remaining plan. After a failed check, repeat or repair before continuing. Add 25–50% contingency, and take 5–10 minute breaks between focused blocks.</div>${review.length ? `<div class="notice green">Suggested recall today: ${review.map((m) => `<button class="btn small" data-action="reviewed" data-id="${m.id}">${esc(m.title)} · record recall ✓</button>`).join(" ")}. Rebuild one key idea from memory. Review suggestions use 1, 3, 7, 14, 30 and 60 calendar days after a mastery gate; overdue reviews stay visible until recorded. These intervals are a heuristic, not a validated personal optimum.</div>` : ""}${daySummary(visible)}<div class="day-list">${visible.map((day, i) => `<details class="plan-day" ${i === 0 ? "open" : ""}><summary><span class="day-badge">DAY<b>${day.number}</b></span><span class="day-title"><b>${esc(day.tasks.find((t) => t.kind === "build" || t.kind === "project")?.title || day.tasks[0]?.title || "Today’s activity budget is logged")}</b><span>${dateLabel(day.date)} · ${day.used} min remaining + ${day.logged} min logged + 30 min recall/reflection · ${day.tasks.length} work blocks</span></span></summary><div class="day-content"><div class="review-banner"><b>20 min · Retrieve before consuming.</b> Explain yesterday’s mechanism on blank paper. On your first day, write your baseline: what you can currently do unaided. At week boundaries, revisit a previous weak concept.</div>${day.tasks.map((t) => `<div class="task"><div class="task-time">${t.allocated}m</div><div><span class="micro">${esc({ video: "OPTIONAL VIDEO", read: "READ & REASON", build: "IMPLEMENT", recall: "RETRIEVE", gate: "MASTERY GATE", project: "CAPSTONE WORK" }[t.kind])}${t.offset > 0 ? " · CONTINUED" : ""}${t.allocated < t.totalMinutes ? " · " + (t.offset + t.allocated) + " / " + t.totalMinutes + " MIN" : ""}</span><h4>${esc(t.title)}</h4><p>${esc(t.description)}</p></div><div class="task-buttons"><button class="btn small" data-action="${t.kind === "project" ? "go-project" : "module"}" data-id="${t.id}" ${Number.isInteger(t.index) ? `data-index="${t.index}"` : ""}>${t.kind === "project" ? "Project" : "Brief"} →</button>${t.key ? `<button class="btn small" data-action="log-work" data-key="${t.key}" data-minutes="${t.allocated}">Log ${t.allocated}m ✓</button>` : ""}</div></div>`).join("")}<div class="review-banner" style="margin:12px 0 0"><b>10 min · Close the loop.</b> Save the artifact, write one error and its correction, and choose the next action. Mark a session practiced only after all its activities are done.</div></div></details>`).join("") || '<div class="empty">All scheduled work is marked complete. Inspect your evidence, seek independent review, and keep revisiting weak areas.</div>'}</div><div class="pagination"><button class="btn small" data-action="plan-prev" ${planPage === 0 ? "disabled" : ""}>← Previous</button><span>Study days ${plan.length ? planPage * perPage + 1 : 0}–${Math.min((planPage + 1) * perPage, plan.length)} of ${plan.length}</span><button class="btn small" data-action="plan-next" ${planPage >= maxPage ? "disabled" : ""}>Next →</button></div><details class="prose"><summary>How the scheduling algorithm works</summary><ol><li>Choose the career route, then recursively include every prerequisite. Topologically order the modules so dependencies precede their consumers.</li><li>Expand each unfinished session into optional video, reading, implementation and retrieval activities. Insert each capstone as soon as its module prerequisites appear in the sequence.</li><li>Allocate at most <code>60 × daily hours − 30</code> activity minutes per study day. Split activities at the chosen 45-, 60- or 90-minute focus-block limit and the day’s remaining capacity. Preserve their order and remaining minutes. Subtract activity time already logged on that calendar date; a completed day never refills.</li><li>Add 20 minutes of retrieval and 10 minutes of reflection. After each configured study block, add rest days. This uses study-block days, not fixed Monday–Friday weekdays.</li><li>Remove practiced sessions, mastered gates and completed capstone stages when rebuilding. Rebase the start date explicitly. The model does not automatically infer mastery, illness, fatigue or labor-market readiness.</li></ol></details>`
+        )}</select></label><label class="field">Daily hours (Today time mode)<input type="number" min="1" max="12" step=".5" data-setting="hours" value="${state.hours}"></label><label class="field">Study days / week<select data-setting="days">${[1, 2, 3, 4, 5, 6, 7].map((n) => `<option ${n === state.days ? "selected" : ""}>${n}</option>`).join("")}</select></label><label class="field">Focus block<select data-setting="blockMinutes">${[45, 60, 90].map((n) => `<option value="${n}" ${n === state.blockMinutes ? "selected" : ""}>${n} min</option>`).join("")}</select></label><label class="field">Start of remaining work<input type="date" data-setting="start" value="${state.start}"></label></div><label class="row micro" style="margin-top:15px"><input type="checkbox" data-setting="video" ${state.video ? "checked" : ""}> Include optional video study budgets. Turning this off reallocates those minutes to practice.</label></section><div class="planner-tools"><div><b>${plan.length} planned study days</b><p class="micro">${plan.length ? dateLabel(plan[0].date) + " → " + dateLabel(plan.at(-1).date) : (taskQueue().length ? "No activity capacity after recall and reflection. Adjust the time settings in Today." : "Your scheduled work is complete.")} · ${7 - state.days} rest ${7 - state.days === 1 ? "day" : "days"} after each ${state.days}-day study block</p></div><div class="row flex-wrap"><button class="btn small" data-action="rebase">Rebase remaining work to today</button><button class="btn small" data-action="calendar">Export calendar (.ics)</button><button class="btn small" data-action="export">Back up progress</button></div></div><div class="notice">Dates are a first-pass forecast, not permission to skip a gate. Long projects appear as several work blocks; their stated minutes are planning budgets. Logging a block reduces both its remaining work and today’s available activity time. The day will not refill itself. You can undo the last logged block during this visit. After a missed day, rebase the remaining plan. After a failed check, repeat or repair before continuing. Add 25–50% contingency, and take 5–10 minute breaks between focused blocks.</div>${review.length ? `<div class="notice green">Suggested recall today: ${review.map((m) => `<button class="btn small" data-action="reviewed" data-id="${m.id}">${esc(m.title)} · record recall ✓</button>`).join(" ")}. Rebuild one key idea from memory. Review suggestions use 1, 3, 7, 14, 30 and 60 calendar days after a mastery gate; overdue reviews stay visible until recorded. These intervals are a heuristic, not a validated personal optimum.</div>` : ""}${daySummary(visible)}<div class="day-list">${visible.map((day, i) => `<details class="plan-day" ${i === 0 ? "open" : ""}><summary><span class="day-badge">DAY<b>${day.number}</b></span><span class="day-title"><b>${esc(day.tasks.find((t) => t.kind === "build" || t.kind === "project")?.title || day.tasks[0]?.title || "Today’s activity budget is logged")}</b><span>${dateLabel(day.date)} · ${day.used} min remaining + ${day.logged} min logged + 30 min recall/reflection · ${day.tasks.length} work blocks</span></span></summary><div class="day-content"><div class="review-banner"><b>20 min · Retrieve before consuming.</b> Explain yesterday’s mechanism on blank paper. On your first day, write your baseline: what you can currently do unaided. At week boundaries, revisit a previous weak concept.</div>${day.tasks.map((t) => `<div class="task"><div class="task-time">${t.allocated}m</div><div><span class="micro">${esc({ video: "OPTIONAL VIDEO", read: "READ & REASON", build: "IMPLEMENT", recall: "RETRIEVE", gate: "MASTERY GATE", project: "CAPSTONE WORK" }[t.kind])}${t.offset > 0 ? " · CONTINUED" : ""}${t.allocated < t.totalMinutes ? " · " + (t.offset + t.allocated) + " / " + t.totalMinutes + " MIN" : ""}</span><h4>${esc(t.title)}</h4><p>${esc(t.description)}</p></div><div class="task-buttons"><button class="btn small" data-action="${t.kind === "project" ? "go-project" : "module"}" data-id="${t.id}" ${Number.isInteger(t.index) ? `data-index="${t.index}"` : ""}>${t.kind === "project" ? "Project" : "Brief"} →</button>${t.key ? `<button class="btn small" data-action="log-work" data-key="${t.key}" data-minutes="${t.allocated}">Log ${t.allocated}m ✓</button>` : ""}</div></div>`).join("")}<div class="review-banner" style="margin:12px 0 0"><b>10 min · Close the loop.</b> Save the artifact, write one error and its correction, and choose the next action. Mark a session practiced only after all its activities are done.</div></div></details>`).join("") || '<div class="empty">All scheduled work is marked complete. Inspect your evidence, seek independent review, and keep revisiting weak areas.</div>'}</div><div class="pagination"><button class="btn small" data-action="plan-prev" ${planPage === 0 ? "disabled" : ""}>← Previous</button><span>Study days ${plan.length ? planPage * perPage + 1 : 0}–${Math.min((planPage + 1) * perPage, plan.length)} of ${plan.length}</span><button class="btn small" data-action="plan-next" ${planPage >= maxPage ? "disabled" : ""}>Next →</button></div><details class="prose"><summary>How the scheduling algorithm works</summary><ol><li>Choose the career route, then recursively include every prerequisite. Topologically order the modules so dependencies precede their consumers.</li><li>Expand each unfinished session into optional video, reading, implementation and retrieval activities. Insert each capstone as soon as its module prerequisites appear in the sequence.</li><li>Allocate at most <code>60 × daily hours − 30</code> activity minutes per study day. Split activities at the chosen 45-, 60- or 90-minute focus-block limit and the day’s remaining capacity. Preserve their order and remaining minutes. Subtract activity time already logged on that calendar date; a completed day never refills.</li><li>Add 20 minutes of retrieval and 10 minutes of reflection. After each configured study block, add rest days. This uses study-block days, not fixed Monday–Friday weekdays.</li><li>Remove practiced sessions, mastered gates and completed capstone stages when rebuilding. Rebase the start date explicitly. The model does not automatically infer mastery, illness, fatigue or labor-market readiness.</li></ol></details>`
     );
   }
   function portfolio() {
@@ -1202,8 +1222,8 @@
         "RESEARCH & OUTLOOK",
         "Make the claim smaller than the evidence.",
         "Engineering responsibilities inform the core. Labor-market observations should inform electives. Forecasts belong in scenarios, with their assumptions visible.",
-      ) +
-      `<div class="notice"><b>Research coverage, 28 October 2026:</b> ${verified.length} primary engineering/research sources were retrieved through official or author-maintained repositories. Major labor-market and employer websites were blocked by the environment’s network policy. No current job-advertisement sample was obtained. This page does <b>not</b> claim a comprehensive survey of current global hiring; unverified follow-up sources are labeled below.</div><div class="grid-3"><article class="card green"><div class="eyebrow">Observed engineering practice</div><h3>Evaluate, test, operate.</h3><p>Primary documentation supports leakage-safe evaluation, explicit experiments, code review, bounded tools and inference tradeoffs. These are system responsibilities, not measured hiring frequencies.</p></article><article class="card"><div class="eyebrow">Curriculum judgment</div><h3>Fundamentals before frameworks.</h3><p>Representation → computation → uncertainty → models → systems. This ordering follows conceptual dependencies and is an authored teaching design, not a proven optimum for every learner.</p></article><article class="card peach"><div class="eyebrow">Forecast uncertainty</div><h3>Hedge across plausible futures.</h3><p>Invest in transferable reasoning, data quality, evaluation, software design and communication. No salary, hiring probability or exact future tool stack is promised.</p></article></div>
+      ) + marketMarkup() +
+      `<div class="notice"><b>Earlier engineering source ledger · 28 October 2026:</b> The ${verified.length} retrieved entries below document the original technical research. The updated labor-market review above was retrieved on 4 November 2026 and supersedes the original access limitations. Unverified entries below remain historical follow-up records, not evidence for current numerical claims.</div><div class="grid-3"><article class="card green"><div class="eyebrow">Observed engineering practice</div><h3>Evaluate, test, operate.</h3><p>Primary documentation supports leakage-safe evaluation, explicit experiments, code review, bounded tools and inference tradeoffs. These are system responsibilities, not measured hiring frequencies.</p></article><article class="card"><div class="eyebrow">Curriculum judgment</div><h3>Fundamentals before frameworks.</h3><p>Representation → computation → uncertainty → models → systems. This ordering follows conceptual dependencies and is an authored teaching design, not a proven optimum for every learner.</p></article><article class="card peach"><div class="eyebrow">Forecast uncertainty</div><h3>Hedge across plausible futures.</h3><p>Invest in transferable reasoning, data quality, evaluation, software design and communication. No salary, hiring probability or exact future tool stack is promised.</p></article></div>
  <div class="section-head"><div><h2>Work backward from responsibilities</h2><p>Role mapping below is curriculum synthesis, not a frequency table from job ads.</p></div></div><div class="table-wrap"><table><thead><tr><th>ROLE FAMILY</th><th>PROBLEM YOU OWN</th><th>SKILLS TO DEMONSTRATE</th><th>STRONG EVIDENCE</th></tr></thead><tbody>${[
    [
      "Applied ML engineer",
@@ -1285,8 +1305,10 @@
             .includes(q),
         )
         .slice(0, 10);
+    const foundationResults = F.filter(l => (l.title + ' ' + l.outcome + ' ' + l.conceptExplanation).toLowerCase().includes(q))
+      .slice(0, 4).map(l => `<button class="command-result" data-action="foundation-open" data-id="${esc(l.id)}"><span>START</span><div><b>${esc(l.title)}</b><small>Guided foundation · ${esc(l.activeMinutes)} active minutes</small></div><span aria-hidden="true">→</span></button>`).join('');
     $("#command-results").innerHTML =
-      matches
+      foundationResults + matches
         .map(
           (m) =>
             `<button class="command-result" data-action="module" data-id="${m.id}"><span>${m.id.toUpperCase()}</span><div><b>${esc(m.title)}</b><small>${esc(m.phase)} · ${Math.round(moduleMinutes(m) / 60)}h</small></div><span aria-hidden="true">→</span></button>`,
@@ -1306,7 +1328,7 @@
     const date = today(),
       available = Math.max(
         0,
-        state.hours * 60 - 30 - (state.dailyWork[date] || 0),
+        foundationCapacity() - 30 - foundationDayMinutes(date),
       );
     if (!available) {
       toast(
@@ -1481,9 +1503,10 @@
         )
       )
         return;
-      migrated = JSON.parse(await file.text()).version === 1;
+      migrated = JSON.parse(await file.text()).version < 3;
       state = imported;
       workUndo.length = 0;
+      foundationUndo.length = 0;
       save();
       planPage = 0;
       $("#lesson-dialog").close();
@@ -1494,8 +1517,14 @@
     }
   }
   document.addEventListener("click", (e) => {
+    if (e.target.closest("a.skip")) {
+      e.preventDefault();
+      $("#main").focus();
+      return;
+    }
     const el = e.target.closest("[data-action]");
     if (!el) return;
+    if (v3Action(el)) return;
     const { action, id, index, value } = el.dataset;
     if (action === "dismiss-upgrade") {
       migrated = false;
@@ -1603,6 +1632,11 @@
     if (action === "module") {
       if ($("#command-dialog").open) $("#command-dialog").close();
       openModule(id, index === undefined ? null : Number(index));
+    }
+    if (action === "module-transfer") {
+      focusMode = false;
+      openModule(id);
+      requestAnimationFrame(() => $("#lesson-dialog .v3-module-guidance")?.scrollIntoView({block:"start"}));
     }
     if (action === "close-dialog") $("#lesson-dialog").close();
     if (action === "phase") {
@@ -1746,6 +1780,7 @@
   });
   document.addEventListener("input", (e) => {
     const el = e.target;
+    if (v3Input(el)) return;
     if (el.id === "command-search") commandSearch();
     if (el.matches("[data-lab]")) updateLabs();
     if (el.dataset.note) {
@@ -1765,6 +1800,7 @@
   });
   document.addEventListener("change", (e) => {
     const el = e.target;
+    if (v3Change(el)) return;
     if (el.matches("[data-lab]")) updateLabs();
     if (el.id === "import-file" || el.id === "import-file-method") {
       importState(el.files[0]);
@@ -1773,7 +1809,7 @@
     if (el.dataset.setting) {
       const k = el.dataset.setting;
       let v = el.type === "checkbox" ? el.checked : el.value;
-      if (k === "hours" || k === "days" || k === "blockMinutes") v = Number(v);
+      if (k === "hours" || k === "days" || k === "blockMinutes" || k === "foundationBreakMinutes") v = Number(v);
       const next = { ...state, [k]: v };
       try {
         state = validateState(next);
@@ -1836,10 +1872,13 @@
         e.target.close();
     }
   });
-  function navigate() {
+  function navigate(focus = true) {
     const target = location.hash.slice(1);
-    view = nav.some((n) => n[0] === target) ? target : "overview";
-    render(true);
+    if (target.startsWith("lesson/") && Object.hasOwn(foundationById, target.slice(7))) {
+      currentFoundationId = target.slice(7);
+      view = "foundation";
+    } else view = nav.some((n) => n[0] === target) ? target : "today";
+    render(focus !== false);
     window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", navigate);
@@ -1851,6 +1890,8 @@
   });
   // A read-only API exposes pure calculations for regression tests; learner code is never evaluated.
   window.ATLAS = {
+    foundationPlan,
+    foundationResult,
     buildPlan: () => buildPlan(),
     taskQueue: () => taskQueue(),
     selectedModules: () => selectedModules().map((m) => m.id),
@@ -1860,5 +1901,5 @@
     projects: JSON.parse(JSON.stringify(projects)),
     getState: () => JSON.parse(JSON.stringify(state)),
   };
-  navigate();
+  navigate(false);
 })();

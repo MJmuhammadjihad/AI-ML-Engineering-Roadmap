@@ -1,0 +1,1690 @@
+{
+  "schemaVersion": 3,
+  "authoredDate": "2026-11-04",
+  "evidencePolicy": "Completing a lesson does not demonstrate its transfer task. Rubric results are self-reported unless an actual execution check or independent reviewer is recorded. Critical criteria must be met independently; assisted work remains practice evidence.",
+  "modules": {
+    "c01": {
+      "capability": "Convert an imprecise request into a decision, a baseline, and observations that could disprove success.",
+      "readinessPrerequisites": [
+        "No programming prerequisite; distinguish an observed event from a proposed explanation."
+      ],
+      "transferTask": {
+        "prompt": "A library wants fewer missed collection deadlines. Design a paper reminder policy for ten fictional reservations, including missing contact details, an already-collected item, and a disputed deadline. Compare it with the existing no-reminder process.",
+        "acceptance": [
+          "Define whose action should change and when it can be observed.",
+          "Specify exclusions, a manual fallback, and a comparison that counts unwanted reminders as well as successful collections."
+        ],
+        "referenceAnswer": "A useful outcome concerns collections and unwanted contact; messages sent alone measures activity. An already-collected item should not receive the same reminder as an outstanding reservation."
+      },
+      "rubric": [
+        {
+          "id": "c01.e1",
+          "text": "Each rate names its numerator and denominator; every metric states its units or counting rule and observation window.",
+          "critical": true
+        },
+        {
+          "id": "c01.e2",
+          "text": "At least three exceptional cases have explicit actions.",
+          "critical": true
+        },
+        {
+          "id": "c01.e3",
+          "text": "The comparison preserves enough information to identify a harmful or ineffective policy.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "The proposed success metric is simply how many reminders were sent.",
+        "exercise": "Compare two observed campaigns: 100 reminders are followed by 8 collections, while 20 reminders are followed by 8 collections. List costs, population differences, and missing comparison information before attributing collections to either policy.",
+        "recheck": "Propose a case where a larger activity count makes the user outcome worse."
+      },
+      "interview": {
+        "prompt": "What would make you reject a technically correct solution?",
+        "strongAnswer": "Connect correctness to the intended decision, a simpler baseline, consequential errors, and evidence that the observed change is attributable to the intervention."
+      },
+      "boundary": "A paper trace tests logic and measurement design; it does not establish real-world effectiveness or causal impact."
+    },
+    "c02": {
+      "capability": "Write and trace a small interactive program whose units, branches, and invalid-input behavior are explicit.",
+      "readinessPrerequisites": [
+        "Trace the inputs, branches, and output of the c01 paper algorithm."
+      ],
+      "transferTask": {
+        "prompt": "Build a temperature converter accepting a Celsius value and printing Fahrenheit using F = 9C/5 + 32. Explain whether decimal and negative values are valid; handle empty text and text that cannot be converted.",
+        "acceptance": [
+          "Predict results for -40, 0, and 100 before running.",
+          "For invalid text, show a useful error instead of a fabricated numeric result."
+        ],
+        "referenceAnswer": "The three reference outputs are -40, 32, and 212 Fahrenheit. Negative temperatures are legitimate here; validation follows the domain rather than a universal ban on negative input."
+      },
+      "rubric": [
+        {
+          "id": "c02.e1",
+          "text": "The saved script runs using documented commands and computes from inputs.",
+          "critical": true
+        },
+        {
+          "id": "c02.e2",
+          "text": "All three conversion cases match hand calculations.",
+          "critical": true
+        },
+        {
+          "id": "c02.e3",
+          "text": "The learner distinguishes a conversion error from a legitimate negative value.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Every negative number is rejected because the previous study-time exercise rejected negatives.",
+        "exercise": "Write separate accepted-input rules for temperature, elapsed minutes, and an account balance. Classify -5 under each rule before coding.",
+        "recheck": "Explain why the same numeric value may be valid in one program and invalid in another."
+      },
+      "interview": {
+        "prompt": "How do you investigate a script that runs but prints the wrong result?",
+        "strongAnswer": "Reproduce one failing input, predict intermediate values and units, trace assignment order, and compare the earliest divergence rather than changing several lines at once."
+      },
+      "boundary": "This checks basic execution and error handling; it does not establish numerical expertise or production interface reliability."
+    },
+    "c03": {
+      "capability": "Preserve event identity while turning structured records into a deterministic aggregate.",
+      "readinessPrerequisites": [
+        "Use Python conditions, loops, and explicit failure behavior from c02."
+      ],
+      "transferTask": {
+        "prompt": "Process inventory events containing event_id, product, and quantity_delta. Two different IDs may contain identical values; a repeated ID is a retransmission. Detect conflicting payloads for the same ID and report invalid rows.",
+        "acceptance": [
+          "For A:+3 and B:+3 on the same product, retain both events.",
+          "A repeated A:+3 must not add another three; A:+4 must produce a conflict."
+        ],
+        "referenceAnswer": "Unique events A and B yield +6. Event identity comes from the documented ID contract, not equality of product and quantity values."
+      },
+      "rubric": [
+        {
+          "id": "c03.e1",
+          "text": "Deduplication uses event IDs and detects conflicting repeats.",
+          "critical": true
+        },
+        {
+          "id": "c03.e2",
+          "text": "The aggregation function does not unexpectedly modify its input records.",
+          "critical": true
+        },
+        {
+          "id": "c03.e3",
+          "text": "Invalid and accepted record counts reconcile with the chosen reporting policy.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A set of product/quantity pairs removes legitimate repeated events.",
+        "exercise": "Trace three rows: (A, pen, 3), (B, pen, 3), (A, pen, 3). Compare value-based and identity-based deduplication by hand.",
+        "recheck": "Add a conflicting retransmission and explain why silently choosing its first or last value needs an explicit policy."
+      },
+      "interview": {
+        "prompt": "When would you choose a list, set, or dictionary?",
+        "strongAnswer": "Begin with order, multiplicity, identity, and lookup requirements; then explain the collection that preserves those meanings."
+      },
+      "boundary": "A local event contract does not by itself provide distributed exactly-once processing or durable concurrency control."
+    },
+    "c04": {
+      "capability": "Make a behavior change reproducible and demonstrate that its tests detect the relevant regression.",
+      "readinessPrerequisites": [
+        "Write functions with explicit input and output contracts from c03."
+      ],
+      "transferTask": {
+        "prompt": "Package a shipping-cost function with a fixed fee and a per-item charge. Add a free-shipping threshold, document whether the threshold is inclusive, and preserve a test of the previous below-threshold behavior.",
+        "acceptance": [
+          "Test the amounts immediately below, exactly at, and above the threshold.",
+          "Run the documented command in a fresh environment; introduce and then revert an off-by-one defect."
+        ],
+        "referenceAnswer": "An inclusive threshold requires a qualifying amount equal to the threshold to receive free shipping. A deliberately wrong comparison must make the corresponding test fail."
+      },
+      "rubric": [
+        {
+          "id": "c04.e1",
+          "text": "Tests assert observable prices rather than merely importing the module.",
+          "critical": true
+        },
+        {
+          "id": "c04.e2",
+          "text": "A clean setup reproduces the documented results with stated runtime dependencies.",
+          "critical": true
+        },
+        {
+          "id": "c04.e3",
+          "text": "The final diff contains the intended behavior, tests, and explanation without the deliberately broken implementation.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A successful test command is treated as proof even though no relevant assertion ran.",
+        "exercise": "Change only the threshold comparison, run the focused test, and inspect which assertion fails. Restore the implementation and repeat.",
+        "recheck": "Explain which possible defects the suite still would not detect."
+      },
+      "interview": {
+        "prompt": "What belongs in a reproducible bug report?",
+        "strongAnswer": "Include minimal input, expected and actual behavior, exact revision, environment, run command, and enough evidence to separate setup failure from application failure."
+      },
+      "boundary": "Passing focused tests supports the tested behavior; it is not proof that the entire repository is defect-free."
+    },
+    "c05": {
+      "capability": "Use array dimensions and invariants to validate a vectorized computation against an independent reference.",
+      "readinessPrerequisites": [
+        "Use collections and tests; distinguish a column feature from a row observation."
+      ],
+      "transferTask": {
+        "prompt": "Center each column of X = [[1,10,5],[3,14,5]] using means learned from X, then transform the new row [5,18,5]. Compare a vectorized implementation with explicit loops and state the constant-column policy.",
+        "acceptance": [
+          "Annotate the shapes (2,3), (3,), and (1,3).",
+          "Verify centered training-column means are zero within a justified tolerance."
+        ],
+        "referenceAnswer": "Training means are [2,12,5]; centered rows are [-1,-2,0] and [1,2,0]; the new row becomes [3,6,0]. Centering alone does not divide by the constant column variance."
+      },
+      "rubric": [
+        {
+          "id": "c05.e1",
+          "text": "The same training-derived means transform both training and new rows.",
+          "critical": true
+        },
+        {
+          "id": "c05.e2",
+          "text": "Reference and vectorized results agree within a stated tolerance.",
+          "critical": true
+        },
+        {
+          "id": "c05.e3",
+          "text": "Changing the number of rows does not silently change which axis is centered.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A reduction is chosen because its result happens to broadcast on a square array.",
+        "exercise": "Repeat the calculation on a 4-by-3 matrix and write the meaning of each axis before choosing the reduction.",
+        "recheck": "Explain why a passing square-matrix example can conceal a wrong-axis operation."
+      },
+      "interview": {
+        "prompt": "Why is exact floating-point equality sometimes unsuitable?",
+        "strongAnswer": "Discuss rounding, operation order, scale, and an error tolerance tied to the calculation; distinguish tolerance from hiding a large discrepancy."
+      },
+      "boundary": "Agreement on these arrays validates this transformation, not every dtype, shape, missing-value policy, or numerical scale."
+    },
+    "c06": {
+      "capability": "Produce one row per customer without losing customers or multiplying unrelated facts.",
+      "readinessPrerequisites": [
+        "Understand dictionary grouping and testable data contracts from c03 and c04."
+      ],
+      "transferTask": {
+        "prompt": "Create customers with zero, one, and two orders plus a separate support-event table. Return each customer, revenue, and support count, retaining customers without orders. Aggregate child tables before joining.",
+        "acceptance": [
+          "A customer with two orders worth 10 and 20 and three support events must report revenue 30 and support count 3.",
+          "A customer with no orders remains present; document when missing aggregates become zero."
+        ],
+        "referenceAnswer": "Joining both raw child tables produces six combinations and can inflate revenue to 90. Independent aggregation followed by joins at customer grain avoids this multiplication."
+      },
+      "rubric": [
+        {
+          "id": "c06.e1",
+          "text": "Output keys are unique and the output count equals the intended customer population.",
+          "critical": true
+        },
+        {
+          "id": "c06.e2",
+          "text": "Revenue and support counts match hand-checked examples.",
+          "critical": true
+        },
+        {
+          "id": "c06.e3",
+          "text": "NULL, missing relationships, and genuine zero values are handled deliberately.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A final GROUP BY is assumed to repair any join multiplication.",
+        "exercise": "Write out all six order/event combinations for one customer and sum the repeated order amounts.",
+        "recheck": "Predict how adding a fourth support event affects the incorrect query and the corrected query."
+      },
+      "interview": {
+        "prompt": "How do you verify a join before trusting an aggregate?",
+        "strongAnswer": "State keys and cardinality, count matches and unmatched rows, inspect duplicate keys, and check the measure at its original grain."
+      },
+      "boundary": "SQLite verifies the local query logic; deployment-specific types, isolation, indexes, and SQL syntax need separate checks."
+    },
+    "c07": {
+      "capability": "Connect a derivative to a proposed parameter change and verify whether that change improves the stated objective.",
+      "readinessPrerequisites": [
+        "Write and compose simple Python functions; manipulate signed arithmetic."
+      ],
+      "transferTask": {
+        "prompt": "For L(w) = (w - 4)^2, start at w = 0 and compare one gradient-descent step with learning rates 0.1, 1, and 1.5. Compute the gradient and both old and new losses before coding.",
+        "acceptance": [
+          "Show gradient -8 at the starting point.",
+          "Explain the outcome of each step rather than assuming every downhill direction is safe at any step size."
+        ],
+        "referenceAnswer": "The new parameters are 0.8, 8, and 12; losses are 10.24, 16, and 64, versus starting loss 16. A local derivative does not license an arbitrarily long step."
+      },
+      "rubric": [
+        {
+          "id": "c07.e1",
+          "text": "Derivative, update sign, and new loss match the arithmetic.",
+          "critical": true
+        },
+        {
+          "id": "c07.e2",
+          "text": "The report distinguishes direction from step magnitude.",
+          "critical": true
+        },
+        {
+          "id": "c07.e3",
+          "text": "A second starting point is checked independently.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A negative gradient is interpreted as a guarantee that any update decreases loss.",
+        "exercise": "Plot or tabulate L at 0, 0.8, 4, 8, and 12. Mark the proposed steps on the same axis.",
+        "recheck": "Choose a smaller step from w = 6 and predict its loss change."
+      },
+      "interview": {
+        "prompt": "What does a numerical derivative check establish?",
+        "strongAnswer": "Agreement supports the local derivative implementation at tested scales and points; it does not validate the objective or guarantee global optimization."
+      },
+      "boundary": "The quadratic is deliberately simple. Its behavior does not establish a universal learning rate for neural networks."
+    },
+    "c08": {
+      "capability": "Relate matrix rank to which parameter combinations can be identified from observations.",
+      "readinessPrerequisites": [
+        "Track NumPy shapes and use functions, derivatives, and residuals from c05 and c07."
+      ],
+      "transferTask": {
+        "prompt": "Fit y = [2,3,4] with an intercept column and x = [1,2,3]. Then replace x with the constant column [1,1,1]. Explain how the second design changes identifiability even if a solver returns numbers.",
+        "acceptance": [
+          "Annotate the design matrix as 3-by-2 and the coefficient vector as length two.",
+          "Verify the residual and the number of independent columns in both designs."
+        ],
+        "referenceAnswer": "The first design admits intercept 1 and slope 1 with zero residual. With two identical constant columns, predictions depend only on the coefficient sum, so individual coefficients are not uniquely identified."
+      },
+      "rubric": [
+        {
+          "id": "c08.e1",
+          "text": "Matrix products and residuals have correct shapes.",
+          "critical": true
+        },
+        {
+          "id": "c08.e2",
+          "text": "The dependent-column case is identified without treating a returned coefficient pair as uniquely meaningful.",
+          "critical": true
+        },
+        {
+          "id": "c08.e3",
+          "text": "Predictions, parameter uniqueness, and numerical stability are discussed separately.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A solver returning a result is taken to prove that coefficients have a unique interpretation.",
+        "exercise": "Compare coefficient pairs (1,2) and (0,3) on two identical constant columns. Compute their predictions.",
+        "recheck": "Construct a nonzero parameter change that leaves those predictions unchanged."
+      },
+      "interview": {
+        "prompt": "Why might nearly dependent features cause trouble?",
+        "strongAnswer": "Explain how small input perturbations can produce large coefficient changes, and distinguish this conditioning problem from exact rank deficiency."
+      },
+      "boundary": "A geometric diagnosis explains the chosen design matrix; it does not make coefficients causal or settle feature-selection policy."
+    },
+    "c09": {
+      "capability": "Calculate conditional probability by specifying the information available and the correct sample space.",
+      "readinessPrerequisites": [
+        "Manipulate fractions, functions, and simple simulations from c07."
+      ],
+      "transferTask": {
+        "prompt": "A bag contains two red and one blue token. Draw two tokens without replacement. Enumerate labeled-token outcomes, then compute the probability that the second token is red both before and after observing a red first token.",
+        "acceptance": [
+          "Distinguish unconditional probability from probability conditional on the first draw.",
+          "Compare enumeration with a repeated simulation that restores the bag between trials."
+        ],
+        "referenceAnswer": "Before observing the first draw, P(second red) = 2/3. After observing first red, one red and one blue remain, so P(second red | first red) = 1/2. The draws are dependent."
+      },
+      "rubric": [
+        {
+          "id": "c09.e1",
+          "text": "The sample space preserves token identities and without-replacement sampling.",
+          "critical": true
+        },
+        {
+          "id": "c09.e2",
+          "text": "Both probabilities and their denominators are correct.",
+          "critical": true
+        },
+        {
+          "id": "c09.e3",
+          "text": "Simulation variation is reported without replacing the exact argument.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "The first observation is ignored because both draws come from the same original bag.",
+        "exercise": "Write the six equally likely ordered pairs of labeled tokens R1, R2, and B. Keep only pairs beginning with red.",
+        "recheck": "Resolve the problem with replacement and explain which probability changes."
+      },
+      "interview": {
+        "prompt": "What is the difference between independence and mutually exclusive events?",
+        "strongAnswer": "Independence concerns unchanged conditional probabilities; mutual exclusivity prohibits co-occurrence. Two mutually exclusive events with positive probabilities are dependent."
+      },
+      "boundary": "A simulation checks an implemented sampling model; it cannot prove that a real process follows that model."
+    },
+    "c10": {
+      "capability": "Choose an uncertainty calculation whose observational unit matches the experiment.",
+      "readinessPrerequisites": [
+        "Use conditional probability, sampling variation, and expectation from c09."
+      ],
+      "transferTask": {
+        "prompt": "A tutoring experiment randomizes eight students, four per arm, and records seven daily scores per student. Define a student-level outcome and a comparison. Explain why treating 56 rows as 56 independently randomized students changes the uncertainty claim.",
+        "acceptance": [
+          "Identify assignment, observation, and analysis units.",
+          "Propose a student-level randomization or resampling procedure consistent with the design."
+        ],
+        "referenceAnswer": "Daily measurements within one student share the treatment assignment and may be correlated. A student-level mean can supply one outcome per assigned student; uncertainty must respect the student clusters."
+      },
+      "rubric": [
+        {
+          "id": "c10.e1",
+          "text": "The estimand and observation window are stated before looking at results.",
+          "critical": true
+        },
+        {
+          "id": "c10.e2",
+          "text": "The uncertainty procedure preserves assignment units.",
+          "critical": true
+        },
+        {
+          "id": "c10.e3",
+          "text": "The conclusion separates evidence of a difference from its practical usefulness.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "More repeated rows are counted as more independent experimental units.",
+        "exercise": "Imagine copying every daily row ten times. Explain why this creates no additional randomized students or new treatment information.",
+        "recheck": "Design an analysis for classroom-level randomization and identify the new cluster unit."
+      },
+      "interview": {
+        "prompt": "What would a small p-value leave unresolved?",
+        "strongAnswer": "Effect size, practical consequences, design violations, multiplicity, population transport, and the probability model remain separate questions."
+      },
+      "boundary": "Eight experimental units provide limited information. A non-significant result does not establish equivalence or absence of a useful effect."
+    },
+    "c11": {
+      "capability": "Explain how subgroup composition can reverse an aggregate comparison without altering any individual record.",
+      "readinessPrerequisites": [
+        "Audit tabular data, joins, and uncertainty using c05, c06, and c10."
+      ],
+      "transferTask": {
+        "prompt": "Compare completion rates: program A has easy cases 80/100 and hard cases 20/100; program B has easy cases 9/10 and hard cases 30/100. Plot subgroup and aggregate rates with denominators, then write the narrowest defensible conclusion.",
+        "acceptance": [
+          "Compute all four subgroup rates and both overall rates.",
+          "Expose differing case mixes rather than reporting only the overall winner."
+        ],
+        "referenceAnswer": "A is 50% overall; B is 39/110, about 35.45%. Yet B has higher rates within both groups: 90% versus 80%, and 30% versus 20%. Group composition explains the apparent reversal."
+      },
+      "rubric": [
+        {
+          "id": "c11.e1",
+          "text": "Counts and rates reconcile without averaging group percentages equally by accident.",
+          "critical": true
+        },
+        {
+          "id": "c11.e2",
+          "text": "Charts show subgroup denominators and common scales.",
+          "critical": true
+        },
+        {
+          "id": "c11.e3",
+          "text": "The report does not infer a causal program advantage from this observational table.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An overall average is treated as a complete description of a heterogeneous population.",
+        "exercise": "Reweight both programs to the same easy/hard mix and compare the resulting rates.",
+        "recheck": "Explain which additional design or data would support a causal comparison."
+      },
+      "interview": {
+        "prompt": "How do you prevent exploratory charts from becoming unsupported claims?",
+        "strongAnswer": "Separate observed patterns from hypotheses, show uncertainty and denominators, document selection decisions, and reserve independent confirmation where appropriate."
+      },
+      "boundary": "The constructed table demonstrates an aggregation mechanism; it is not evidence about actual educational programs."
+    },
+    "c12": {
+      "capability": "Define a prediction-time information boundary and enforce it in both features and evaluation.",
+      "readinessPrerequisites": [
+        "Understand data investigations, linear algebra, and conditional probability from c11, c08, and c09."
+      ],
+      "transferTask": {
+        "prompt": "Design a late-delivery predictor used when a parcel is dispatched. Classify requested_delivery_date, dispatch_timestamp, actual_delivery_timestamp, and a complaint recorded after arrival as available or unavailable. Design a temporal holdout and a baseline.",
+        "acceptance": [
+          "Every feature states when its value becomes knowable.",
+          "No final-holdout observation influences feature fitting, selection, or threshold choice."
+        ],
+        "referenceAnswer": "Actual delivery and later complaints are unavailable at dispatch. The requested date may be usable if it was recorded before dispatch. A later calendar period tests a different claim from a shuffled-row split."
+      },
+      "rubric": [
+        {
+          "id": "c12.e1",
+          "text": "The target, decision time, and label window are explicit.",
+          "critical": true
+        },
+        {
+          "id": "c12.e2",
+          "text": "Feature availability is checked using recording time as well as event meaning.",
+          "critical": true
+        },
+        {
+          "id": "c12.e3",
+          "text": "The baseline and split match the proposed deployment population.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A field is accepted because it exists in the exported database today.",
+        "exercise": "Draw a parcel timeline and place each field at its first availability time. Remove fields appearing after dispatch.",
+        "recheck": "Consider a backfilled address correction and decide which version the historical predictor could have known."
+      },
+      "interview": {
+        "prompt": "Why can a feature with excellent predictive power be unusable?",
+        "strongAnswer": "It may reveal the outcome, arrive after the decision, encode an invalid population shortcut, or be unavailable at inference."
+      },
+      "boundary": "A clean split protects a specified evaluation claim; it does not guarantee robustness to every future operational shift."
+    },
+    "c13": {
+      "capability": "Compare a fitted linear model with a constant baseline while explaining what the objective and coefficients mean.",
+      "readinessPrerequisites": [
+        "Specify leakage-resistant splits and interpret vectors and probability from c12, c08, and c09."
+      ],
+      "transferTask": {
+        "prompt": "For x = [0,1,2] and y = [1,3,5], compare the training mean predictor with an intercept-plus-slope model. Compute training MSE, predict at x = 3, and explain why a perfect training line still needs independent evaluation.",
+        "acceptance": [
+          "Include the intercept explicitly and state the averaging convention in MSE.",
+          "Separate interpolation evidence from the extrapolation at x = 3."
+        ],
+        "referenceAnswer": "The mean baseline predicts 3 and has MSE 8/3. Intercept 1 and slope 2 fit the three training points exactly and predict 7 at x = 3; this extrapolation relies on the assumed linear relationship."
+      },
+      "rubric": [
+        {
+          "id": "c13.e1",
+          "text": "Both baseline and fitted losses are calculated on the same examples.",
+          "critical": true
+        },
+        {
+          "id": "c13.e2",
+          "text": "Coefficient meanings include feature and target units.",
+          "critical": true
+        },
+        {
+          "id": "c13.e3",
+          "text": "Preprocessing and regularization are chosen without consulting the final holdout.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Zero training error is presented as proof that the underlying law is linear.",
+        "exercise": "Add a fourth unseen point whose target differs from 7. Explain which conclusion fails and which training calculation remains correct.",
+        "recheck": "State what a coefficient would mean after changing the feature unit from hours to minutes."
+      },
+      "interview": {
+        "prompt": "What does regularization add to a learning objective?",
+        "strongAnswer": "An explicit preference among parameter settings, typically trading fit against complexity under a chosen scale; it does not remove the need for valid evaluation."
+      },
+      "boundary": "Three noiseless points illustrate fitting mechanics, not a reliable estimate of future performance or a causal relationship."
+    },
+    "c14": {
+      "capability": "Identify a tree that memorizes an identifier and test whether added complexity improves a deployment-relevant comparison.",
+      "readinessPrerequisites": [
+        "Build and evaluate regularized linear baselines from c13."
+      ],
+      "transferTask": {
+        "prompt": "Create a synthetic classification table with a useful noisy feature and a unique row identifier. Compare a shallow tree with an unconstrained tree on held-out new identifiers, using the same split and tuning budget.",
+        "acceptance": [
+          "Report training and validation behavior separately.",
+          "Repeat after removing the identifier and preserve the final holdout for the selected procedure."
+        ],
+        "referenceAnswer": "A unique identifier may support perfect training partitions without carrying a stable relationship for unseen records. Feature usefulness depends on how identifiers are assigned and what deployment requires."
+      },
+      "rubric": [
+        {
+          "id": "c14.e1",
+          "text": "The comparison fixes data, split, metric, and tuning budget.",
+          "critical": true
+        },
+        {
+          "id": "c14.e2",
+          "text": "Complexity controls and identifier treatment are documented.",
+          "critical": true
+        },
+        {
+          "id": "c14.e3",
+          "text": "The selected model is justified by independent performance and constraints, not training purity alone.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A pure leaf or higher feature importance is treated as proof of a useful real-world mechanism.",
+        "exercise": "Permute identifier assignments while preserving labels and useful features. Refit and inspect whether the claimed explanation changes.",
+        "recheck": "Explain why an identifier can be harmful in one task yet legitimately informative in another."
+      },
+      "interview": {
+        "prompt": "How do bagging and boosting address error differently?",
+        "strongAnswer": "Bagging aggregates perturbed fits to reduce instability; boosting builds a sequence that improves a current objective. Their generalization still depends on data and regularization."
+      },
+      "boundary": "This local comparison cannot establish that one model family is universally superior or that feature importance is causal."
+    },
+    "c15": {
+      "capability": "Separate ranking quality, probability accuracy, and a chosen action threshold.",
+      "readinessPrerequisites": [
+        "Use linear classifiers and experiment uncertainty from c13 and c10."
+      ],
+      "transferTask": {
+        "prompt": "For labels [0,0,1,1], compare score sets A=[0.1,0.2,0.8,0.9] and B=[0.01,0.02,0.08,0.09]. Compute Brier loss and ranking order, then explain why the same fixed threshold acts differently.",
+        "acceptance": [
+          "Use mean squared probability error for Brier loss.",
+          "Do not call four observations a reliable calibration study."
+        ],
+        "referenceAnswer": "Both score sets rank examples identically. Their Brier losses are 0.025 and 0.41875 respectively. At threshold 0.5, A flags both positives and B flags none; ranking alone does not determine decisions."
+      },
+      "rubric": [
+        {
+          "id": "c15.e1",
+          "text": "Ranking, probability error, and threshold outcomes are reported separately.",
+          "critical": true
+        },
+        {
+          "id": "c15.e2",
+          "text": "Any operational threshold is justified using costs and a separate selection set.",
+          "critical": true
+        },
+        {
+          "id": "c15.e3",
+          "text": "Small-sample and subgroup limitations remain explicit.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A high ranking score is interpreted as proof that predicted probabilities are accurate.",
+        "exercise": "Apply an order-preserving rescaling to scores and recompute probability loss and one threshold confusion matrix.",
+        "recheck": "Explain which quantities can remain unchanged while the operational decision changes."
+      },
+      "interview": {
+        "prompt": "Why might the best metric differ across two uses of the same predictor?",
+        "strongAnswer": "Decisions may have different capacity constraints, false-positive costs, false-negative costs, and needs for accurate probability estimates."
+      },
+      "boundary": "The toy arithmetic distinguishes concepts; operational calibration and threshold selection require substantially more representative evidence."
+    },
+    "c16": {
+      "capability": "Build a raw-input prediction boundary that applies learned transformations consistently to new and unusual records.",
+      "readinessPrerequisites": [
+        "Compare models and decision metrics using c14 and c15."
+      ],
+      "transferTask": {
+        "prompt": "Train a small pipeline on numeric age and categorical region. Test a missing age, an unseen region, a misspelled field name, and a string where a number is required. Define which cases are transformed and which are rejected.",
+        "acceptance": [
+          "Fit imputation and encoding only on training folds.",
+          "Persist preprocessing with the model and compare predictions before and after reload."
+        ],
+        "referenceAnswer": "Missing values and unknown categories can have explicit supported representations; malformed field names or incompatible types may be schema errors. A policy must distinguish these cases instead of silently converting all of them to zero."
+      },
+      "rubric": [
+        {
+          "id": "c16.e1",
+          "text": "Validation rules are enforced before transformation.",
+          "critical": true
+        },
+        {
+          "id": "c16.e2",
+          "text": "Training-derived statistics are reused at inference.",
+          "critical": true
+        },
+        {
+          "id": "c16.e3",
+          "text": "Reloaded artifacts reproduce predictions for ordinary and supported edge cases.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Every surprising input is coerced into a default value so that the prediction always succeeds.",
+        "exercise": "List the meanings of missing age, age zero, and unparseable age text. Write a separate outcome for each.",
+        "recheck": "Explain how an unknown category differs from a missing category under the selected encoder."
+      },
+      "interview": {
+        "prompt": "Why should preprocessing be versioned with a model?",
+        "strongAnswer": "The learned model expects a particular feature meaning, order, scale, and category mapping; separately changed transformations can invalidate otherwise loadable weights."
+      },
+      "boundary": "A validated pipeline protects its documented schema; it does not establish that every accepted record resembles the training distribution."
+    },
+    "c17": {
+      "capability": "Test whether an unsupervised representation preserves the information needed for a particular downstream task.",
+      "readinessPrerequisites": [
+        "Understand vector geometry and training-only transformations from c08 and c16."
+      ],
+      "transferTask": {
+        "prompt": "Generate two-dimensional points with a high-variance nuisance coordinate and a low-variance coordinate associated with the class. Compare one-component PCA with the original features for a held-out classification or neighbor-retrieval task.",
+        "acceptance": [
+          "Fit PCA only on training data.",
+          "Measure both variance retained and task performance under the same split."
+        ],
+        "referenceAnswer": "The direction explaining the most input variance need not preserve class information or semantic relevance. A large nuisance scale can dominate PCA while the useful low-variance coordinate is discarded."
+      },
+      "rubric": [
+        {
+          "id": "c17.e1",
+          "text": "Feature scale and data-generation assumptions are explicit.",
+          "critical": true
+        },
+        {
+          "id": "c17.e2",
+          "text": "The representation is evaluated on the intended task rather than explained variance alone.",
+          "critical": true
+        },
+        {
+          "id": "c17.e3",
+          "text": "Randomness and baseline results are recorded for reproducibility.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Retaining most variance is treated as retaining most useful information.",
+        "exercise": "Construct four points where the class is determined only by the smaller coordinate. Inspect which direction dominates total squared variation.",
+        "recheck": "Explain when standardizing features changes the question rather than merely improving numerical convenience."
+      },
+      "interview": {
+        "prompt": "How would you evaluate a nearest-neighbor index?",
+        "strongAnswer": "Use labeled queries, compare exact and approximate retrieval, and measure relevance, latency, memory, and failure cases under the same candidate corpus."
+      },
+      "boundary": "An attractive projection or cluster is a representation hypothesis, not proof of natural categories or meaningful similarity."
+    },
+    "c18": {
+      "capability": "Explain what nonlinear composition adds by constructing and checking a small network on a problem a linear threshold cannot solve.",
+      "readinessPrerequisites": [
+        "Use derivatives, matrix products, and linear-model objectives from c07, c08, and c13."
+      ],
+      "transferTask": {
+        "prompt": "Implement XOR on the four binary input pairs using two hidden ReLU units. Verify every output, then explain why a single linear threshold cannot place both equal pairs on one side and unequal pairs on the other.",
+        "acceptance": [
+          "Write hidden and output calculations explicitly.",
+          "Distinguish constructing a correct network from demonstrating that an optimizer will discover it."
+        ],
+        "referenceAnswer": "Let s=x1+x2, h1=ReLU(s), h2=ReLU(s-1), and output=h1-2h2. Outputs are 0,1,1,0 for (0,0),(0,1),(1,0),(1,1). Nonlinearity creates a piecewise-linear mapping."
+      },
+      "rubric": [
+        {
+          "id": "c18.e1",
+          "text": "All four forward calculations are correct.",
+          "critical": true
+        },
+        {
+          "id": "c18.e2",
+          "text": "The explanation identifies the nonlinear step and its role.",
+          "critical": true
+        },
+        {
+          "id": "c18.e3",
+          "text": "Any subsequent training experiment reports initialization, objective, and convergence separately from representational capacity.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "More linear layers are assumed to provide the same expressive gain as nonlinear layers.",
+        "exercise": "Compose two affine transformations algebraically and show that their result remains affine.",
+        "recheck": "Remove the ReLU operations from the XOR construction and predict which behavior disappears."
+      },
+      "interview": {
+        "prompt": "Why can a network be capable of a solution yet fail to learn it?",
+        "strongAnswer": "Capacity, optimization, initialization, numerical conditioning, data, and the chosen objective are separate parts of the learning problem."
+      },
+      "boundary": "A four-point construction demonstrates representability; it provides no evidence of generalization on a realistic dataset."
+    },
+    "c19": {
+      "capability": "Distinguish module mode from gradient tracking and make the inference contract reproducible.",
+      "readinessPrerequisites": [
+        "Trace neural-network operations and tensor shapes using c18 and c05."
+      ],
+      "transferTask": {
+        "prompt": "Build a tiny PyTorch network containing a trainable linear layer and dropout. Compare repeated predictions in training mode, evaluation mode, and training mode inside no_grad. Use fixed inputs, record the mode, and inspect whether gradients are tracked. Save its parameters, construct the same architecture afresh, reload the parameters, and repeat the intended inference-mode check.",
+        "acceptance": [
+          "Use a nontrivial dropout probability and enough activations to observe the mechanism.",
+          "Explain why repeated training-mode outputs may coincide by chance.",
+          "Include a trainable layer, or explicitly set the input requires_grad=True, so the gradient-enabled run constructs a graph. Do not reset the random seed before every forward pass when comparing dropout variability."
+        ],
+        "referenceAnswer": "eval() changes dropout behavior; no_grad disables gradient recording but does not switch dropout to evaluation mode. Both choices matter for ordinary deterministic inference, with other sources of nondeterminism considered separately."
+      },
+      "rubric": [
+        {
+          "id": "c19.e1",
+          "text": "Mode and gradient-tracking state are tested independently.",
+          "critical": true
+        },
+        {
+          "id": "c19.e2",
+          "text": "Inference reloads the intended weights and explicitly sets the intended mode.",
+          "critical": true
+        },
+        {
+          "id": "c19.e3",
+          "text": "Observed variability is attributed to the actual mechanism rather than automatically to a model defect.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "no_grad is treated as equivalent to model.eval().",
+        "exercise": "Run a two-by-two comparison of train/eval and gradients enabled/disabled. Record both output behavior and requires_grad.",
+        "recheck": "Explain how batch normalization adds another reason to distinguish the two controls."
+      },
+      "interview": {
+        "prompt": "What information is needed to resume training rather than merely run inference?",
+        "strongAnswer": "Include optimizer and scheduler state, progress, data ordering, randomness, configuration, and weights; identify what is necessary for the promised reproducibility level."
+      },
+      "boundary": "A CPU toy establishes mode semantics. Hardware, kernels, data loaders, and distributed execution require their own reproducibility checks."
+    },
+    "c20": {
+      "capability": "Justify an image transformation by its effect on the label, then test the boundary where that justification fails.",
+      "readinessPrerequisites": [
+        "Write correct train/evaluation loops and track tensor contracts from c19."
+      ],
+      "transferTask": {
+        "prompt": "Create simple left-arrow and right-arrow images. Apply horizontal flips and vertical flips. Determine which transformation preserves the class, which changes it, and how training labels should be handled.",
+        "acceptance": [
+          "Inspect transformed images alongside their labels.",
+          "Keep all variants of one original image on the same side of the evaluation split."
+        ],
+        "referenceAnswer": "A horizontal flip exchanges left and right labels. A vertical flip preserves horizontal direction for a suitably symmetric arrow design. The label rule depends on the image construction and task, not on a universal augmentation list."
+      },
+      "rubric": [
+        {
+          "id": "c20.e1",
+          "text": "Transformation and label semantics are stated before training.",
+          "critical": true
+        },
+        {
+          "id": "c20.e2",
+          "text": "Source-image identities prevent augmented train/test overlap.",
+          "critical": true
+        },
+        {
+          "id": "c20.e3",
+          "text": "Evaluation includes at least one acquisition or orientation condition outside the usual training examples.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An augmentation is assumed safe because a library offers it by default.",
+        "exercise": "List three vision tasks and ask whether a left-right flip changes the answer in each.",
+        "recheck": "Choose one transformation that should preserve this arrow label and produce a counterexample if its assumptions are violated."
+      },
+      "interview": {
+        "prompt": "Why can a random image split overestimate real deployment performance?",
+        "strongAnswer": "Related images may share subjects, scenes, devices, duplicates, or augmentations; the split must match the independence and deployment claim."
+      },
+      "boundary": "Synthetic arrows teach invariance and labeling. They do not establish transfer-learning performance on natural images."
+    },
+    "c21": {
+      "capability": "Test a causal language model for future-token leakage and target-alignment mistakes.",
+      "readinessPrerequisites": [
+        "Implement reliable PyTorch training and evaluation from c19."
+      ],
+      "transferTask": {
+        "prompt": "Create two token sequences with the same first three tokens and different suffixes. In evaluation mode, compare logits at the shared prefix positions. Separately inspect which input token position predicts each next-token target.",
+        "acceptance": [
+          "Prefix logits agree within a justified numerical tolerance when future tokens change.",
+          "Targets are shifted by one position and padding is excluded from the intended loss.",
+          "Keep sequence length, shared-prefix positions, padding, position IDs, and cache state fixed. Change only suffix token values so the test isolates future-token information flow."
+        ],
+        "referenceAnswer": "A causal model cannot use a changed suffix to alter earlier prefix predictions. With input tokens [A,B,C], the corresponding next-token targets are [B,C,D] when D is the following token in the source sequence."
+      },
+      "rubric": [
+        {
+          "id": "c21.e1",
+          "text": "The test changes only information that should be causally inaccessible.",
+          "critical": true
+        },
+        {
+          "id": "c21.e2",
+          "text": "Masking and target alignment are checked as separate contracts.",
+          "critical": true
+        },
+        {
+          "id": "c21.e3",
+          "text": "Loss normalization and ignored padding positions are documented.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A causal-looking mask is accepted without testing the complete implementation.",
+        "exercise": "Deliberately remove the mask or misalign targets in a disposable test and confirm the corresponding check fails; then restore it.",
+        "recheck": "Explain why an unusually low training loss could indicate leakage rather than a better model."
+      },
+      "interview": {
+        "prompt": "Why are next-token accuracy and factual reliability different?",
+        "strongAnswer": "The training objective rewards predicting observed continuations; factual truth, evidence support, task success, and safe tool use require separate evaluation."
+      },
+      "boundary": "These tests validate local information flow and labels; they do not certify factuality, robustness, or useful generation quality."
+    },
+    "c22": {
+      "capability": "Produce an answer whose claims are supported by accessible, applicable, and versioned evidence.",
+      "readinessPrerequisites": [
+        "Evaluate retrieval representations and understand language-model limitations from c17 and c21."
+      ],
+      "transferTask": {
+        "prompt": "Index three fictional return policies: an old 14-day rule, a current 30-day rule for region A, and a private region B exception. Answer a current region-A question and an unsupported question about restocking fees.",
+        "acceptance": [
+          "Filter authorization and applicability before choosing evidence.",
+          "Cite the exact supporting passage and abstain from inventing the unspecified fee."
+        ],
+        "referenceAnswer": "The current region-A policy supports 30 days. A citation to the old rule or an inaccessible exception does not justify that answer; the fee question remains unsupported unless another applicable source exists."
+      },
+      "rubric": [
+        {
+          "id": "c22.e1",
+          "text": "Document version, region, and access scope are preserved.",
+          "critical": true
+        },
+        {
+          "id": "c22.e2",
+          "text": "Every substantive answer claim maps to evidence that actually entails it.",
+          "critical": true
+        },
+        {
+          "id": "c22.e3",
+          "text": "Unsupported and conflicting cases have explicit abstention or clarification behavior.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Any retrieved passage or attached citation is treated as sufficient support.",
+        "exercise": "Pair one answer with three citations: relevant but obsolete, current but wrong region, and current applicable evidence. Explain which claim each can support.",
+        "recheck": "Introduce a conflicting current policy and document how the system surfaces the conflict."
+      },
+      "interview": {
+        "prompt": "How do you separate retrieval failure from answer-generation failure?",
+        "strongAnswer": "Inspect whether sufficient accessible evidence was retrieved, then assess whether the answer correctly used it; use separate labeled evaluations for both stages."
+      },
+      "boundary": "Grounded generation reduces particular unsupported-answer risks; retrieval and citations do not automatically establish correctness."
+    },
+    "c23": {
+      "capability": "Enforce tool authorization outside the model and evaluate blocked behavior as a first-class outcome.",
+      "readinessPrerequisites": [
+        "Understand decision metrics, evidence retrieval, and unsupported-answer handling from c15 and c22."
+      ],
+      "transferTask": {
+        "prompt": "Implement a read-only record lookup over two fictional tenants. A tool request supplies a record ID, while the authenticated tenant comes from trusted server context. Test a valid own-tenant request, a foreign record, malformed input, and a forged tenant field.",
+        "acceptance": [
+          "A model-supplied tenant value cannot expand access.",
+          "Blocked calls disclose no protected record content and remain distinguishable from operational errors."
+        ],
+        "referenceAnswer": "Passing JSON-schema validation is insufficient. The server must verify the authenticated identity, allowed operation, record ownership, and request constraints before retrieving or returning protected data."
+      },
+      "rubric": [
+        {
+          "id": "c23.e1",
+          "text": "Authorization uses trusted context rather than generated arguments.",
+          "critical": true
+        },
+        {
+          "id": "c23.e2",
+          "text": "All four cases have deterministic expected outcomes.",
+          "critical": true
+        },
+        {
+          "id": "c23.e3",
+          "text": "Evaluation distinguishes valid completion, correct refusal, invalid refusal, and execution failure.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A schema-valid tool call is treated as permission to execute it.",
+        "exercise": "Hold the same well-formed request constant and change authenticated tenant context. Write the expected authorization decision before running.",
+        "recheck": "Explain how prompt text requesting broader access should affect the server authorization decision."
+      },
+      "interview": {
+        "prompt": "How would you validate an automated judge?",
+        "strongAnswer": "Compare it with inspected human labels, examine disagreement by failure type, test adversarial formatting, and state that agreement on a small set is limited evidence."
+      },
+      "boundary": "A local fixture verifies the implemented boundary for its cases; production authentication, storage, and deployment controls still need testing."
+    },
+    "c24": {
+      "capability": "Make a multi-step assistant stop predictably when evidence, permissions, or budgets are insufficient.",
+      "readinessPrerequisites": [
+        "Build evaluated, authorization-checked tool interfaces from c23."
+      ],
+      "transferTask": {
+        "prompt": "Model a document-drafting workflow with search, inspect, draft, and stopped states. Limit it to three tool attempts and one total deadline. Test repeated empty results, a timeout, and a successful search followed by unsupported evidence.",
+        "acceptance": [
+          "Failed attempts consume the attempt budget.",
+          "No final draft is labeled evidence-supported unless the inspect step established support."
+        ],
+        "referenceAnswer": "Attempt limits and deadlines are separate controls. A timeout or empty result must not create an uncounted retry loop, and finding a document is not equivalent to finding sufficient support."
+      },
+      "rubric": [
+        {
+          "id": "c24.e1",
+          "text": "Every state transition has an explicit condition and permitted next action.",
+          "critical": true
+        },
+        {
+          "id": "c24.e2",
+          "text": "The workflow terminates under all supplied failure traces.",
+          "critical": true
+        },
+        {
+          "id": "c24.e3",
+          "text": "A deterministic baseline is compared on success, cost, and latency before claiming useful autonomy.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Only successful tool calls are counted toward the agent budget.",
+        "exercise": "Trace three consecutive failures and record remaining attempts after each. Add a deadline that expires before the next permitted attempt.",
+        "recheck": "Explain which terminal status should be returned when some work succeeded but support is still insufficient."
+      },
+      "interview": {
+        "prompt": "When is a fixed workflow preferable to an agent loop?",
+        "strongAnswer": "When steps and permissions are predictable and additional model-directed choices do not earn their cost or reliability burden under evaluation."
+      },
+      "boundary": "A bounded loop limits resource use; bounded execution alone does not make its decisions correct or its outputs supported."
+    },
+    "a01": {
+      "capability": "Make the same model-result information understandable through sight, keyboard interaction, and assistive technology.",
+      "readinessPrerequisites": [
+        "Use reproducible files and meaningful behavior checks from c04."
+      ],
+      "transferTask": {
+        "prompt": "Build a comparison page for three model results using a visual bar chart and a semantic data table. Add a filter with an empty state and a details disclosure explaining one failure case.",
+        "acceptance": [
+          "Chart labels, units, and table values describe the same data.",
+          "Operate filtering and disclosures using only the keyboard, with visible focus and an announced result count."
+        ],
+        "referenceAnswer": "A decorative chart is not a substitute for readable values and structure. Native controls, explicit labels, meaningful headings, and a concise status message provide different parts of the interaction contract."
+      },
+      "rubric": [
+        {
+          "id": "a01.e1",
+          "text": "All actions have accessible names and keyboard operation.",
+          "critical": true
+        },
+        {
+          "id": "a01.e2",
+          "text": "The narrow-screen layout preserves values and controls without page-level horizontal overflow.",
+          "critical": true
+        },
+        {
+          "id": "a01.e3",
+          "text": "Filtering retains user input and communicates empty results without implying a system error.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A page is called accessible because its colors have sufficient contrast.",
+        "exercise": "Hide visual styling and navigate the page by headings, labels, and keyboard focus. Record what information or actions disappear.",
+        "recheck": "Explain why contrast, semantics, focus behavior, and error recovery need separate checks."
+      },
+      "interview": {
+        "prompt": "How would you test a form that fails validation?",
+        "strongAnswer": "Check preserved input, associated error text, useful focus behavior, keyboard reachability, and an understandable recovery path rather than only a red border."
+      },
+      "boundary": "A few browser checks provide bounded evidence; they do not establish accessibility for every assistive technology or user need."
+    },
+    "a02": {
+      "capability": "Make duplicate concurrent requests produce one durable effect under a documented API contract.",
+      "readinessPrerequisites": [
+        "Understand relational keys and a browser request lifecycle from c06 and a01."
+      ],
+      "transferTask": {
+        "prompt": "Implement a local job-creation endpoint backed by SQLite. Send the same idempotency key and payload concurrently from two clients, then repeat the key with a different payload. Scope keys to the authenticated client.",
+        "acceptance": [
+          "The identical requests return the same stored job identity.",
+          "A changed payload conflicts rather than silently returning an unrelated result."
+        ],
+        "referenceAnswer": "An in-memory check-then-insert can race. A durable uniqueness constraint and transactional operation enforce the intended invariant; authentication and key scope prevent one client from retrieving another client’s cached response."
+      },
+      "rubric": [
+        {
+          "id": "a02.e1",
+          "text": "The database contains one accepted job for the identical request pair.",
+          "critical": true
+        },
+        {
+          "id": "a02.e2",
+          "text": "Conflicting reuse has a documented response and no second effect.",
+          "critical": true
+        },
+        {
+          "id": "a02.e3",
+          "text": "A retry after process restart preserves the promised behavior.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An idempotency dictionary is assumed to remain correct across concurrency and restarts.",
+        "exercise": "Draw two requests interleaving their lookup and insert steps. Identify where both can believe the key is absent.",
+        "recheck": "Explain which database invariant closes that race and which failures remain possible."
+      },
+      "interview": {
+        "prompt": "What distinguishes authentication, authorization, and input validation?",
+        "strongAnswer": "Identity, permitted action on the resource, and request-shape or semantic constraints are separate checks; none substitutes for the others."
+      },
+      "boundary": "The local transaction proves only the exercised storage contract; multi-service effects and external side effects need additional coordination."
+    },
+    "a03": {
+      "capability": "Trace a user-visible answer and its feedback to the exact request, evidence, and system version that produced it.",
+      "readinessPrerequisites": [
+        "Build API contracts, asynchronous browser behavior, and grounded answers from a02, b03, and c22."
+      ],
+      "transferTask": {
+        "prompt": "Extend the document assistant with answer-version records. Let a user submit a second question before the first finishes, then attach feedback to the displayed answer. Verify that the feedback cannot accidentally bind to the newer question or a replaced answer.",
+        "acceptance": [
+          "Each feedback record references an immutable answer ID and source version.",
+          "Cancellation, empty evidence, unsupported evidence, and service errors have distinct visible outcomes."
+        ],
+        "referenceAnswer": "A thumbs-up event is an interaction signal attached to one displayed answer, not automatically a factual-correctness label. Request IDs and answer IDs protect different associations."
+      },
+      "rubric": [
+        {
+          "id": "a03.e1",
+          "text": "Overlapping requests cannot mix answer text, sources, and feedback targets.",
+          "critical": true
+        },
+        {
+          "id": "a03.e2",
+          "text": "A reviewer can reconstruct the displayed evidence from a saved answer record.",
+          "critical": true
+        },
+        {
+          "id": "a03.e3",
+          "text": "Feedback assumptions and missing-label biases are documented.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Positive feedback is directly counted as verified model accuracy.",
+        "exercise": "List reasons a user might approve a fluent but incorrect answer, or reject a correct but inconvenient one. Design a separate factual-support check.",
+        "recheck": "Explain how a changed document version affects an older answer’s interpretation."
+      },
+      "interview": {
+        "prompt": "How do you debug an AI product failure spanning browser and retrieval?",
+        "strongAnswer": "Follow a correlated request trace through validated input, retrieval candidates, support decision, response state, and UI rendering without logging unnecessary sensitive content."
+      },
+      "boundary": "An end-to-end prototype demonstrates a workflow; production reliability and representative user benefit require broader evidence."
+    },
+    "a04": {
+      "capability": "Package the complete inference contract so that a model cannot silently load with incompatible preprocessing.",
+      "readinessPrerequisites": [
+        "Use tests, process boundaries, and feature pipelines from c04, b02, and c16."
+      ],
+      "transferTask": {
+        "prompt": "Create two versions of a tiny numeric model package with different feature order. Each package must include model parameters, preprocessing configuration, schema version, and integrity digests. Deliberately combine the wrong components and require loading to fail.",
+        "acceptance": [
+          "A fresh local or container run reproduces a fixed prediction.",
+          "An incompatible schema or altered component is rejected before serving."
+        ],
+        "referenceAnswer": "Weights alone do not identify the inference function. A feature-order mismatch may produce valid numeric output with incorrect meaning. Digests detect changed bytes relative to a trusted manifest, not the trustworthiness of that manifest itself."
+      },
+      "rubric": [
+        {
+          "id": "a04.e1",
+          "text": "The artifact records all components needed for the documented prediction.",
+          "critical": true
+        },
+        {
+          "id": "a04.e2",
+          "text": "The compatibility check catches the deliberately mismatched package.",
+          "critical": true
+        },
+        {
+          "id": "a04.e3",
+          "text": "Build, smoke test, and rollback commands refer to explicit artifact versions.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An unchanged model filename is treated as proof that the deployed behavior is unchanged.",
+        "exercise": "Keep the filename fixed but swap two feature columns. Compute one resulting prediction and identify the missing compatibility check.",
+        "recheck": "Explain why checksum verification is different from artifact authenticity."
+      },
+      "interview": {
+        "prompt": "Which checks belong in an inference CI pipeline?",
+        "strongAnswer": "Choose behavioral prediction tests, schema and artifact checks, dependency or build reproducibility, and a runnable smoke test tied to actual release risks."
+      },
+      "boundary": "A matching container run does not prove compatibility with every host, accelerator, operating constraint, or external dependency."
+    },
+    "a05": {
+      "capability": "Explain end-to-end latency under a burst without confusing service time with user waiting time.",
+      "readinessPrerequisites": [
+        "Package a reproducible model and understand its inference path from a04 and c19."
+      ],
+      "transferTask": {
+        "prompt": "A single worker takes 80 ms per request. Five requests arrive together at an empty FIFO queue. Calculate completion latencies, then test a 200 ms deadline policy that accounts for both completed and rejected work.",
+        "acceptance": [
+          "Include queue waiting in every latency.",
+          "Report the original offered load and the fate of all five requests."
+        ],
+        "referenceAnswer": "With no overhead, completion latencies are 80,160,240,320,400 ms. Only two complete within 200 ms. Discarding the three late requests from a latency report conceals user-visible failures."
+      },
+      "rubric": [
+        {
+          "id": "a05.e1",
+          "text": "The timeline distinguishes arrival, service start, and completion.",
+          "critical": true
+        },
+        {
+          "id": "a05.e2",
+          "text": "Throughput, latency, and deadline success use stated denominators.",
+          "critical": true
+        },
+        {
+          "id": "a05.e3",
+          "text": "An optimization is compared at the same workload and quality requirement.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An 80 ms single-call benchmark is presented as the latency every concurrent user experiences.",
+        "exercise": "Draw the worker timeline and add each request’s waiting interval before its service interval.",
+        "recheck": "Recompute the idealized schedule for two identical workers and state what assumptions the calculation omits."
+      },
+      "interview": {
+        "prompt": "How can batching improve throughput while hurting latency?",
+        "strongAnswer": "Batch computation may use resources more efficiently, but collecting a batch adds waiting time; evaluate both under the actual arrival pattern and deadline."
+      },
+      "boundary": "This deterministic queue illustrates a mechanism. Real latency distributions require measured arrivals, variability, overhead, and resource contention."
+    },
+    "a06": {
+      "capability": "Authorize resource access using a trusted identity and an explicit resource relationship.",
+      "readinessPrerequisites": [
+        "Design APIs and deployable artifacts using a02 and a04."
+      ],
+      "transferTask": {
+        "prompt": "Create a deployment authorization matrix for two fictional tenants and reader/writer roles. Use opaque document IDs mapped to tenant ownership. Test own-tenant reads, foreign reads, writes by readers, and a forged tenant value in a request body.",
+        "acceptance": [
+          "The server derives identity from verified authentication context.",
+          "Unspecified actions and unknown resources have explicit deny behavior."
+        ],
+        "referenceAnswer": "A client-provided tenant string is a request value, not an authenticated identity. Resource ownership and role permissions must be checked before returning data or performing an action."
+      },
+      "rubric": [
+        {
+          "id": "a06.e1",
+          "text": "Every permitted operation identifies its principal, action, and resource scope.",
+          "critical": true
+        },
+        {
+          "id": "a06.e2",
+          "text": "The four negative/positive cases produce the documented decisions.",
+          "critical": true
+        },
+        {
+          "id": "a06.e3",
+          "text": "Secrets and deployment identities are kept outside distributed client code.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Knowing a document ID or sending a tenant field is treated as sufficient authorization.",
+        "exercise": "Keep the document ID fixed while changing the authenticated tenant. Evaluate the access matrix independently of the request body.",
+        "recheck": "Explain why a private network location alone does not establish permission."
+      },
+      "interview": {
+        "prompt": "How would you rehearse a cloud design without a paid account?",
+        "strongAnswer": "Test local contracts and identity decision fixtures, document provider mappings and untested behavior, and estimate bounded costs without claiming a deployment occurred."
+      },
+      "boundary": "A provider-neutral blueprint and local fixtures are design evidence, not proof of deployed IAM, networking, or billing behavior."
+    },
+    "a07": {
+      "capability": "Reconstruct the version of a feature that was knowable at a historical prediction time.",
+      "readinessPrerequisites": [
+        "Use relational time semantics and fitted feature boundaries from c06 and c16."
+      ],
+      "transferTask": {
+        "prompt": "An event occurs at 09:00 with amount 10, arrives at 09:01, and is corrected to 20 at 10:05. Build snapshots for cutoffs 10:00 and 10:10. Include a duplicate delivery and a future-dated event; document the correction policy.",
+        "acceptance": [
+          "Select only information available by each cutoff.",
+          "Distinguish a correction from a duplicate delivery rather than summing both versions."
+        ],
+        "referenceAnswer": "The first snapshot uses 10; the later snapshot can use corrected value 20 under a latest-known-version policy. It must not become 30, and the earlier snapshot must not be rewritten as if the correction had been known then."
+      },
+      "rubric": [
+        {
+          "id": "a07.e1",
+          "text": "Event time, arrival time, version identity, and cutoff are explicit.",
+          "critical": true
+        },
+        {
+          "id": "a07.e2",
+          "text": "Rerunning the same snapshot is idempotent.",
+          "critical": true
+        },
+        {
+          "id": "a07.e3",
+          "text": "Lineage identifies the selected source versions and pipeline configuration.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A backfill uses today’s corrected table to simulate yesterday’s information without qualification.",
+        "exercise": "Write a two-axis timeline showing when the event happened and when each version became available.",
+        "recheck": "Explain which dataset answers historical knowability and which answers revised historical truth."
+      },
+      "interview": {
+        "prompt": "What makes a backfill safe to evaluate?",
+        "strongAnswer": "Defined scope, versioned inputs and logic, isolated output, quality checks, reproducibility, and an explicit policy for replacing or retaining previous materializations."
+      },
+      "boundary": "One snapshot implementation does not guarantee cross-system clock accuracy, distributed delivery semantics, or all late-data policies."
+    },
+    "a08": {
+      "capability": "Interpret delayed labels without treating an early, selected subset as the quality of all predictions.",
+      "readinessPrerequisites": [
+        "Measure serving behavior and decision outcomes from a05 and c15."
+      ],
+      "transferTask": {
+        "prompt": "A service makes 100 predictions. Ten early labels are all correct; the remaining 90 are pending. Later, 30 of those 90 are correct and 60 are wrong. Write the monitoring report at each time and explain the risk of outcome-dependent label delay.",
+        "acceptance": [
+          "Keep labeled, pending, and total prediction counts visible.",
+          "Compare cohorts at comparable label maturity before declaring a quality trend."
+        ],
+        "referenceAnswer": "The early observed accuracy is 10/10 among labeled cases, not 100/100. Final accuracy is 40/100. Early labels can be systematically easier, so coverage and selection matter alongside the metric."
+      },
+      "rubric": [
+        {
+          "id": "a08.e1",
+          "text": "Every quality metric has a label-availability denominator and time window.",
+          "critical": true
+        },
+        {
+          "id": "a08.e2",
+          "text": "Service health is monitored independently of delayed outcome quality.",
+          "critical": true
+        },
+        {
+          "id": "a08.e3",
+          "text": "An alert names a concrete investigation or response rather than automatically retraining.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Pending outcomes are implicitly counted as correct or excluded without disclosure.",
+        "exercise": "Build a table with correct, incorrect, and pending counts at both times. Explain how the same predictions can produce different observed metrics as labels arrive.",
+        "recheck": "Propose an alert for a sudden drop in label coverage and identify its owner."
+      },
+      "interview": {
+        "prompt": "Does feature drift prove model degradation?",
+        "strongAnswer": "No; it prompts investigation. Outcomes, label maturity, affected slices, service changes, and the task’s sensitivity determine whether quality has deteriorated."
+      },
+      "boundary": "A monitoring simulation checks response logic. Real alert thresholds require operational costs, representative history, and on-call ownership."
+    },
+    "a09": {
+      "capability": "Compare system designs using a complete workload and explicitly bounded cost assumptions.",
+      "readinessPrerequisites": [
+        "Understand point-in-time pipelines, service monitoring, and failure recovery from a07 and a08."
+      ],
+      "transferTask": {
+        "prompt": "Compare direct inference with a version-aware cache for 100,000 daily requests. Assume a 5% cache-miss rate and $0.002 per model call. Compute inference-only cost, then identify cache costs, freshness limits, authorization boundaries, and invalidation rules omitted from that estimate.",
+        "acceptance": [
+          "Use the same request population and quality requirement in both designs.",
+          "Show units and distinguish an assumed hit rate from a measured one."
+        ],
+        "referenceAnswer": "Direct inference costs $200 in model calls; 5,000 misses cost $10. These are hypothetical inference-only costs, not complete system prices. Cache identity must account for inputs, model/data version, and access scope."
+      },
+      "rubric": [
+        {
+          "id": "a09.e1",
+          "text": "Arithmetic and workload assumptions are explicit.",
+          "critical": true
+        },
+        {
+          "id": "a09.e2",
+          "text": "The design explains stale-result and cross-tenant isolation risks.",
+          "critical": true
+        },
+        {
+          "id": "a09.e3",
+          "text": "A local experiment targets the assumption most likely to invalidate the recommendation.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A lower model-call bill is presented as proof that the total architecture is cheaper and equally correct.",
+        "exercise": "Add storage, lookup latency, refresh work, and an invalidation event to the comparison. Identify which costs were previously omitted.",
+        "recheck": "Explain when a low request-reuse rate could make the cache unattractive."
+      },
+      "interview": {
+        "prompt": "How do you choose batch versus online inference?",
+        "strongAnswer": "Start with decision latency, freshness, volume, failure tolerance, and reuse; then compare architectures under those requirements."
+      },
+      "boundary": "The numbers are an explicit hypothetical workload, not current vendor pricing or a forecast of production traffic."
+    },
+    "a10": {
+      "capability": "Trace a data-handling request through the actual artifacts that contain or depend on the affected data.",
+      "readinessPrerequisites": [
+        "Evaluate decisions and subgroup outcomes using c15."
+      ],
+      "transferTask": {
+        "prompt": "For a fictional document assistant, map one user document through source storage, extracted text, chunks, embeddings, logs, caches, backups, and optional training data. Design and test a deletion request against local fixtures, stating each retention or retraining limitation.",
+        "acceptance": [
+          "Use synthetic data and identify both direct copies and derived artifacts.",
+          "Do not claim deleting a source file removes every downstream influence."
+        ],
+        "referenceAnswer": "Deletion is a lifecycle operation with multiple stores and retention policies. Removing retrieval content differs from removing information incorporated through training; the latter requires a separately specified and evaluated procedure."
+      },
+      "rubric": [
+        {
+          "id": "a10.e1",
+          "text": "The lineage map identifies responsible stores and owners.",
+          "critical": true
+        },
+        {
+          "id": "a10.e2",
+          "text": "A local deletion test verifies that affected content is no longer retrievable through the tested interfaces.",
+          "critical": true
+        },
+        {
+          "id": "a10.e3",
+          "text": "Unverified backup, training, or operational claims are explicitly bounded.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Deleting the original file is reported as complete erasure of all copies and model effects.",
+        "exercise": "Plant a distinctive synthetic phrase in a fixture, derive its index entry and cache, then test each retrieval path after deleting only the source.",
+        "recheck": "Write the narrower truthful claim supported after the full local cleanup test."
+      },
+      "interview": {
+        "prompt": "Why is one fairness metric insufficient for every product?",
+        "strongAnswer": "Stakeholders, error costs, base rates, sampling uncertainty, and competing objectives differ; metric choice requires an explicit decision context and limitations."
+      },
+      "boundary": "This is an engineering exercise, not a legal compliance determination or proof of complete model unlearning."
+    },
+    "a11": {
+      "capability": "Design an ablation that isolates a claimed mechanism without changing the evaluation question.",
+      "readinessPrerequisites": [
+        "Use reliable training, transformer concepts, and mathematical checks from c19, c21, and b05."
+      ],
+      "transferTask": {
+        "prompt": "Replicate one small training result, then test gradient clipping as the sole intervention. Preserve data splits, batch sequence, optimizer, schedule, update count, and evaluation protocol. Record unsuccessful or divergent runs rather than replacing them silently.",
+        "acceptance": [
+          "Specify the clipping rule and hypothesis before inspecting the ablation results.",
+          "Compare matched runs and report all prespecified outcomes."
+        ],
+        "referenceAnswer": "A clipping comparison is confounded if the clipped run also changes learning rate or training budget. Negative results narrow the evidence; they do not automatically prove clipping is useless in every setting."
+      },
+      "rubric": [
+        {
+          "id": "a11.e1",
+          "text": "The report distinguishes paper claims, implementation decisions, and experiment observations.",
+          "critical": true
+        },
+        {
+          "id": "a11.e2",
+          "text": "Relevant comparison conditions are controlled and deviations listed.",
+          "critical": true
+        },
+        {
+          "id": "a11.e3",
+          "text": "Commands and retained outputs permit another reader to reproduce the reported calculation.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An improved score is attributed to the named intervention after several simultaneous changes.",
+        "exercise": "List every difference between two configurations. Restore all but one difference and explain what claim the new experiment can test.",
+        "recheck": "Identify which uncertainty comes from training randomness and which uncertainty the small study does not cover."
+      },
+      "interview": {
+        "prompt": "What makes a replication informative when it does not match the paper?",
+        "strongAnswer": "A precise target claim, documented deviations, verified implementation, controlled checks, retained evidence, and bounded explanations make discrepancies useful."
+      },
+      "boundary": "A small replication addresses its stated configuration and budget; it does not establish a field-wide ranking or invalidate an entire paper."
+    },
+    "a12": {
+      "capability": "Turn a role requirement into inspectable evidence without upgrading plans or tutorials into achievements.",
+      "readinessPrerequisites": [
+        "Explain model evaluation and limitations from c15; have at least one project to inspect."
+      ],
+      "transferTask": {
+        "prompt": "Choose three requirements from a dated, eligible job posting: one coding skill, one evaluation skill, and one communication skill. Map each to a specific repository artifact, a reproducible check, and a short explanation. Mark requirements with no current evidence as gaps.",
+        "acceptance": [
+          "Record posting URL, capture date, location, seniority, and eligibility assumptions.",
+          "Separate work personally performed from borrowed scaffolding or unimplemented plans."
+        ],
+        "referenceAnswer": "A claim such as built an evaluated service needs an artifact, run procedure, measured outcomes, and limitations the candidate can explain. A course completion or intended feature alone is different evidence."
+      },
+      "rubric": [
+        {
+          "id": "a12.e1",
+          "text": "Every technical achievement is supported by a concrete inspectable artifact.",
+          "critical": true
+        },
+        {
+          "id": "a12.e2",
+          "text": "The application does not imply unmeasured business impact or unavailable work authorization.",
+          "critical": true
+        },
+        {
+          "id": "a12.e3",
+          "text": "The next learning task addresses an identified evidence gap.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A portfolio description adopts the project’s intended outcome as an achieved result.",
+        "exercise": "Rewrite one claim containing improved, scalable, or production-ready using only measurements and conditions actually demonstrated.",
+        "recheck": "Answer a follow-up asking what failed, what you changed, and what remains untested."
+      },
+      "interview": {
+        "prompt": "How do you use job advertisements without chasing every keyword?",
+        "strongAnswer": "Sample relevant eligible roles, separate required from preferred skills, identify recurring capability needs, and prioritize evidence-producing work while disclosing sampling bias."
+      },
+      "boundary": "A stronger evidence dossier improves clarity; it does not guarantee interviews, hiring, or a universal completion timeline."
+    },
+    "b01": {
+      "capability": "Validate and order dependencies while detecting cycles outside the part of a graph first explored.",
+      "readinessPrerequisites": [
+        "Write collection-based functions with explicit contracts from c03."
+      ],
+      "transferTask": {
+        "prompt": "Implement dependency ordering for foundations→Python, foundations→SQL, Python→ML, and SQL→ML. Add a disconnected X→Y→X cycle. Return a valid ordering for the acyclic case and an explicit cycle failure for the entire invalid graph.",
+        "acceptance": [
+          "Verify that every dependency precedes its dependent task.",
+          "Check disconnected components rather than stopping after the foundations component."
+        ],
+        "referenceAnswer": "Foundations, Python, SQL, ML is one valid ordering; swapping Python and SQL is also valid. The disconnected cycle makes the full graph invalid even though the main learning path is acyclic."
+      },
+      "rubric": [
+        {
+          "id": "b01.e1",
+          "text": "Every vertex is accounted for, including isolated nodes.",
+          "critical": true
+        },
+        {
+          "id": "b01.e2",
+          "text": "The implementation distinguishes currently visiting from fully processed nodes or uses an equivalent correct algorithm.",
+          "critical": true
+        },
+        {
+          "id": "b01.e3",
+          "text": "Complexity is stated in terms of vertices and edges under the chosen representation.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "A visited flag is used without distinguishing an active recursion path from a completed traversal.",
+        "exercise": "Trace a diamond-shaped DAG and then a three-node cycle, recording active and finished states separately.",
+        "recheck": "Explain why encountering a previously finished node is different from encountering an active ancestor."
+      },
+      "interview": {
+        "prompt": "When does an index fail to improve total runtime?",
+        "strongAnswer": "Include construction, update, memory, query frequency, and data size; compare complete workloads rather than isolated asymptotic lookup."
+      },
+      "boundary": "A correct local ordering does not imply tasks will succeed or that prerequisite skills have actually been demonstrated."
+    },
+    "b02": {
+      "capability": "Define a worker’s process, byte, and response contracts rather than treating a successful launch as a successful computation.",
+      "readinessPrerequisites": [
+        "Use shell commands, tests, and reproducible run procedures from c04."
+      ],
+      "transferTask": {
+        "prompt": "Wrap a local worker that returns JSON on stdout and diagnostics on stderr. Test a valid result, malformed JSON, nonzero exit, and timeout. Specify output-size handling and explain which resource limits the wrapper actually enforces.",
+        "acceptance": [
+          "Validate response fields after checking process outcome.",
+          "Record timeout and nonzero exit as different failures without interpolating untrusted strings into a shell command."
+        ],
+        "referenceAnswer": "A zero exit code does not prove valid JSON or a meaningful result. Capturing all output may consume unbounded memory unless a separate output policy is implemented; a timeout is not a memory limit."
+      },
+      "rubric": [
+        {
+          "id": "b02.e1",
+          "text": "Each failure fixture produces its intended classification.",
+          "critical": true
+        },
+        {
+          "id": "b02.e2",
+          "text": "Argument passing avoids unintended shell parsing.",
+          "critical": true
+        },
+        {
+          "id": "b02.e3",
+          "text": "The report states observed process, deadline, and output behavior without claiming untested descendant-process or memory controls.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Process success is treated as proof of a correct application response.",
+        "exercise": "Run a worker that exits zero after printing malformed JSON. Identify which layer succeeded and which contract failed.",
+        "recheck": "Explain why the string A€ contains two characters but four UTF-8 bytes."
+      },
+      "interview": {
+        "prompt": "How do you distinguish a network error from an application error?",
+        "strongAnswer": "Trace name resolution, connection, TLS, HTTP status, response parsing, and semantic validation as separate stages with their own evidence."
+      },
+      "boundary": "The wrapper protects only implemented and tested boundaries; operating-system sandboxing and hostile-process containment are separate capabilities."
+    },
+    "b03": {
+      "capability": "Keep asynchronous success, failure, and cancellation consistent with the user’s latest intent.",
+      "readinessPrerequisites": [
+        "Build accessible browser controls and deterministic behavior tests from a01 and c04."
+      ],
+      "transferTask": {
+        "prompt": "Create two mocked search requests. Resolve the newer request successfully, then reject the older one. Also test clearing the search field while a request is pending. Neither obsolete event may overwrite the current success or intentional empty state.",
+        "acceptance": [
+          "Version-check both success and error paths.",
+          "Clearing the query invalidates older requests even when cancellation cannot stop their completion."
+        ],
+        "referenceAnswer": "Guarding only the success handler is insufficient: an older rejection can replace a newer result with an error. Cancellation is useful, but correctness still requires checking whether a completion belongs to current intent."
+      },
+      "rubric": [
+        {
+          "id": "b03.e1",
+          "text": "All three timing sequences have deterministic tests.",
+          "critical": true
+        },
+        {
+          "id": "b03.e2",
+          "text": "Only current requests change visible results and status messages.",
+          "critical": true
+        },
+        {
+          "id": "b03.e3",
+          "text": "Keyboard focus and typed input remain stable through state updates.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Abort is treated as a guarantee that no obsolete handler can run.",
+        "exercise": "Use manually controlled promises and reject the old request after resolving the new one. Inspect every state-changing handler.",
+        "recheck": "Explain what happens when a query is cleared immediately before an old promise resolves."
+      },
+      "interview": {
+        "prompt": "Why does a TypeScript assertion not validate an API response?",
+        "strongAnswer": "It changes the compiler’s assumptions; network bytes still need runtime shape and semantic checks, alongside status and parsing checks."
+      },
+      "boundary": "Mocked race tests validate chosen transitions; browser integration, network behavior, and assistive-technology feedback still need testing."
+    },
+    "b04": {
+      "capability": "Choose model adaptation only after identifying a failure that simpler interventions do not adequately address.",
+      "readinessPrerequisites": [
+        "Understand training, language-model objectives, and independent behavioral evaluation from c19, c21, and c23."
+      ],
+      "transferTask": {
+        "prompt": "A document assistant has two failures: outdated policy facts and inconsistent JSON formatting. Compare retrieval updates, clearer prompts, available constrained-output mechanisms, and fine-tuning. Design a narrow adaptation experiment only for the failure it can reasonably address.",
+        "acceptance": [
+          "Keep a fixed independent evaluation set with new documents or values.",
+          "Report format validity separately from factual support and task success."
+        ],
+        "referenceAnswer": "Updating accessible evidence is often the direct intervention for changing policy facts. Output constraints can enforce structure without proving semantics. Fine-tuning needs independent evidence of added value rather than a lower training loss alone."
+      },
+      "rubric": [
+        {
+          "id": "b04.e1",
+          "text": "The chosen intervention follows a documented failure analysis.",
+          "critical": true
+        },
+        {
+          "id": "b04.e2",
+          "text": "Training examples cannot contaminate final evaluation cases.",
+          "critical": true
+        },
+        {
+          "id": "b04.e3",
+          "text": "Adoption criteria include regression, resource, and operational constraints.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "Fine-tuning is treated as the default solution to every language-model failure.",
+        "exercise": "Classify ten errors as missing knowledge, retrieval failure, formatting failure, or unsupported reasoning; propose the smallest testable intervention for each.",
+        "recheck": "Explain why valid JSON can still contain an incorrect or unauthorized answer."
+      },
+      "interview": {
+        "prompt": "What does a smaller trainable parameter count tell you?",
+        "strongAnswer": "It describes one resource property of the adaptation mechanism; quality, total memory, inference behavior, and deployment value need separate measurements."
+      },
+      "boundary": "A narrow adaptation study supports its own task and evaluation distribution, not universal gains or guaranteed factual reliability."
+    },
+    "b05": {
+      "capability": "Derive and test a bias–variance tradeoff without confusing finite simulation with proof.",
+      "readinessPrerequisites": [
+        "Use linear algebra, probability, statistical uncertainty, and training experiments from c08, c09, c10, and c19."
+      ],
+      "transferTask": {
+        "prompt": "For independent observations with mean μ and variance 4, compare the sample mean of n=4 with half that mean. Derive each estimator’s bias, variance, and MSE at μ=0 and μ=2, then check the predictions using repeated synthetic samples.",
+        "acceptance": [
+          "State the distribution used for simulation and separate it from the assumptions needed for the moment calculations.",
+          "Use enough repetitions to inspect Monte Carlo variability without claiming exact empirical equality."
+        ],
+        "referenceAnswer": "The sample mean has MSE 1. The half-mean has bias -μ/2, variance 1/4, and MSE μ²/4+1/4: 0.25 at μ=0 and 1.25 at μ=2. A biased estimator can help near its preferred value and hurt elsewhere."
+      },
+      "rubric": [
+        {
+          "id": "b05.e1",
+          "text": "The algebra separates squared bias from variance with correct scaling.",
+          "critical": true
+        },
+        {
+          "id": "b05.e2",
+          "text": "Simulation preserves the stated sampling assumptions.",
+          "critical": true
+        },
+        {
+          "id": "b05.e3",
+          "text": "The conclusion identifies where shrinkage improves or worsens this particular comparison.",
+          "critical": true
+        }
+      ],
+      "repair": {
+        "trigger": "An unbiased estimator is assumed to minimize every measure of estimation error.",
+        "exercise": "Compute both MSE values at μ=0 and μ=2 before simulating. Identify the threshold |μ| where the half-mean ceases to improve on MSE 1.",
+        "recheck": "The equality occurs at |μ|=sqrt(3); explain how changing n changes the comparison."
+      },
+      "interview": {
+        "prompt": "What can a numerical experiment establish about a mathematical claim?",
+        "strongAnswer": "It can reveal implementation errors and challenge predictions under tested assumptions; a finite sample of experiments is not a proof over all cases."
+      },
+      "boundary": "This comparison depends on a specific shrinkage rule, squared-error loss, moments, and sample size; it does not establish a universally best estimator."
+    }
+  }
+}

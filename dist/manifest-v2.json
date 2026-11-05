@@ -1,0 +1,16 @@
+{
+  "edition": "2.0",
+  "artifact": "first-principles-atlas-v2.html",
+  "bytes": 735076,
+  "sha256": "d006150ea194be468febb25434cb5016e275329ea799b848e2c540a58a1acd49",
+  "content": {
+    "modules": 41,
+    "sessions": 205,
+    "workedExamples": 41,
+    "diagnostics": 41,
+    "capstones": 4,
+    "interactiveLabs": 5
+  },
+  "validationReport": "VALIDATION.md",
+  "note": "Packaging does not run browser tests. Check the artifact hash and scope in the validation report."
+}

@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-05",
+  "artifact": "first-principles-atlas-v3.html",
+  "sha256": "99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "src/app.js"
+      ],
+      "exitCode": 0,
+      "seconds": 0.03
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "src/v3.js"
+      ],
+      "exitCode": 0,
+      "seconds": 0.034
+    },
+    {
+      "command": [
+        "node",
+        "tests/test_v3_engines.js"
+      ],
+      "exitCode": 0,
+      "seconds": 0.112
+    },
+    {
+      "command": [
+        "python3",
+        "tests/test_v3_content.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.64,
+      "tests": 22
+    },
+    {
+      "command": [
+        "python3",
+        "tests/test_atlas.py"
+      ],
+      "exitCode": 0,
+      "seconds": 30.855,
+      "tests": 21
+    },
+    {
+      "command": [
+        "python3",
+        "tests/test_v3_browser.py"
+      ],
+      "exitCode": 0,
+      "seconds": 31.428,
+      "tests": 27
+    }
+  ],
+  "testHarnessCorrection": "A research assertion was moved back to its own test; the complete 27-test suite was rerun.",
+  "archiveChecks": {
+    "zipIntegrity": "passed",
+    "sourceRebuildSha256": "99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09",
+    "earlierArtifacts": "byte-identical",
+    "sourceArchiveIncludesEarlierEditions": true
+  }
+}

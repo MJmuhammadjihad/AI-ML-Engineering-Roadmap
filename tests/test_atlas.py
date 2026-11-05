@@ -22,7 +22,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "dist" / "first-principles-atlas.html"
-KEY = "first-principles-atlas-v1"
+KEY = "first-principles-atlas-v3"
 VIEWS = ("overview", "journey", "curriculum", "planner", "lab", "portfolio", "evidence", "library", "method")
 
 
@@ -398,7 +398,7 @@ class AtlasBrowserTests(unittest.TestCase):
         self.page.reload()
         self.page.wait_for_function("Boolean(window.ATLAS)")
         migrated=self.state()
-        self.assertEqual(migrated["version"],2)
+        self.assertEqual(migrated["version"],3)
         self.assertEqual(migrated["completed"],["c01-1"])
         self.assertEqual(migrated["notes"],old["notes"])
         self.assertEqual(migrated["activityProgress"],old["activityProgress"])

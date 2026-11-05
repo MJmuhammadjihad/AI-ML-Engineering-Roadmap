@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-04",
+  "title": "Version3 primary-source market refresh",
+  "summary": "Nine retrieved source entries and ten inspected job descriptions across three employers and five listed countries. A targeted qualitative sample, not a representative global vacancy survey.",
+  "methodology": {
+    "reports": "Read official report/occupation pages and distinguish projections, employer expectations, research synthesis, and engineering guidance.",
+    "sampling": "Purposively selected distinct roles from public Anthropic, Elastic, and Datadog Greenhouse feeds to span product, research, infrastructure, domain integration, and internship work. Geography variants of the same principal role were not separately counted.",
+    "sampleSize": 10,
+    "employerCount": 3,
+    "listedCountries": [
+      "India",
+      "United Kingdom",
+      "United States",
+      "Spain",
+      "France"
+    ],
+    "retrieval": "HTTPS through the inherited session proxy; TLS verification retained. Initial sandbox socket denial resolved by authorized read-only execution escalation.",
+    "limitations": [
+      "Three technology employers are not representative of all global companies or industries.",
+      "Sample overrepresents established AI/enterprise companies and experienced roles.",
+      "No job requirement prevalence, global vacancy estimate, salary forecast, personal employment probability, or causal effect was estimated.",
+      "Board presence establishes listed content at retrieval, not that a vacancy is still accepting applications later.",
+      "Eligibility is not inferred from a location label; internships have concrete student, calendar, and location constraints.",
+      "Sources contain different observation periods; publication/update dates are kept separate from retrieval dates."
+    ]
+  },
+  "sources": [
+    {
+      "id": "V3E01",
+      "title": "Occupational Outlook Handbook: Data Scientists",
+      "url": "https://www.bls.gov/ooh/math/data-scientists.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "published": "2026-08-27 (page last modified)",
+      "accessed": "2026-11-04",
+      "kind": "occupational projection",
+      "scope": "United States; data scientists; 2025–2035 projection period",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "140c4c267b1648b16b458503c163ded1a9cf11a36e395d538557c09c8f0246a7",
+      "findings": [
+        "BLS projects 35% employment growth for data scientists over 2025–2035 and about 24,800 openings per year on average, including replacement needs.",
+        "The page lists a bachelor’s degree as typical entry-level education and describes coding, statistical reasoning, visualization, and communication as part of the occupation."
+      ],
+      "limitations": [
+        "This is a US occupational projection, not an observed count of current vacancies.",
+        "Annual openings include replacements; they are not all new jobs, remote jobs, or junior positions.",
+        "Typical educational attainment does not establish the requirements of every employer."
+      ],
+      "excerpt": "Employment of data scientists is projected to grow 35 percent from 2025 to 2035, much faster than the average for all occupations.",
+      "implications": [
+        "Retain statistics, coding, analysis, and explanation in the common core.",
+        "Do not turn occupational growth into a personal employment probability."
+      ]
+    },
+    {
+      "id": "V3E02",
+      "title": "Occupational Outlook Handbook: Software Developers, Quality Assurance Analysts, and Testers",
+      "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "published": "2026-08-27 (page last modified)",
+      "accessed": "2026-11-04",
+      "kind": "occupational projection",
+      "scope": "United States; combined software developer/QA/tester occupation group;2025–2035",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "adfa37ddf3d56f9c37d80ed4e60cd6ad49e9fcf07c6a21509368339d46e78ada",
+      "findings": [
+        "BLS projects 10% growth for the combined occupation group over 2025–2035 and about 106,100 average annual openings.",
+        "The described work includes understanding user needs, building software, testing it, and communicating with technical and nontechnical collaborators."
+      ],
+      "limitations": [
+        "The 10% figure applies to the combined group, not specifically ML engineering or software developers alone.",
+        "US projections do not establish global opportunities or the accessibility of entry-level roles."
+      ],
+      "excerpt": "Overall employment of software developers, quality assurance analysts, and testers is projected to grow 10 percent from 2025 to 2035, much faster than the average for all occupations.",
+      "implications": [
+        "Make software fundamentals, tests, deployment, and communication first-class learning outcomes."
+      ]
+    },
+    {
+      "id": "V3E03",
+      "title": "The Future of Jobs Report 2025",
+      "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/",
+      "publisher": "World Economic Forum",
+      "published": "2025-01-07",
+      "accessed": "2026-11-04",
+      "kind": "employer survey and forecast",
+      "scope": "Over 1,000 employers, more than 14 million represented workers,22 industry clusters,55 economies; expectations for 2025–2030",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "caf7ae5755846262864e2af933b8767addf44874aa9b51e0cb255eafdd926a26",
+      "findings": [
+        "The surveyed employers rank analytical thinking as a central current skill and AI/big data, networks/cybersecurity, and technological literacy among the fastest-growing skill areas.",
+        "The report estimates 39% of existing skill sets could change or become outdated over 2025–2030; this is a survey-based expectation, not a realized outcome."
+      ],
+      "limitations": [
+        "Employer expectations are forecasts, not causal evidence or guaranteed outcomes.",
+        "The employer sample is not the entire global labor market and is not a junior AI-job vacancy census.",
+        "The report predates this 2026 research refresh; its forecasts have not been treated as current observed facts."
+      ],
+      "excerpt": "AI and big data top the list of fastest-growing skills, followed closely by networks and cybersecurity as well as technology literacy.",
+      "implications": [
+        "Combine technical depth with analytical reasoning, security awareness, and adaptation.",
+        "Keep frameworks replaceable while preserving mathematical and engineering foundations."
+      ]
+    },
+    {
+      "id": "V3E04",
+      "title": "AI Index 2026: Economy",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy",
+      "publisher": "Stanford Institute for Human-Centered Artificial Intelligence",
+      "published": "2026 (report edition; exact publication day not established here)",
+      "accessed": "2026-11-04",
+      "kind": "research synthesis",
+      "scope": "Multiple economic datasets and studies summarized in the 2026 report; geographical scope varies by claim",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "b340e6618d22e5719250d191ee624c4e88386adbbd7b95c16084d1ae8f927e73",
+      "findings": [
+        "The chapter distinguishes rising organizational adoption from uneven labor-market effects and describes particular pressure in hiring pipelines and younger exposed workers.",
+        "It separates organizations’ expectations of workforce reductions from observed aggregate employment and describes productivity benefits as task-dependent."
+      ],
+      "limitations": [
+        "The chapter is a synthesis of studies with different populations and methods; their results must not be combined into a single causal estimate.",
+        "This refresh read the official chapter summary rather than independently reproducing all underlying studies.",
+        "Neither organizational adoption nor frontier-model benchmark performance is a measure of junior job availability."
+      ],
+      "excerpt": "AI's labor market effects are showing up unevenly, concentrated in hiring pipelines and the youngest workers in exposed occupations.",
+      "implications": [
+        "Require demonstrable independent debugging and transfer, alongside measured AI-assisted work.",
+        "Treat entry-level access as a separate problem from broad AI adoption."
+      ]
+    },
+    {
+      "id": "V3E05",
+      "title": "Rules of Machine Learning: Best Practices for ML Engineering",
+      "url": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+      "publisher": "Google for Developers",
+      "published": "2025-08-25 (page last updated)",
+      "accessed": "2026-11-04",
+      "kind": "engineering guidance",
+      "scope": "Engineering advice based on production ML practice; not labor-market measurement",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "2e189038fc27a95c1371098115556ee702e98f9c4010bbcbfbedd5c81028de08",
+      "findings": [
+        "The guide recommends metrics before model sophistication, simple initial models, and infrastructure tested separately from learning components.",
+        "It treats interpretable baselines and trustworthy pipelines as practical debugging tools."
+      ],
+      "limitations": [
+        "This is engineering guidance, not a survey of hiring requirements or a guarantee that one model class fits every task."
+      ],
+      "excerpt": "Rule #4: Keep the first model simple and get the infrastructure right.",
+      "implications": [
+        "Every ML capstone should start with a measurable simple baseline and an inspectable data path."
+      ]
+    },
+    {
+      "id": "V3E06",
+      "title": "Common pitfalls and recommended practices",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+      "publisher": "scikit-learn project",
+      "published": null,
+      "accessed": "2026-11-04",
+      "kind": "primary technical documentation",
+      "scope": "Model evaluation, preprocessing, leakage, and reproducibility in scikit-learn",
+      "verified": true,
+      "verification": "Retrieved successfully over HTTPS; quoted passage matched captured text. Underlying study results were not independently reproduced.",
+      "httpStatus": 200,
+      "capturedSha256": "21fac11c181ab35624dcf8673f0475d403d4f6ecf0f9bead01a573d7642b515c",
+      "findings": [
+        "The documentation explains that leakage uses information unavailable at prediction time and creates overly optimistic performance estimates.",
+        "It recommends splitting before learned preprocessing, keeping test data out of fit/fit_transform, and using pipelines to reduce mistakes."
+      ],
+      "limitations": [
+        "The stable documentation can change; retrieval date and captured hash identify this reading.",
+        "A pipeline does not automatically prevent every leakage mechanism; time/group splitting and label availability still require problem-specific reasoning."
+      ],
+      "excerpt": "Data leakage occurs when information that would not be available at prediction time is used when building the model.",
+      "implications": [
+        "Make leakage checks a critical assessment gate that cannot be averaged away by other good scores."
+      ]
+    },
+    {
+      "id": "V3E07",
+      "title": "Anthropic public job-board feed",
+      "url": "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs?content=true",
+      "publisher": "Anthropic via Greenhouse",
+      "published": null,
+      "accessed": "2026-11-04",
+      "kind": "live employer job descriptions",
+      "scope": "The employer’s public Greenhouse board at retrieval; purposively selected technical roles, not a representative labor-market sample.",
+      "verified": true,
+      "verification": "Public HTTPS JSON feed retrieved; sampled job IDs, role titles, locations, update timestamps, and excerpts matched response content.",
+      "httpStatus": 200,
+      "capturedSha256": "bec3e1d9d3af8b73d48fd4fc39df597f82ac3b6b30823ff32d0b74e7c678de0a",
+      "retrievedRecordCount": 680,
+      "findings": [],
+      "limitations": [
+        "Board records are not unique market-wide openings; geographic variants and senior roles can distort counts.",
+        "A listed location does not establish international remote eligibility, visa sponsorship, or eligibility for this learner.",
+        "The API update time is not the original publication date. Listings may change or close."
+      ],
+      "excerpt": null,
+      "implications": []
+    },
+    {
+      "id": "V3E08",
+      "title": "Elastic public job-board feed",
+      "url": "https://boards-api.greenhouse.io/v1/boards/elastic/jobs?content=true",
+      "publisher": "Elastic via Greenhouse",
+      "published": null,
+      "accessed": "2026-11-04",
+      "kind": "live employer job descriptions",
+      "scope": "The employer’s public Greenhouse board at retrieval; purposively selected technical roles, not a representative labor-market sample.",
+      "verified": true,
+      "verification": "Public HTTPS JSON feed retrieved; sampled job IDs, role titles, locations, update timestamps, and excerpts matched response content.",
+      "httpStatus": 200,
+      "capturedSha256": "b79112421ac4140b6bb5d7ff1d7288056adbaaddac0923a487c3ce0008040607",
+      "retrievedRecordCount": 413,
+      "findings": [],
+      "limitations": [
+        "Board records are not unique market-wide openings; geographic variants and senior roles can distort counts.",
+        "A listed location does not establish international remote eligibility, visa sponsorship, or eligibility for this learner.",
+        "The API update time is not the original publication date. Listings may change or close."
+      ],
+      "excerpt": null,
+      "implications": []
+    },
+    {
+      "id": "V3E09",
+      "title": "Datadog public job-board feed",
+      "url": "https://boards-api.greenhouse.io/v1/boards/datadog/jobs?content=true",
+      "publisher": "Datadog via Greenhouse",
+      "published": null,
+      "accessed": "2026-11-04",
+      "kind": "live employer job descriptions",
+      "scope": "The employer’s public Greenhouse board at retrieval; purposively selected technical roles, not a representative labor-market sample.",
+      "verified": true,
+      "verification": "Public HTTPS JSON feed retrieved; sampled job IDs, role titles, locations, update timestamps, and excerpts matched response content.",
+      "httpStatus": 200,
+      "capturedSha256": "d1490ab46f622c96b66f6deadc69e86806a4fa8809791cf8793295cb386c87b4",
+      "retrievedRecordCount": 396,
+      "findings": [],
+      "limitations": [
+        "Board records are not unique market-wide openings; geographic variants and senior roles can distort counts.",
+        "A listed location does not establish international remote eligibility, visa sponsorship, or eligibility for this learner.",
+        "The API update time is not the original publication date. Listings may change or close."
+      ],
+      "excerpt": null,
+      "implications": []
+    }
+  ],
+  "jobSample": [
+    {
+      "id": "JOB5443882008",
+      "employer": "Anthropic",
+      "title": "Applied AI Architect",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5443882008",
+      "sourceId": "V3E07",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-10-09T00:06:04-04:00",
+      "originalPublicationDate": null,
+      "location": "Bangalore, India",
+      "family": "AI solutions architecture",
+      "seniority": "Experienced;10+ years explicitly requested",
+      "eligibilityNotes": "Bangalore, India; customer travel in India/APAC and cross-time-zone collaboration stated. Remote/work-authorization eligibility not inferred.",
+      "observedSkills": [
+        "Customer problem discovery",
+        "Evaluation design",
+        "LLM integration architecture",
+        "Technical communication"
+      ],
+      "excerpt": "Help customers develop evaluation frameworks to measure Claude's performance for their specific use cases",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A documented use-case evaluation and deployment design with business constraints; this does not replace the requested experience.",
+      "contentSha256": "66f0228aa012438bef19b36fbe74c521747a113ef6166338aeb1b9ff321f8f10"
+    },
+    {
+      "id": "JOB5432575008",
+      "employer": "Anthropic",
+      "title": "Applied AI Engineer, Startups",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5432575008",
+      "sourceId": "V3E07",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-09-23T05:01:26-04:00",
+      "originalPublicationDate": null,
+      "location": "London, UK",
+      "family": "Applied AI/product engineering",
+      "seniority": "Experienced;4+ years explicitly requested",
+      "eligibilityNotes": "London, UK; customer-facing work and travel stated. Work authorization not inferred.",
+      "observedSkills": [
+        "Python",
+        "Production LLM applications",
+        "Evaluation frameworks",
+        "Architecture and deployment",
+        "Technical documentation"
+      ],
+      "excerpt": "Production experience building LLM-powered applications, including prompting, context engineering, agent architectures, evaluation frameworks, and deployment at scale",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A useful AI feature with an evaluation set, failure analysis, deployment, and a comparison against a simpler baseline.",
+      "contentSha256": "e8a27ff000f87ec15252423d9c1a797efb2f48515051e1225ebfc0d8cd516067"
+    },
+    {
+      "id": "JOB5119713008",
+      "employer": "Anthropic",
+      "title": "Research Engineer, Pretraining",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5119713008",
+      "sourceId": "V3E07",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-08-28T14:43:58-04:00",
+      "originalPublicationDate": null,
+      "location": "London, UK",
+      "family": "Research engineering",
+      "seniority": "Research specialist; significant software experience and advanced degree requested in role qualifications",
+      "eligibilityNotes": "London, UK. Role-specific qualifications list an MS or PhD; do not assume a self-study roadmap substitutes for it.",
+      "observedSkills": [
+        "Python and PyTorch",
+        "Large-scale ML",
+        "Distributed training",
+        "Performance engineering",
+        "Research/engineering trade-offs"
+      ],
+      "excerpt": "Advanced degree (MS or PhD) in Computer Science, Machine Learning, or a related field",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A reproducible paper implementation with ablations and throughput analysis; formal requirements remain separate.",
+      "contentSha256": "4e1b2b6b32fef0dea8ce79eb964b2c963fbca564bc880f35d3ed4c9789890d6a"
+    },
+    {
+      "id": "JOB5364804008",
+      "employer": "Anthropic",
+      "title": "Machine Learning Infrastructure Engineer, Safeguards Research",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5364804008",
+      "sourceId": "V3E07",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-08-21T12:50:40-04:00",
+      "originalPublicationDate": null,
+      "location": "San Francisco, CA | New York City, NY",
+      "family": "ML infrastructure",
+      "seniority": "Experienced production engineer; exact years not stated in the inspected role requirements",
+      "eligibilityNotes": "San Francisco or New York; production systems experience explicitly requested. Remote eligibility not inferred.",
+      "observedSkills": [
+        "Python",
+        "Data-intensive/distributed systems",
+        "Training and evaluation workflows",
+        "Correctness checks",
+        "Throughput/cost/reliability"
+      ],
+      "excerpt": "Build correctness and sanity checking into the stack, so results stay trustworthy as models and workloads evolve",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A reproducible training/scoring pipeline with data checks, retry behavior, monitoring, and measured throughput/cost.",
+      "contentSha256": "11b5ab1fc2e912ae3aa5405127adfb0f5950eb3246ce7c0da69a050133de2c95"
+    },
+    {
+      "id": "JOB8079636",
+      "employer": "Elastic",
+      "title": "Agentic AI Engineer",
+      "url": "https://jobs.elastic.co/jobs?gh_jid=8079636&gh_jid=8079636",
+      "sourceId": "V3E08",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-10-01T12:57:36-04:00",
+      "originalPublicationDate": null,
+      "location": "United States",
+      "family": "Agentic application engineering",
+      "seniority": "Experienced; advanced programming and production orchestration requested; exact years not stated in inspected section",
+      "eligibilityNotes": "United States. The location alone does not imply global remote eligibility.",
+      "observedSkills": [
+        "Python or TypeScript",
+        "APIs and structured output",
+        "Retrieval",
+        "CI/CD",
+        "IAM/security",
+        "Evaluation and observability"
+      ],
+      "excerpt": "Programming: Advanced proficiency in Python or TypeScript for backend orchestration, agent memory systems, and API service development.",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A bounded tool-using application with explicit authorization, regression tests, trace inspection, and a cost/latency budget.",
+      "contentSha256": "dc1d8f5febc173420eca0599de11db2de7e14c704c6018c764ca82ca07dbcf66"
+    },
+    {
+      "id": "JOB8224018",
+      "employer": "Elastic",
+      "title": "Principal AI Engineer - Context - Agents and Context",
+      "url": "https://jobs.elastic.co/jobs?gh_jid=8224018&gh_jid=8224018",
+      "sourceId": "V3E08",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-10-29T10:39:18-04:00",
+      "originalPublicationDate": null,
+      "location": "Spain",
+      "family": "Senior AI product/platform engineering",
+      "seniority": "Principal;10+ years explicitly requested",
+      "eligibilityNotes": "Spain variant selected; same role’s other country variants excluded to avoid counting them as independent skill observations.",
+      "observedSkills": [
+        "Evaluation-driven iteration",
+        "Trace telemetry",
+        "Public API compatibility",
+        "Stateful workflows",
+        "Safe rollout",
+        "Python or TypeScript"
+      ],
+      "excerpt": "Partner with the data science team on evaluation strategy: golden datasets, evaluators to gate on quality, latency and cost.",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "An evaluation-driven release with a versioned API, regression suite, rollout plan, and quality/cost/latency measurements; not a substitute for principal-level experience.",
+      "contentSha256": "fc8d363a3c3e99082599c5630740660ad6b0078d36ed45c8a1ea7f2fda9096cb"
+    },
+    {
+      "id": "JOB8265123",
+      "employer": "Elastic",
+      "title": "Marketing AI Engineer",
+      "url": "https://jobs.elastic.co/jobs?gh_jid=8265123&gh_jid=8265123",
+      "sourceId": "V3E08",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-10-14T00:13:45-04:00",
+      "originalPublicationDate": null,
+      "location": "Bangalore, India",
+      "family": "Domain AI workflow engineering",
+      "seniority": "Experienced;4+ years in marketing operations/technology or an adjacent role requested",
+      "eligibilityNotes": "Bangalore, India. Domain experience is a separate requirement from general AI skill.",
+      "observedSkills": [
+        "API/webhook integration",
+        "Authentication and error handling",
+        "Structured LLM output",
+        "Domain requirements",
+        "Workflow documentation"
+      ],
+      "excerpt": "Practical experience working with APIs and webhooks: constructing authenticated requests, reading API documentation, handling errors, and passing data between systems reliably.",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A domain workflow with validation, retries, audit records, and clear instructions for a nontechnical owner.",
+      "contentSha256": "f98e65bce06a9407b528bcdf2785ed86942907ddc811d86728a491b63f66a318"
+    },
+    {
+      "id": "JOB7194969",
+      "employer": "Datadog",
+      "title": "AI Research Engineer - Datadog AI Research (DAIR)",
+      "url": "https://careers.datadoghq.com/detail/7194969/?gh_jid=7194969",
+      "sourceId": "V3E09",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-09-29T13:18:57-04:00",
+      "originalPublicationDate": null,
+      "location": "Paris, France",
+      "family": "AI research engineering/systems",
+      "seniority": "Research specialist; practical distributed ML and research experience requested",
+      "eligibilityNotes": "Paris, France; hybrid label present. Work authorization not inferred.",
+      "observedSkills": [
+        "Python plus systems-language familiarity",
+        "Distributed training/RL",
+        "PyTorch or JAX",
+        "Benchmarking",
+        "GPU/container operations",
+        "Technical explanation"
+      ],
+      "excerpt": "Establish rigorous automated benchmarks and regression tests for world model predictions, agent performance, and simulation fidelity",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A reproducible experiment or systems benchmark with failure recovery, correctness checks, and an honest performance comparison.",
+      "contentSha256": "ad25fd84b50649ea77f3679b559e4ba1970bcbcdd8891f60b8a4de5d1389b461"
+    },
+    {
+      "id": "JOB8181440",
+      "employer": "Datadog",
+      "title": "Applied Science Intern",
+      "url": "https://careers.datadoghq.com/detail/8181440/?gh_jid=8181440",
+      "sourceId": "V3E09",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-09-29T13:18:57-04:00",
+      "originalPublicationDate": null,
+      "location": "Paris, France",
+      "family": "Applied science internship",
+      "seniority": "Intern; student eligibility and model-building evidence requested",
+      "eligibilityNotes": "Paris; expected 2027 graduate in ML/AI/statistics/CS or related field; six-month internship starting February–June 2027. Not an unrestricted beginner opening.",
+      "observedSkills": [
+        "Model-building evidence",
+        "Programming",
+        "Statistical/ML methods",
+        "Production lifecycle awareness",
+        "Communication"
+      ],
+      "excerpt": "You have experience building machine learning models through coursework, research, internships, or personal projects",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A thoroughly explained ML project with baselines, test discipline, and evidence of the learner’s own reasoning; check student eligibility separately.",
+      "contentSha256": "1ec4ceaaf7c5fa31d0f9b443f8edc9b0e6b7638bc1bc500dc1653e60aa5ea752"
+    },
+    {
+      "id": "JOB8114161",
+      "employer": "Datadog",
+      "title": "Software Engineering Intern",
+      "url": "https://careers.datadoghq.com/detail/8114161/?gh_jid=8114161",
+      "sourceId": "V3E09",
+      "accessed": "2026-11-04",
+      "boardUpdatedAt": "2026-09-29T13:18:57-04:00",
+      "originalPublicationDate": null,
+      "location": "Madrid, Spain",
+      "family": "Software engineering internship",
+      "seniority": "Intern;2027 graduation and university-in-Spain condition stated",
+      "eligibilityNotes": "Madrid; expected 2027 graduate from a university in Spain in CS/software engineering or a related field; February 2027 start. Not globally open remote work.",
+      "observedSkills": [
+        "Data structures and algorithms",
+        "Software design",
+        "Programming",
+        "Reliability and distributed-system exposure",
+        "AI-assisted development"
+      ],
+      "excerpt": "Demonstrate strong computer science fundamentals, including data structures, algorithms, and software design",
+      "verified": true,
+      "verification": "Job description retrieved from employer’s public Greenhouse JSON feed; no application was submitted.",
+      "curriculumImplication": "A tested software project with clear design decisions, reproducible execution, and demonstrated independent debugging.",
+      "contentSha256": "93415e904c0cdb7f0db51a8c86869df0427ec5df57cab321bc97f3990fd5265a"
+    }
+  ],
+  "implications": [
+    {
+      "id": "I01",
+      "title": "Build the software core first",
+      "basis": [
+        "V3E02",
+        "V3E05",
+        "JOB8114161"
+      ],
+      "decision": "Retain Python, data structures, debugging, tests, Git, HTTP/API behavior, and clear writing before specialization.",
+      "artifact": "A small application another person can run, test, and understand."
+    },
+    {
+      "id": "I02",
+      "title": "Make evaluation a recurring gate",
+      "basis": [
+        "V3E06",
+        "JOB5432575008",
+        "JOB8224018"
+      ],
+      "decision": "Require baselines, a leakage-safe split, failure analysis, and task-specific evaluation in ML/LLM projects.",
+      "artifact": "A versioned test/evaluation set and a report explaining why the result is trustworthy."
+    },
+    {
+      "id": "I03",
+      "title": "Teach production behavior rather than tool lists",
+      "basis": [
+        "JOB5364804008",
+        "JOB8079636",
+        "JOB8265123"
+      ],
+      "decision": "Use data contracts, authentication, validation, retries, observability, and budget limits as project requirements; frameworks are interchangeable implementations.",
+      "artifact": "An instrumented service with known failure modes, recovery behavior, and a cost/latency envelope."
+    },
+    {
+      "id": "I04",
+      "title": "Keep research and systems specialization explicit",
+      "basis": [
+        "JOB5119713008",
+        "JOB7194969"
+      ],
+      "decision": "Offer deeper mathematics, paper reproduction, distributed training, profiling, and GPU topics after the common trunk; state the additional educational/experience requirements seen in relevant roles.",
+      "artifact": "A reproducible experiment with ablations, or a benchmark with correctness and resource constraints."
+    },
+    {
+      "id": "I05",
+      "title": "Separate entry access from long-term demand",
+      "basis": [
+        "V3E01",
+        "V3E03",
+        "V3E04",
+        "JOB8181440",
+        "JOB8114161"
+      ],
+      "decision": "Do not equate occupational growth with easy junior entry. Track region, graduation, degree, experience, and work-authorization constraints before recommending an application.",
+      "artifact": "A personal eligibility-aware opportunity ledger and portfolio-to-requirement mapping."
+    },
+    {
+      "id": "I06",
+      "title": "Preserve independent thinking alongside AI assistance",
+      "basis": [
+        "V3E04",
+        "JOB8114161"
+      ],
+      "decision": "Record assistance honestly, require unaided transfer/debugging checks, and measure quality/time on real tasks instead of assuming universal productivity gains.",
+      "artifact": "An explanation and fresh debugging task completed under stated assistance conditions."
+    }
+  ],
+  "futureScenarios": [
+    {
+      "condition": "If models and coding assistance keep improving",
+      "response": "Invest in problem definition, data quality, evaluation, integration, and independent debugging.",
+      "status": "Curriculum judgment, not a labor-demand forecast."
+    },
+    {
+      "condition": "If inference cost, latency, or reliability becomes a binding product constraint",
+      "response": "Prioritize measurement, serving efficiency, caching, instrumentation, and failure handling.",
+      "status": "Conditional engineering response, not a prediction of job counts."
+    },
+    {
+      "condition": "If a preferred framework loses relevance",
+      "response": "Retain portable foundations and a project whose behavior can be reproduced with a different implementation.",
+      "status": "Risk-management judgment, not a claim about which framework will win."
+    }
+  ]
+}

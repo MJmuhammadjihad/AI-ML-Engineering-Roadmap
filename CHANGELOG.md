@@ -1,3 +1,33 @@
+# Edition 03 — 5 November 2026
+
+## Learning and evidence
+
+- Added six fully authored beginner days: operating-system setup, saved Python programs, values and types, range validation, loops, functions, and an integrated command-line project. Each day contains seven work blocks totaling 360 active minutes, a worked example, an independent exercise, diagnostics, a transfer check, and repair guidance.
+- Added distinct transfer tasks, observable criteria, misconception repairs, reviewer questions, and scope limits to all 41 existing modules.
+- Introduced a separate assessment engine for missing, partial, assisted, and independently demonstrated evidence. Self-report provenance remains explicit; completion and answer reveals do not automatically pass assessments.
+- Refreshed market research with nine retrieved primary-source entries and ten dated job descriptions from three employers. Source dates, geography, eligibility, observation limits, and forecast uncertainty are visible.
+
+## Interface and portability
+
+- Reorganized navigation around Today, Path, Practice, and Library while retaining all earlier tools.
+- Added a dedicated foundation reading room, setup instructions by operating system, accessible section navigation, downloadable examples, independent-work rubrics, and local evidence notes.
+- Reworked the light visual system, typography, budget card, workflow sequence, responsive cards, code surfaces, controls, and print presentation.
+- Preserved edition-01 and edition-02 HTML and source archives byte for byte.
+
+## Planning and data integrity
+
+- Added deterministic foundation scheduling with prerequisite evidence, indivisible authored blocks, explicit backlog reasons, duplicate detection, and separate break allowances.
+- Added explicit active-study and elapsed-time modes. Foundation time and core-curriculum time now reduce shared daily capacity; zero capacity cannot create an endless planning loop.
+- Reopening foundation practice keeps logged time. Actual-time entries and independent assessments remain separate.
+- Added a new progress schema/storage key, legacy snapshots, validated import/export, and preservation of the original browser key.
+- Fixed keyboard skip navigation so it preserves the current reading route, and cleared stale assessment feedback when evidence is edited.
+
+## Verification
+
+See `VALIDATION.md` for exact test results, the validated artifact hash, source checks, and the remaining direct-file/cross-browser limits.
+
+---
+
 # Edition 02 — 29 October 2026
 
 ## Curriculum and learning

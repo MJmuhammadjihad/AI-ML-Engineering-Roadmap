@@ -14,9 +14,11 @@ ROOT = Path(__file__).resolve().parent
 def package():
     build()
     html = ROOT / 'dist' / 'first-principles-atlas.html'
-    versioned_html = html.with_name('first-principles-atlas-v2.html')
+    versioned_html = html.with_name('first-principles-atlas-v3.html')
     shutil.copyfile(html, versioned_html)
     data = json.loads((ROOT / 'src/data.json').read_text(encoding='utf-8'))
+    foundations = json.loads((ROOT / 'src/foundations.json').read_text(encoding='utf-8'))
+    market = json.loads((ROOT / 'research/v3-market-evidence.json').read_text(encoding='utf-8'))
     manifest = {
         'edition': data['meta']['edition'],
         'artifact': versioned_html.name,
@@ -29,15 +31,28 @@ def package():
             'diagnostics': sum(bool(m.get('assessment')) for m in data['modules']),
             'capstones': 4,
             'interactiveLabs': 5,
+            'guidedFoundationDays': len(foundations['lessons']),
+            'foundationWorkedExamples': len(foundations['lessons']),
+            'foundationDiagnostics': sum(len(lesson['diagnostics']) for lesson in foundations['lessons']),
+            'foundationWorkBlocks': sum(len(lesson['blocks']) for lesson in foundations['lessons']),
+            'moduleTransferChecks': 41,
+            'marketSources': len(market['sources']),
+            'sampledJobDescriptions': len(market['jobSample']),
         },
         'validationReport': 'VALIDATION.md',
         'note': 'Packaging does not run browser tests. Check the artifact hash and scope in the validation report.',
     }
     (ROOT / 'dist/manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+    (ROOT / 'dist/manifest-v3.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     files = [ROOT / name for name in ['README.md', 'VALIDATION.md', 'CHANGELOG.md', 'build.py', 'package.py', '.gitignore']]
-    files += [html, versioned_html, ROOT / 'dist/manifest.json', ROOT / 'tests/test_atlas.py']
+    files += [html, versioned_html, ROOT / 'dist/manifest.json', ROOT / 'dist/manifest-v3.json']
+    for edition in (1, 2):
+        files += [ROOT / 'dist' / f'first-principles-atlas-v{edition}.html',
+                  ROOT / 'dist' / f'first-principles-atlas-v{edition}-source.zip',
+                  ROOT / 'dist' / f'manifest-v{edition}.json']
+    files += sorted((ROOT / 'tests').glob('test*.*'))
     files += sorted((ROOT / 'src').glob('*')) + sorted((ROOT / 'research').glob('*'))
-    bundle = ROOT / 'dist/first-principles-atlas-v2-source.zip'
+    bundle = ROOT / 'dist/first-principles-atlas-v3-source.zip'
     with ZipFile(bundle, 'w', ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
             if path.is_file():

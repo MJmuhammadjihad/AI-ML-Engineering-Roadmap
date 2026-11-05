@@ -1,0 +1,2054 @@
+{
+  "schemaVersion": 3,
+  "contentRevision": "3.0-foundations.1",
+  "title": "The first six study days",
+  "introduction": "Begin with one small artifact and deepen it deliberately. These six study days introduce the computer, values, input, decisions, repetition, functions, and a tested command-line tool. Repeat or split a day when evidence calls for it; the sequence is not a deadline.",
+  "planningPolicy": "Each day offers 360 active minutes with 90 separately reserved break minutes. Actual time is logged independently from these editorial estimates.",
+  "evidencePolicy": "Completing a learning block records activity. Demonstrated skill requires independent criterion-level evidence. Self-reported evidence remains labeled; the HTML does not automatically verify Python programs.",
+  "lessons": [
+    {
+      "id": "foundations.day01",
+      "day": 1,
+      "title": "Make a saved file do useful arithmetic",
+      "outcome": "Save, run, test, and explain a Python study-budget calculator that distinguishes active study from elapsed time.",
+      "prerequisiteLessonIds": [],
+      "prerequisiteSkillIds": [],
+      "skillIds": [
+        "files.save-and-locate",
+        "python.run-saved-program",
+        "python.trace-assignment",
+        "python.integer-arithmetic"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day01.b01",
+          "minutes": 50,
+          "title": "Locate, save, run",
+          "actions": [
+            "Follow the setup guide for your operating system. Identify the editor, saved file, terminal, and interpreter.",
+            "Create learning-atlas/day-01. Save hello.py with print(\"My first program\").",
+            "Run the saved file, edit its message, save again, and rerun it.",
+            "Write the file location and exact repeatable run command. If setup remains blocked, keep working on that prerequisite rather than marking later work complete."
+          ],
+          "evidence": "hello.py and a written save-and-run procedure."
+        },
+        {
+          "id": "foundations.day01.b02",
+          "minutes": 50,
+          "title": "Predict names and numbers",
+          "actions": [
+            "Read the concept explanation and explain value, name, expression, assignment, and output.",
+            "Predict 30 + 45 and 360 - 75 before running them.",
+            "Trace two assignments to the same name using one row per statement.",
+            "Compare your predictions with actual output and explain each difference."
+          ],
+          "evidence": "Three predictions and a statement-by-statement trace table."
+        },
+        {
+          "id": "foundations.day01.b03",
+          "minutes": 55,
+          "title": "Build one expression at a time",
+          "actions": [
+            "Type a two-value sum and run it.",
+            "Add review minutes, breaks, and the daily target one step at a time.",
+            "Predict each new output before running the program.",
+            "Explain why breaks appear in elapsed_minutes but not active_minutes."
+          ],
+          "evidence": "study_budget.py with intermediate predictions."
+        },
+        {
+          "id": "foundations.day01.b04",
+          "minutes": 65,
+          "title": "Rebuild from a specification",
+          "actions": [
+            "Close the worked solution and start practice_budget.py.",
+            "Use a reference sheet containing only assignment, +, -, and print syntax.",
+            "Complete the independent task; keep inputs separate from formulas.",
+            "Reveal one hint at a time if needed and record any assistance."
+          ],
+          "evidence": "An independently written calculator and assistance record."
+        },
+        {
+          "id": "foundations.day01.b05",
+          "minutes": 60,
+          "title": "Find mistakes with test cases",
+          "actions": [
+            "Predict the three boundary-case outputs before changing inputs.",
+            "Run every case and record actual results.",
+            "Temporarily add breaks to active study; identify a test that exposes the error.",
+            "Repair the formula and rerun all cases. Distinguish syntax failure from a running program with the wrong formula."
+          ],
+          "evidence": "Input/expected/actual table and one documented repair."
+        },
+        {
+          "id": "foundations.day01.b06",
+          "minutes": 45,
+          "title": "Trace a new problem",
+          "actions": [
+            "Answer the diagnostics before running their code.",
+            "Complete the walking-session transfer task.",
+            "Trace the stale-value example statement by statement.",
+            "For an incorrect answer, do its repair exercise and then a fresh variation."
+          ],
+          "evidence": "Diagnostic reasoning and a transferred solution."
+        },
+        {
+          "id": "foundations.day01.b07",
+          "minutes": 35,
+          "title": "Preserve evidence and explain",
+          "actions": [
+            "Save the final file in its documented folder.",
+            "Explain inputs, calculations, outputs, break accounting, and one test in five sentences.",
+            "Assess each rubric item and label assisted versus independent work.",
+            "Record actual active minutes and the next unresolved task. Schedule a later trace exercise without treating immediate success as proven retention."
+          ],
+          "evidence": "Code, notes, tests, and criterion-level assessment."
+        }
+      ],
+      "conceptExplanation": "A program is a set of instructions that a computer executes. Today, the instructions calculate a study budget. Separate three objects: the source file you save, the Python interpreter that executes it, and the output you see. Editing a file does not necessarily save it. Saving does not run it. Running a different copy can produce old results. Establish a repeatable save-and-run procedure before writing a larger program.\n\nA value is a piece of data, such as the whole number 45. A name such as reading_minutes refers to a value. In reading_minutes = 45, the equals sign means assignment: evaluate the expression on the right and associate the name on the left with the result. It does not mean that Python continually solves an equation. An expression such as reading_minutes + coding_minutes calculates a value. Python executes these statements in order.\n\nOrder matters. If total_minutes = coding_minutes + 15 runs while coding_minutes is 30, total_minutes becomes 45. Changing coding_minutes to 60 afterward does not automatically change total_minutes. To obtain a new total, execute the calculation again. A trace table makes this visible by recording values after each statement.\n\nThe built-in print operation displays values. Text inside quotation marks is a literal label; an unquoted name tells Python to retrieve that name's value. Parentheses enclose what print should display. Commas separate values, and print normally puts a space between them. Labels should include units so that 120 means minutes rather than an unexplained number.\n\nCorrectness also depends on choosing the right quantity. Active study excludes breaks; elapsed time includes them. A program can run successfully while using the wrong formula. Predicting outputs and checking several cases exposes this kind of error. A negative remaining-minute value is meaningful here: the planned active work exceeds the target. It is not automatically a Python failure.",
+      "setupGuide": {
+        "goal": "Run one saved Python 3 file before progressing. This lesson assumes access to a desktop or laptop; the HTML itself needs only a browser.",
+        "terms": [
+          {
+            "term": "Editor",
+            "meaning": "An application that edits plain-text source files. A word processor can add formatting that breaks Python code."
+          },
+          {
+            "term": "Terminal",
+            "meaning": "An application where you type commands for the operating system. Terminal commands are different from Python statements saved in a .py file."
+          },
+          {
+            "term": "Interpreter",
+            "meaning": "The Python program that reads and executes your source file."
+          },
+          {
+            "term": "Working folder",
+            "meaning": "The folder a terminal command currently operates in. It must contain your file, or your run command must name its full path."
+          },
+          {
+            "term": "Extension",
+            "meaning": "The final part of a filename. hello.py is a Python source file; hello.py.txt is a different filename."
+          }
+        ],
+        "commonSteps": [
+          "Create learning-atlas and a day-01 subfolder using your file manager. Open day-01 in your plain-text code editor.",
+          "Create hello.py containing exactly print(\"My first program\") and save it. Use straight quotation marks, not typographic curly quotes.",
+          "Show filename extensions in your file manager or editor. Confirm the file is hello.py, not hello.py.txt.",
+          "Open a terminal: PowerShell on Windows, Terminal on macOS, or your Linux terminal application.",
+          "Use the commands for your platform below. Replace PASTE_YOUR_FOLDER_PATH_HERE with the actual full path of day-01; keep the quotation marks around the path.",
+          "After every edit, save before running again. If output is unchanged, check the filename, current folder, and saved indicator before changing your code."
+        ],
+        "platforms": [
+          {
+            "name": "Windows PowerShell",
+            "checkCommands": [
+              "py --version"
+            ],
+            "folderCommands": [
+              "cd \"PASTE_YOUR_FOLDER_PATH_HERE\"",
+              "Get-Location",
+              "Get-ChildItem"
+            ],
+            "runCommand": "py hello.py",
+            "explanation": "The check should print Python 3.x. Get-Location shows the working folder; Get-ChildItem lists its files. If py is unavailable but python --version identifies Python 3, use python hello.py instead. A missing command does not prove Python is installed.",
+            "installUrl": "https://docs.python.org/3/using/windows.html"
+          },
+          {
+            "name": "macOS Terminal",
+            "checkCommands": [
+              "python3 --version"
+            ],
+            "folderCommands": [
+              "cd \"PASTE_YOUR_FOLDER_PATH_HERE\"",
+              "pwd",
+              "ls"
+            ],
+            "runCommand": "python3 hello.py",
+            "explanation": "The check should print Python 3.x. pwd shows the working folder; ls lists its files. Use official installation guidance if Python 3 is missing; do not assume a system-provided interpreter exists.",
+            "installUrl": "https://docs.python.org/3/using/mac.html"
+          },
+          {
+            "name": "Linux terminal",
+            "checkCommands": [
+              "python3 --version"
+            ],
+            "folderCommands": [
+              "cd \"PASTE_YOUR_FOLDER_PATH_HERE\"",
+              "pwd",
+              "ls"
+            ],
+            "runCommand": "python3 hello.py",
+            "explanation": "The check should print Python 3.x. pwd shows the working folder; ls lists its files. If Python is missing, follow your distribution or Python documentation rather than copying commands for a different distribution.",
+            "installUrl": "https://docs.python.org/3/using/unix.html"
+          }
+        ],
+        "firstFileCode": "print(\"My first program\")\n",
+        "expectedOutput": "My first program\n",
+        "troubleshooting": [
+          {
+            "symptom": "Command not found or Python not recognized",
+            "action": "Confirm the command for your platform. Follow the linked official installation guidance, reopen the terminal, and repeat the version check."
+          },
+          {
+            "symptom": "Cannot open file or file not found",
+            "action": "List the current folder and check the exact filename and extension. Navigate to the folder containing hello.py."
+          },
+          {
+            "symptom": "You see a >>> prompt",
+            "action": "You are inside the interactive Python interpreter. Enter exit() to return to the terminal, then run the saved-file command there."
+          },
+          {
+            "symptom": "SyntaxError on the first line",
+            "action": "Check parentheses and straight quotes. Put Python source in the editor, not a terminal command such as python3 hello.py."
+          }
+        ],
+        "stopRule": "If setup uses the available block, record the exact error and carry setup forward. Later evidence remains incomplete; time spent installing is not proof that a programming skill passed.",
+        "referenceVerification": "not_live_checked",
+        "executionStatus": "hello_example_executed; OS-specific installation steps not tested"
+      },
+      "workedExample": {
+        "language": "python",
+        "fileName": "study_budget.py",
+        "code": "reading_minutes = 45\ncoding_minutes = 60\nreview_minutes = 15\nbreak_minutes = 30\ndaily_target_minutes = 360\n\nactive_minutes = reading_minutes + coding_minutes + review_minutes\nelapsed_minutes = active_minutes + break_minutes\nremaining_minutes = daily_target_minutes - active_minutes\n\nprint(\"Active study minutes:\", active_minutes)\nprint(\"Elapsed minutes:\", elapsed_minutes)\nprint(\"Minutes remaining:\", remaining_minutes)\n",
+        "stdin": "",
+        "expectedOutput": "Active study minutes: 120\nElapsed minutes: 150\nMinutes remaining: 240\n",
+        "assumptions": [
+          "Python 3 is available.",
+          "Inputs are whole, nonnegative minute values written directly in the file.",
+          "A negative remaining amount describes a plan above its target.",
+          "This program does not collect input or record actual study."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 5
+        }
+      },
+      "independentTask": {
+        "prompt": "Create practice_budget.py from a blank file. Use reading_minutes = 50, coding_minutes = 85, review_minutes = 25, break_minutes = 40, and daily_target_minutes = 360. Calculate active, elapsed, and remaining minutes from those names. Print all three with units. A different case must require changing only inputs, not formulas or hard-coded answers.",
+        "expectedOutputValues": {
+          "activeMinutes": 160,
+          "elapsedMinutes": 200,
+          "remainingMinutes": 200
+        },
+        "hints": [
+          "List which activities count as active study.",
+          "Calculate active_minutes first; the other two results can use it.",
+          "Subtract active_minutes from daily_target_minutes for the signed remaining amount."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day01.r01",
+            "requirement": "The saved file runs using the documented procedure.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day01.r02",
+            "requirement": "All three results are calculated from inputs and equal 160, 200, and 200.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day01.r03",
+            "requirement": "Breaks affect elapsed time but not active time.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day01.r04",
+            "requirement": "The three test cases have expected and actual results, with discrepancies investigated.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day01.r05",
+            "requirement": "The learner explains assignment order and identifies assistance used.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "input": {
+              "reading": 0,
+              "coding": 0,
+              "review": 0,
+              "breaks": 0
+            },
+            "expected": {
+              "active": 0,
+              "elapsed": 0,
+              "remaining": 360
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "reading": 150,
+              "coding": 120,
+              "review": 90,
+              "breaks": 60
+            },
+            "expected": {
+              "active": 360,
+              "elapsed": 420,
+              "remaining": 0
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "reading": 200,
+              "coding": 120,
+              "review": 60,
+              "breaks": 60
+            },
+            "expected": {
+              "active": 380,
+              "elapsed": 440,
+              "remaining": -20
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day01.q01",
+          "prompt": "Predict the output, treating semicolons as line breaks: coding_minutes = 30; total_minutes = coding_minutes + 15; coding_minutes = 60; print(total_minutes).",
+          "answer": "45",
+          "reason": "The total was calculated before coding_minutes changed. Assignment stores a calculated value rather than a continuously updating relationship.",
+          "misconception": "Assignment automatically updates like a spreadsheet formula.",
+          "repairExercise": "Trace every statement in a table. Move the total calculation below coding_minutes = 60, predict the new result, and run it."
+        },
+        {
+          "id": "foundations.day01.q02",
+          "prompt": "A plan has 90 reading, 120 coding, 30 review, and 45 break minutes. What are active and elapsed minutes?",
+          "answer": "240 active minutes; 285 elapsed minutes.",
+          "reason": "Only elapsed time adds the break to the three learning activities.",
+          "misconception": "All time around the lesson counts as active study.",
+          "repairExercise": "Draw separate active and elapsed calculations. Repeat with zero break minutes and explain which quantity changes."
+        },
+        {
+          "id": "foundations.day01.q03",
+          "prompt": "After active_minutes = 120, what differs between print(\"active_minutes\") and print(active_minutes)?",
+          "answer": "The first displays the text active_minutes; the second displays 120.",
+          "reason": "Quotation marks produce literal text. An unquoted name is looked up.",
+          "misconception": "Python substitutes variables inside any quoted text.",
+          "repairExercise": "Print a quoted label and an unquoted numeric name on separate lines. Identify literal text and value lookup."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "A walking session has 20 warm-up minutes, 35 walking minutes, 10 cool-down minutes, and 15 rest minutes. Write a new active/elapsed calculation and predict both results.",
+        "expected": "65 active minutes; 80 elapsed minutes.",
+        "passCondition": "Correct formulas and predictions, plus an explanation of whether rest belongs in each quantity."
+      },
+      "misconceptionRepair": {
+        "trigger": "Plausible output includes breaks in active study.",
+        "exercise": "Keep learning inputs fixed and compare zero versus 60 break minutes. Active time must stay unchanged; elapsed time must increase by 60.",
+        "recheck": "Repeat with a new break value and explain the relationship without looking at the formula."
+      },
+      "endArtifacts": [
+        "hello.py",
+        "study_budget.py or practice_budget.py",
+        "day-01-notes.txt: run procedure, trace table, tests, assistance record"
+      ],
+      "optionalResource": {
+        "title": "Python Tutorial: Using Python as a Calculator",
+        "url": "https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator",
+        "scope": "Read the integer arithmetic examples. Later material is optional, not a prerequisite today.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    },
+    {
+      "id": "foundations.day02",
+      "day": 2,
+      "title": "Turn typed text into measured quantities",
+      "outcome": "Build an interactive minute-budget calculator and express totals as whole hours plus remaining minutes.",
+      "prerequisiteLessonIds": [
+        "foundations.day01"
+      ],
+      "prerequisiteSkillIds": [
+        "files.save-and-locate",
+        "python.run-saved-program",
+        "python.trace-assignment",
+        "python.integer-arithmetic"
+      ],
+      "skillIds": [
+        "python.distinguish-text-and-integers",
+        "python.convert-valid-integer-input",
+        "python.quotient-and-remainder",
+        "testing.predict-interactive-results"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day02.b01",
+          "minutes": 50,
+          "title": "Recover yesterday’s calculation",
+          "actions": [
+            "Recreate active, elapsed, and remaining formulas from memory.",
+            "Run one normal and one above-target case.",
+            "Explain why a later assignment does not update an earlier total.",
+            "Compare the integer 45 with the text \"45\" before adding interactive input."
+          ],
+          "evidence": "A reconstructed program and a text-versus-number prediction."
+        },
+        {
+          "id": "foundations.day02.b02",
+          "minutes": 50,
+          "title": "Collect and convert one value",
+          "actions": [
+            "Read the concept explanation and syntax reference.",
+            "Print a question, collect one answer with input(), and display it.",
+            "Convert valid whole-number text with int(), then add 15.",
+            "Compare \"45\" + \"15\" with 45 + 15. State that malformed numeric text is not handled yet."
+          ],
+          "evidence": "A tiny input program and a value/type table."
+        },
+        {
+          "id": "foundations.day02.b03",
+          "minutes": 60,
+          "title": "Decompose minutes into hours",
+          "actions": [
+            "Group 125 minutes into complete groups of 60 on paper.",
+            "Calculate quotient and remainder, then reconstruct the original total using multiplication.",
+            "Repeat for 0, 59, 60, 61, and 360.",
+            "Explain why decimal hours and whole hours plus leftover minutes answer different representation questions."
+          ],
+          "evidence": "A conversion table with reconstruction checks."
+        },
+        {
+          "id": "foundations.day02.b04",
+          "minutes": 65,
+          "title": "Build the interactive example",
+          "actions": [
+            "Type and run the example with its four supplied inputs.",
+            "Keep input text and converted integers in separate names.",
+            "Predict the summary before entering the final value.",
+            "Run a second case by changing only the entered values, not source code."
+          ],
+          "evidence": "Two predicted and observed interactive runs."
+        },
+        {
+          "id": "foundations.day02.b05",
+          "minutes": 55,
+          "title": "Write an independent converter",
+          "actions": [
+            "Create the two-session converter from the specification.",
+            "Convert both active and elapsed totals with // and %.",
+            "Test boundaries around 60 minutes.",
+            "Write the accepted-input rule and current malformed-input limitation."
+          ],
+          "evidence": "session_converter.py and a boundary table."
+        },
+        {
+          "id": "foundations.day02.b06",
+          "minutes": 45,
+          "title": "Diagnose conversion mistakes",
+          "actions": [
+            "Answer diagnostics before running the examples.",
+            "Do the repair exercise for each incorrect answer.",
+            "Observe int(\"12.5\") failing in a separate scratch file and identify the line.",
+            "Complete the travel-time transfer with valid inputs; do not add exception handling yet."
+          ],
+          "evidence": "Diagnostic explanations, a recognized conversion error, and transfer results."
+        },
+        {
+          "id": "foundations.day02.b07",
+          "minutes": 35,
+          "title": "Explain the interface",
+          "actions": [
+            "Write input instructions and output meanings.",
+            "Save the program and tests.",
+            "Assess each rubric item and record assistance.",
+            "Record actual time and carry unfinished work forward. Queue a later quotient/remainder check."
+          ],
+          "evidence": "Code, input contract, test table, and assessment."
+        }
+      ],
+      "conceptExplanation": "Yesterday, input values lived inside the source file. Today, a person supplies them while the program runs. Python's input operation waits for a line of text. Even when someone types 45, input() returns text representing those characters. It does not decide whether the person intended minutes, an identifier, or a mathematical quantity. That interpretation belongs to the program.\n\nA type describes what kind of value you have and which operations make sense for it. The integer 45 is a whole-number value; the string \"45\" is text. Adding integers performs arithmetic: 45 + 15 produces 60. Adding strings joins their contents: \"45\" + \"15\" produces \"4515\". Adding a string to an integer raises an error. Track the type as well as the visible characters.\n\nThe built-in operation int() interprets valid whole-number text as an integer. Keep collection and conversion on separate lines initially: reading_text = input() collects text, and reading_minutes = int(reading_text) converts it. The parentheses pass a value into the operation; empty parentheses on input() request input without supplying a prompt argument. Text such as \"12.5\" is not a valid integer representation and raises ValueError. Today's program assumes valid, nonnegative whole-number input. Recognizing that limitation is part of correctness; malformed-text handling comes later.\n\nConsider 125 minutes. Two complete 60-minute hours account for 120 minutes, leaving 5. For nonnegative integers, // 60 gives the number of complete hours and % 60 gives the remainder. The star symbol * means multiplication: hours * 60 + remainder reconstructs the original minutes. The remainder must be between 0 and 59.\n\nThese operations express the same quantity in different units. They neither round the duration nor discard leftover minutes. Ordinary / division gives a possibly fractional number, which is a different representation. Predictable boundary examples such as 59, 60, and 61 expose mistakes that a comfortable example like 120 might hide.",
+      "syntaxReference": [
+        {
+          "syntax": "input()",
+          "meaning": "Wait for a line and return it as text; print a prompt beforehand in this lesson."
+        },
+        {
+          "syntax": "int(text)",
+          "meaning": "Interpret valid integer text as a whole-number value; malformed text can raise ValueError."
+        },
+        {
+          "syntax": "a * b",
+          "meaning": "Multiply two numbers."
+        },
+        {
+          "syntax": "minutes // 60",
+          "meaning": "For nonnegative integer minutes, count complete hours."
+        },
+        {
+          "syntax": "minutes % 60",
+          "meaning": "For nonnegative integer minutes, find leftover minutes after complete hours."
+        }
+      ],
+      "workedExample": {
+        "language": "python",
+        "fileName": "interactive_budget.py",
+        "code": "print(\"Reading minutes?\")\nreading_text = input()\nreading_minutes = int(reading_text)\nprint(\"Coding minutes?\")\ncoding_text = input()\ncoding_minutes = int(coding_text)\nprint(\"Review minutes?\")\nreview_text = input()\nreview_minutes = int(review_text)\nprint(\"Break minutes?\")\nbreak_text = input()\nbreak_minutes = int(break_text)\n\nactive_minutes = reading_minutes + coding_minutes + review_minutes\nelapsed_minutes = active_minutes + break_minutes\nactive_hours = active_minutes // 60\nactive_remainder = active_minutes % 60\nelapsed_hours = elapsed_minutes // 60\nelapsed_remainder = elapsed_minutes % 60\n\nprint(\"Active study:\", active_hours, \"h\", active_remainder, \"min\")\nprint(\"Elapsed time:\", elapsed_hours, \"h\", elapsed_remainder, \"min\")\nprint(\"Active minutes remaining:\", 360 - active_minutes)\n",
+        "stdin": "45\n60\n15\n30\n",
+        "expectedOutput": "Reading minutes?\nCoding minutes?\nReview minutes?\nBreak minutes?\nActive study: 2 h 0 min\nElapsed time: 2 h 30 min\nActive minutes remaining: 240\n",
+        "assumptions": [
+          "Four valid whole, nonnegative values are entered in order.",
+          "Malformed text may raise ValueError; negative values are outside the declared input domain.",
+          "No conditionals, loops, custom functions, or exception handling are required."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 4
+        }
+      },
+      "independentTask": {
+        "prompt": "Create session_converter.py. Ask for two work-session durations and one break duration using printed questions and input(). Convert each answer to an integer. Print active and elapsed totals as whole hours plus remaining minutes; also print active_minutes as a whole-number total. Accept only valid whole, nonnegative input for now.",
+        "hints": [
+          "Distinguish input text from the integer produced by int().",
+          "Active time sums the two work sessions; elapsed adds the break.",
+          "Apply // 60 and % 60 to each total separately."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day02.r01",
+            "requirement": "Entered values are converted to integers before arithmetic.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day02.r02",
+            "requirement": "Active and elapsed totals use the correct inputs.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day02.r03",
+            "requirement": "Hour/remainder pairs reconstruct the original minute totals.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day02.r04",
+            "requirement": "Tests cover 59, 60, and 61 active minutes.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day02.r05",
+            "requirement": "Instructions state accepted input and current failure behavior.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "input": {
+              "first": 29,
+              "second": 30,
+              "breaks": 0
+            },
+            "expected": {
+              "activeMinutes": 59,
+              "activeHours": 0,
+              "activeRemainder": 59,
+              "elapsedHours": 0,
+              "elapsedRemainder": 59
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "first": 30,
+              "second": 30,
+              "breaks": 15
+            },
+            "expected": {
+              "activeMinutes": 60,
+              "activeHours": 1,
+              "activeRemainder": 0,
+              "elapsedHours": 1,
+              "elapsedRemainder": 15
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "first": 30,
+              "second": 31,
+              "breaks": 59
+            },
+            "expected": {
+              "activeMinutes": 61,
+              "activeHours": 1,
+              "activeRemainder": 1,
+              "elapsedHours": 2,
+              "elapsedRemainder": 0
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day02.q01",
+          "prompt": "After the user types 45 into minutes_text = input(), is minutes_text the integer 45 or the text \"45\"? What must happen before adding 15 numerically?",
+          "answer": "It is text. Convert it with minutes = int(minutes_text), then calculate minutes + 15.",
+          "reason": "input() returns text; int() interprets valid integer text.",
+          "misconception": "Typing digits automatically makes input() return a number.",
+          "repairExercise": "Compare minutes_text + \"15\" with int(minutes_text) + 15 after entering 45. Explain both outputs."
+        },
+        {
+          "id": "foundations.day02.q02",
+          "prompt": "What are 125 // 60 and 125 % 60? Reconstruct the original total.",
+          "answer": "2 and 5; 2 * 60 + 5 = 125.",
+          "reason": "The quotient counts complete groups; the remainder counts what is left.",
+          "misconception": "The remainder is a decimal fraction or a rounded quotient.",
+          "repairExercise": "Group 59, 60, and 61 marks into batches of 60. Record quotient, remainder, and reconstruction."
+        },
+        {
+          "id": "foundations.day02.q03",
+          "prompt": "Does int(\"12.5\") round to 12 or 13?",
+          "answer": "Neither. It raises ValueError.",
+          "reason": "This string is not a valid integer representation. Conversion and rounding are different operations.",
+          "misconception": "Every numeric-looking string is accepted and rounded by int().",
+          "repairExercise": "Try int(\"12\") and int(\"12.5\") in separate runs. Identify the failing line and state today’s input rule."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "A trip has 95 moving minutes and 40 waiting minutes. Express moving time and elapsed time as hours plus remaining minutes.",
+        "expected": "Moving: 1 h 35 min. Elapsed: 2 h 15 min.",
+        "passCondition": "Each pair reconstructs its minute total; waiting belongs only in elapsed time."
+      },
+      "misconceptionRepair": {
+        "trigger": "Digits concatenate or the output discards leftover minutes.",
+        "exercise": "Trace every name with value and type. Check 61 minutes: the required representation is 1 h 1 min.",
+        "recheck": "Convert 119 minutes and explain 1 h 59 min without discarding the remainder."
+      },
+      "endArtifacts": [
+        "interactive_budget.py",
+        "session_converter.py",
+        "day-02-notes.txt: type predictions, conversion table, input contract, tests"
+      ],
+      "optionalResource": {
+        "title": "Python built-in operations: input and int",
+        "url": "https://docs.python.org/3/library/functions.html",
+        "scope": "Use the input() and int() entries as references. They are more detailed than this introductory lesson.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    },
+    {
+      "id": "foundations.day03",
+      "day": 3,
+      "title": "Make decisions and reject impossible ranges",
+      "outcome": "Validate integer time ranges, enforce a chosen 24-hour planning window, and print one correct target classification.",
+      "prerequisiteLessonIds": [
+        "foundations.day02"
+      ],
+      "prerequisiteSkillIds": [
+        "python.trace-assignment",
+        "python.integer-arithmetic",
+        "python.convert-valid-integer-input",
+        "python.quotient-and-remainder"
+      ],
+      "skillIds": [
+        "python.comparison-results",
+        "python.if-elif-else",
+        "python.validate-integer-ranges",
+        "testing.boundary-branches"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day03.b01",
+          "minutes": 45,
+          "title": "Recover input and conversion",
+          "actions": [
+            "Recreate a one-input minute converter.",
+            "Explain the difference between \"60\" and 60.",
+            "Compare 359, 360, and 361 with the study target.",
+            "Write which integer inputs this program should accept."
+          ],
+          "evidence": "A converter and an explicit acceptance rule."
+        },
+        {
+          "id": "foundations.day03.b02",
+          "minutes": 55,
+          "title": "Translate decisions into branches",
+          "actions": [
+            "Read the concept explanation and operator table.",
+            "Predict comparison results using <, ==, >, <=, and >=.",
+            "Write a below/equal/above if/elif/else chain.",
+            "Use a colon and four-space indentation; predict which branch runs."
+          ],
+          "evidence": "Comparison predictions and three target messages."
+        },
+        {
+          "id": "foundations.day03.b03",
+          "minutes": 55,
+          "title": "Validate before summarizing",
+          "actions": [
+            "Type the worked example and trace its normal case.",
+            "Test a negative study value, negative break value, and combined total above 1440.",
+            "Explain why rejected input must not produce a success summary.",
+            "Trace the nested target decision only after the valid branch is reached."
+          ],
+          "evidence": "Validation traces for accepted and rejected cases."
+        },
+        {
+          "id": "foundations.day03.b04",
+          "minutes": 70,
+          "title": "Write the independent checker",
+          "actions": [
+            "Write decision rules before code.",
+            "Reject invalid fields and invalid combined totals.",
+            "Put time conversion and target classification inside the valid branch.",
+            "Record hints; do not add loops or exception handling yet."
+          ],
+          "evidence": "An independently written daily_plan_checker.py."
+        },
+        {
+          "id": "foundations.day03.b05",
+          "minutes": 55,
+          "title": "Test meaningful boundaries",
+          "actions": [
+            "Predict and run every supplied case.",
+            "Check -1, 0, 1440, and 1441 at input boundaries.",
+            "Check 359, 360, and 361 around the target.",
+            "Temporarily change one comparison; identify a failing test, restore the condition, and rerun."
+          ],
+          "evidence": "Branch-coverage table and one repaired comparison."
+        },
+        {
+          "id": "foundations.day03.b06",
+          "minutes": 45,
+          "title": "Explain exclusivity and transfer",
+          "actions": [
+            "Answer diagnostics and do targeted repairs.",
+            "Contrast two independent if statements with one if/elif chain.",
+            "Complete the inventory transfer.",
+            "Explain why malformed text can still fail before range validation."
+          ],
+          "evidence": "Diagnostic reasoning and transferred validation rules."
+        },
+        {
+          "id": "foundations.day03.b07",
+          "minutes": 35,
+          "title": "Package the checked program",
+          "actions": [
+            "Write accepted ranges, example inputs, and current limitations.",
+            "Save code and expected/actual tests.",
+            "Assess each critical criterion with assistance recorded.",
+            "Record actual time and write the next question: how should malformed text be handled?"
+          ],
+          "evidence": "Code, usage notes, tests, and assessment."
+        }
+      ],
+      "conceptExplanation": "A useful program often needs to choose an action. A comparison asks a question about values and produces True or False. For example, 359 < 360 is True, while 360 < 360 is False. The double equals sign, ==, checks equality. The single equals sign, =, assigns a value. Read them as different verbs: compare and assign. The operators <= and >= include equality; < and > do not.\n\nAn if statement executes its indented block when its condition is true. An elif supplies another condition to try if earlier conditions were false. An else supplies the remaining case. In one if/elif/else chain, Python selects the first matching branch and skips the rest. Each branch header ends with a colon. Indent its body with four spaces consistently. Indentation communicates structure, not decoration.\n\nRange validation checks whether an already-converted integer makes sense for the task. A negative minute count is outside today's accepted domain. This calculator defines a 24-hour planning window, containing 24 * 60 = 1440 minutes. Its upper bound is a chosen model for this exercise, not a recommended routine or a claim about every civil calendar day. Check both individual fields and their sum: two individually acceptable values can still exceed the planning window together.\n\nValidation must happen before presenting a successful summary. Otherwise a program might announce an error and then print a misleading valid-looking result. Put the summary inside the valid branch. A second decision there classifies study as below, exactly at, or above the 360-minute target. This is nesting: a decision inside another decision's block.\n\nBe precise about the limitation. Conversion with int() happens before these range checks. Text such as \"three\" or \"12.5\" can raise ValueError before the branches run. Another technique handles malformed text later. State the valid-integer-input assumption and test the boundaries of the logic you actually implemented.",
+      "syntaxReference": [
+        {
+          "syntax": "a < b / a > b",
+          "meaning": "Less than / greater than; equality does not pass."
+        },
+        {
+          "syntax": "a <= b / a >= b",
+          "meaning": "Less than or equal / greater than or equal; equality passes."
+        },
+        {
+          "syntax": "a == b",
+          "meaning": "Compare equality; a single = is assignment."
+        },
+        {
+          "syntax": "if condition:\n    action",
+          "meaning": "A colon starts the branch body, shown with four spaces of indentation."
+        },
+        {
+          "syntax": "elif condition: / else:",
+          "meaning": "Continue the same mutually exclusive branch chain at the original indentation level."
+        }
+      ],
+      "workedExample": {
+        "language": "python",
+        "fileName": "daily_plan_checker.py",
+        "code": "print(\"Active study minutes?\")\nactive_text = input()\nactive_minutes = int(active_text)\nprint(\"Break minutes?\")\nbreak_text = input()\nbreak_minutes = int(break_text)\n\nif active_minutes < 0:\n    print(\"Invalid: active minutes cannot be negative.\")\nelif active_minutes > 1440:\n    print(\"Invalid: active minutes exceed the planning window.\")\nelif break_minutes < 0:\n    print(\"Invalid: break minutes cannot be negative.\")\nelif break_minutes > 1440:\n    print(\"Invalid: break minutes exceed the planning window.\")\nelif active_minutes + break_minutes > 1440:\n    print(\"Invalid: combined time exceeds the planning window.\")\nelse:\n    elapsed_minutes = active_minutes + break_minutes\n    print(\"Elapsed time:\", elapsed_minutes // 60, \"h\", elapsed_minutes % 60, \"min\")\n    if active_minutes < 360:\n        print(\"Below target by\", 360 - active_minutes, \"active minutes.\")\n    elif active_minutes == 360:\n        print(\"Exactly at the 360-minute active-study target.\")\n    else:\n        print(\"Above target by\", active_minutes - 360, \"active minutes.\")\n",
+        "stdin": "360\n90\n",
+        "expectedOutput": "Active study minutes?\nBreak minutes?\nElapsed time: 7 h 30 min\nExactly at the 360-minute active-study target.\n",
+        "assumptions": [
+          "Both input lines represent whole integers; malformed text is not handled yet.",
+          "Each field must be in 0..1440 inclusive and their sum must not exceed the chosen 1440-minute window.",
+          "Only the first matching error is reported.",
+          "A valid arithmetic bound is not a recommended study routine.",
+          "Classifying an entered plan does not certify that study occurred."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 11
+        }
+      },
+      "independentTask": {
+        "prompt": "From a blank file, accept integer active-study and break minutes. Reject negative fields, fields above 1440, and a combined total above 1440. For a valid plan only, print elapsed time as hours plus remaining minutes and exactly one below/on/above-target message relative to 360 active minutes. State that non-integer text remains unsupported. Write decision rules before code.",
+        "hints": [
+          "Put invalid cases in an if/elif chain and the successful summary in its final else.",
+          "The combined total needs a check even when each field is individually valid.",
+          "Use a second if/elif/else chain inside the valid branch for target classification."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day03.r01",
+            "requirement": "Negative and above-1440 values are rejected for either field.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day03.r02",
+            "requirement": "Individually valid fields with a combined total above 1440 are rejected.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day03.r03",
+            "requirement": "Rejected input produces no successful time or target summary.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day03.r04",
+            "requirement": "Valid input produces exactly one correct target classification and time conversion.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day03.r05",
+            "requirement": "Boundary tests and malformed-text limitations are documented.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "input": {
+              "active": -1,
+              "breaks": 0
+            },
+            "expected": "Reject active range; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 0,
+              "breaks": -1
+            },
+            "expected": "Reject break range; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 1441,
+              "breaks": 0
+            },
+            "expected": "Reject active range; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 0,
+              "breaks": 1441
+            },
+            "expected": "Reject break range; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 1000,
+              "breaks": 500
+            },
+            "expected": "Reject combined total; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 0,
+              "breaks": 0
+            },
+            "expected": "0 h 0 min; below target by 360.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 359,
+              "breaks": 1
+            },
+            "expected": "6 h 0 min; below target by 1.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 360,
+              "breaks": 90
+            },
+            "expected": "7 h 30 min; exactly at target.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 361,
+              "breaks": 59
+            },
+            "expected": "7 h 0 min; above target by 1.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "active": 1440,
+              "breaks": 0
+            },
+            "expected": "24 h 0 min; above target by 1080. Accepted model boundary, not a recommended routine.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day03.q01",
+          "prompt": "Which checks whether minutes equals 360: minutes = 360 or minutes == 360?",
+          "answer": "minutes == 360 compares equality. minutes = 360 assigns the value.",
+          "reason": "Assignment changes the binding; comparison produces True or False.",
+          "misconception": "A single equals sign always expresses equality.",
+          "repairExercise": "Assign a value, then print minutes == 360 and minutes < 360. Change the assignment and predict both comparisons."
+        },
+        {
+          "id": "foundations.day03.q02",
+          "prompt": "Active minutes are 1000 and breaks are 500. Both fields lie within 0..1440. Should the plan pass?",
+          "answer": "No. Their combined 1500 minutes exceeds the chosen planning window.",
+          "reason": "Valid individual fields do not guarantee a valid relationship between fields.",
+          "misconception": "Checking every input separately validates the entire plan.",
+          "repairExercise": "Construct another individually valid pair with a sum above 1440, then a pair summing exactly to 1440. Explain the needed comparison."
+        },
+        {
+          "id": "foundations.day03.q03",
+          "prompt": "With minutes = 360, two separate if statements print messages when minutes >= 360 and when minutes == 360. How many messages print? How do you require exactly one classification?",
+          "answer": "Both messages print. Use one below/equal/above if/elif/else chain for an exclusive classification.",
+          "reason": "Independent if statements are evaluated independently; a chain selects its first matching branch.",
+          "misconception": "Adjacent if statements automatically form one exclusive decision.",
+          "repairExercise": "Trace both independent conditions for 359, 360, and 361. Rewrite as a single chain and verify one message per case."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "A store has 25 items. Accept an integer requested quantity. Reject values below 0 or above 25; for valid input print remaining stock. Use no loops or custom functions.",
+        "expected": "Request -1: reject. 0: 25 remain. 25: 0 remain. 26: reject.",
+        "passCondition": "Correct boundaries; no successful result for rejected input; valid-integer assumption stated."
+      },
+      "misconceptionRepair": {
+        "trigger": "An error is followed by a successful summary, or multiple target classifications print.",
+        "exercise": "Draw mutually exclusive paths. Put the summary inside the valid path and use one classification chain there.",
+        "recheck": "Run negative input, exact target, and above target; explain why each prints only its intended messages."
+      },
+      "endArtifacts": [
+        "daily_plan_checker.py",
+        "inventory_check.py",
+        "day-03-notes.txt: decision rules, boundary tests, usage instructions, limitations"
+      ],
+      "optionalResource": {
+        "title": "Python Tutorial: if Statements",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#if-statements",
+        "scope": "Read the if/elif/else example. Later loops and functions are not prerequisites today.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    },
+    {
+      "id": "foundations.day04",
+      "day": 4,
+      "title": "Repeat useful work without copying it",
+      "outcome": "Collect repeated study blocks, maintain a running total, and explain every iteration with a trace table.",
+      "prerequisiteLessonIds": [
+        "foundations.day03"
+      ],
+      "prerequisiteSkillIds": [
+        "python.convert-valid-integer-input",
+        "python.trace-assignment",
+        "python.if-elif-else",
+        "python.integer-arithmetic"
+      ],
+      "skillIds": [
+        "python.for-range",
+        "python.accumulate-running-total",
+        "python.trace-loop"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day04.b01",
+          "minutes": 40,
+          "title": "Recover decisions and units",
+          "actions": [
+            "Recreate a below/equal/above-target branch from memory.",
+            "Explain one invalid combined-time case.",
+            "Calculate three block durations by hand.",
+            "Identify the repeated instruction when the number of study blocks changes."
+          ],
+          "evidence": "A branch check and a written repetition pattern."
+        },
+        {
+          "id": "foundations.day04.b02",
+          "minutes": 55,
+          "title": "Trace a counted loop",
+          "actions": [
+            "Read the concept explanation and syntax reference.",
+            "Predict the values produced by range(1, 4).",
+            "Print each block number using a for loop.",
+            "Draw one trace-table row per iteration; keep the loop body and following statements separate."
+          ],
+          "evidence": "Counter output and a three-row loop trace."
+        },
+        {
+          "id": "foundations.day04.b03",
+          "minutes": 60,
+          "title": "Build a running total",
+          "actions": [
+            "Start active_minutes at zero before the loop.",
+            "Add one entered duration to the previous total per iteration.",
+            "Predict running totals before each input.",
+            "Move initialization inside the loop temporarily, observe the defect, then restore it."
+          ],
+          "evidence": "A correctly accumulated total and a diagnosed reset bug."
+        },
+        {
+          "id": "foundations.day04.b04",
+          "minutes": 75,
+          "title": "Build the four-block calculator",
+          "actions": [
+            "Close the worked example and follow the independent specification.",
+            "Use one loop rather than four copies of the input code.",
+            "Read the break amount after the loop and keep it out of active time.",
+            "Record any hints and explain where each variable changes."
+          ],
+          "evidence": "An independent four-block program and assistance record."
+        },
+        {
+          "id": "foundations.day04.b05",
+          "minutes": 55,
+          "title": "Test zero and uneven inputs",
+          "actions": [
+            "Predict and run the supplied cases.",
+            "Use all-zero blocks to check initialization.",
+            "Use unequal durations to expose accidental counting rather than summing.",
+            "Trace the first and last iteration and verify the final summary executes once."
+          ],
+          "evidence": "Expected/actual test table and two traces."
+        },
+        {
+          "id": "foundations.day04.b06",
+          "minutes": 40,
+          "title": "Transfer the loop",
+          "actions": [
+            "Answer all diagnostics before running snippets.",
+            "Use repairs for reset and endpoint mistakes.",
+            "Complete the three-book cost transfer using whole currency units.",
+            "Explain why a counter and an accumulator represent different quantities."
+          ],
+          "evidence": "Diagnostic reasoning and a transferred total."
+        },
+        {
+          "id": "foundations.day04.b07",
+          "minutes": 35,
+          "title": "Explain the loop invariant",
+          "actions": [
+            "State what active_minutes means before and after an iteration.",
+            "Save source, test cases, and trace table.",
+            "Assess independent rubric evidence.",
+            "Record actual study time and carry remaining work forward."
+          ],
+          "evidence": "Code plus a plain-language explanation of the running total."
+        }
+      ],
+      "conceptExplanation": "Copying an input statement several times works for a small fixed example, but repeated copies are easy to change inconsistently. A loop describes a repeated action once. In for block_number in range(1, 4):, Python supplies the values 1, 2, and 3 in order. The upper endpoint is excluded. Each time, it assigns the next value to block_number and executes the indented body. One complete pass through that body is an iteration.\n\nThe word in connects the loop name with the sequence of values to visit. You do not need to create a list for this lesson: range supplies a counted sequence. A colon starts the body, and four-space indentation identifies the statements that repeat. A statement back at the original indentation runs after the loop finishes. The counter tells you which block is being entered; it is not the total number of study minutes.\n\nA running total is an accumulator. Initialize active_minutes = 0 before the loop. During each iteration, active_minutes = active_minutes + block_minutes first reads the previous total, adds the new duration, then stores the result. This is not an impossible algebraic equation. It is an ordered update. For inputs 90, 120, and 150, the totals are 90, 210, and 360.\n\nPlacement matters. Initializing the total inside the body resets it on every iteration and loses earlier work. Adding the final input only after the loop keeps only that last duration. A trace table catches both mistakes by showing block number, new duration, total before addition, and total afterward.\n\nAfter each successful iteration, the accumulator equals the sum of durations entered so far. This statement is a loop invariant: a property you can check as the loop progresses. Today's example assumes valid nonnegative integer input so that attention stays on repetition. State that contract explicitly; a loop does not automatically validate input or handle conversion errors.",
+      "syntaxReference": [
+        {
+          "syntax": "for block_number in range(1, 4):",
+          "meaning": "Repeat the indented body for block numbers 1, 2, and 3. The stop value 4 is excluded."
+        },
+        {
+          "syntax": "active_minutes = active_minutes + block_minutes",
+          "meaning": "Read the old total, add the new duration, and store the updated total."
+        },
+        {
+          "syntax": "A statement after the loop, without its indentation",
+          "meaning": "Run once after all iterations have finished."
+        }
+      ],
+      "workedExample": {
+        "language": "python",
+        "fileName": "block_totals.py",
+        "code": "active_minutes = 0\n\nfor block_number in range(1, 4):\n    print(\"Block\", block_number, \"minutes?\")\n    block_text = input()\n    block_minutes = int(block_text)\n    active_minutes = active_minutes + block_minutes\n    print(\"Running active minutes:\", active_minutes)\n\nprint(\"Break minutes?\")\nbreak_text = input()\nbreak_minutes = int(break_text)\nelapsed_minutes = active_minutes + break_minutes\n\nprint(\"Active study minutes:\", active_minutes)\nprint(\"Elapsed minutes:\", elapsed_minutes)\nprint(\"Active minutes remaining:\", 360 - active_minutes)\n",
+        "stdin": "90\n120\n150\n90\n",
+        "expectedOutput": "Block 1 minutes?\nRunning active minutes: 90\nBlock 2 minutes?\nRunning active minutes: 210\nBlock 3 minutes?\nRunning active minutes: 360\nBreak minutes?\nActive study minutes: 360\nElapsed minutes: 450\nActive minutes remaining: 0\n",
+        "assumptions": [
+          "Exactly three whole, nonnegative study durations and one break duration are supplied.",
+          "The example isolates loop behavior; malformed text and invalid ranges are not handled here.",
+          "remaining minutes is signed and may be negative.",
+          "No lists, custom functions, or comprehensions are required."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 4
+        }
+      },
+      "independentTask": {
+        "prompt": "Create four_block_budget.py. Read exactly four valid whole, nonnegative study durations using one for/range loop. Print a running active total after each input. Read one break duration after the loop. Print final active minutes, elapsed minutes, and signed minutes remaining against 360. Use no copied groups of four input statements and do not count the break as study.",
+        "hints": [
+          "Choose a range whose values are 1, 2, 3, and 4.",
+          "Initialize the running total before the loop.",
+          "The old total must appear on the right of the update; the break belongs after the study loop."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day04.r01",
+            "requirement": "One loop collects exactly four study values.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day04.r02",
+            "requirement": "The accumulator starts once and includes each entered duration exactly once.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day04.r03",
+            "requirement": "Running totals and final outputs match the supplied tests.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day04.r04",
+            "requirement": "Break time affects elapsed time only.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day04.r05",
+            "requirement": "A trace explains the first and last iterations and the valid-input limitation.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "input": {
+              "blocks": [
+                45,
+                75,
+                120,
+                120
+              ],
+              "breaks": 90
+            },
+            "expected": {
+              "running": [
+                45,
+                120,
+                240,
+                360
+              ],
+              "active": 360,
+              "elapsed": 450,
+              "remaining": 0
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "breaks": 0
+            },
+            "expected": {
+              "running": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "active": 0,
+              "elapsed": 0,
+              "remaining": 360
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                10,
+                20,
+                30,
+                40
+              ],
+              "breaks": 15
+            },
+            "expected": {
+              "running": [
+                10,
+                30,
+                60,
+                100
+              ],
+              "active": 100,
+              "elapsed": 115,
+              "remaining": 260
+            },
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "testNotationNote": "Square brackets in this test table list the entered values for humans; Python lists are not required to implement this task.",
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day04.q01",
+          "prompt": "Which values does range(1, 4) provide? Does the loop execute four times?",
+          "answer": "It provides 1, 2, and 3; the loop executes three times.",
+          "reason": "The start is included and stop is excluded.",
+          "misconception": "range includes both endpoints.",
+          "repairExercise": "Print values from range(2, 5), predict the count, then choose a range that supplies four block numbers."
+        },
+        {
+          "id": "foundations.day04.q02",
+          "prompt": "What goes wrong if active_minutes = 0 is inside the loop before adding each new duration?",
+          "answer": "Every iteration discards the previous total; the final total equals the final entered duration.",
+          "reason": "Initialization runs every time when it belongs to the repeated body.",
+          "misconception": "Initialization placement does not affect state across iterations.",
+          "repairExercise": "Trace inputs 10, 20, and 30 with initialization inside and outside. Compare final totals 30 and 60."
+        },
+        {
+          "id": "foundations.day04.q03",
+          "prompt": "After three block inputs of 90, 120, and 150, what are block_number and active_minutes?",
+          "answer": "block_number is 3; active_minutes is 360.",
+          "reason": "The counter identifies the iteration; the accumulator measures minutes.",
+          "misconception": "A loop counter and a total measure the same thing.",
+          "repairExercise": "Label the units of each variable, then trace two blocks of 7 and 11 minutes."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "Read the whole-number prices of three books using one counted loop. Print the total cost after the loop. For this exercise the unit is a whole currency unit, with no decimals.",
+        "expected": "Prices 20, 35, and 15 produce a total of 70.",
+        "passCondition": "Exactly three values are collected and each is added once; the final summary prints once."
+      },
+      "misconceptionRepair": {
+        "trigger": "The total resets or the loop runs one time too many.",
+        "exercise": "Write the exact range values first. Trace counter, new value, previous total, and updated total for unequal inputs.",
+        "recheck": "Use a different start/stop pair and three fresh durations without copying the original trace."
+      },
+      "endArtifacts": [
+        "block_totals.py",
+        "four_block_budget.py",
+        "book_total.py",
+        "day-04-notes.txt: range predictions, running-total traces, tests, assistance record"
+      ],
+      "optionalResource": {
+        "title": "Python Tutorial: The range() Function",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#the-range-function",
+        "scope": "Read the simple for/range examples. Lists and other advanced iteration tools are optional at this point.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    },
+    {
+      "id": "foundations.day05",
+      "day": 5,
+      "title": "Give a calculation a clear contract",
+      "outcome": "Define, call, test, and explain small functions that return calculated values without collecting input or printing inside them.",
+      "prerequisiteLessonIds": [
+        "foundations.day04"
+      ],
+      "prerequisiteSkillIds": [
+        "python.trace-assignment",
+        "python.integer-arithmetic",
+        "python.for-range",
+        "python.accumulate-running-total"
+      ],
+      "skillIds": [
+        "python.define-call-function",
+        "python.parameters-return",
+        "python.pure-calculation"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day05.b01",
+          "minutes": 40,
+          "title": "Recover state and repetition",
+          "actions": [
+            "Trace a three-input running total from memory.",
+            "Explain which name is the counter and which is the accumulator.",
+            "Identify the same remaining-time calculation in two programs.",
+            "Write its inputs and expected result without writing Python yet."
+          ],
+          "evidence": "A loop trace and a calculation contract."
+        },
+        {
+          "id": "foundations.day05.b02",
+          "minutes": 55,
+          "title": "Define and call a function",
+          "actions": [
+            "Read the concept explanation and syntax reference.",
+            "Define a two-number addition function.",
+            "Observe that defining the function alone prints no result.",
+            "Call it twice with different arguments and trace parameter values for each call."
+          ],
+          "evidence": "A function definition and two call traces."
+        },
+        {
+          "id": "foundations.day05.b03",
+          "minutes": 60,
+          "title": "Separate return from display",
+          "actions": [
+            "Type the worked example.",
+            "Store each returned value in a caller variable before printing.",
+            "Compare a function that returns a result with one that only prints it.",
+            "Explain None when a function reaches its end without returning a value."
+          ],
+          "evidence": "A return-versus-print experiment and explanation."
+        },
+        {
+          "id": "foundations.day05.b04",
+          "minutes": 70,
+          "title": "Write pure calculation helpers",
+          "actions": [
+            "Complete the independent elapsed/remaining functions.",
+            "Keep input() and print() outside those functions.",
+            "Use descriptive parameters and return the calculation.",
+            "Call the same function with new values instead of changing its body."
+          ],
+          "evidence": "Two reusable pure calculation functions."
+        },
+        {
+          "id": "foundations.day05.b05",
+          "minutes": 60,
+          "title": "Test functions by their contracts",
+          "actions": [
+            "Predict the supplied call results before running them.",
+            "Test zero, exact-target, and above-target cases.",
+            "Change an unrelated outer variable and show that argument-based calculations remain unchanged.",
+            "Document accepted input assumptions; do not add validation that the contract does not promise."
+          ],
+          "evidence": "A call/expected/actual table and independence check."
+        },
+        {
+          "id": "foundations.day05.b06",
+          "minutes": 40,
+          "title": "Transfer a function to geometry",
+          "actions": [
+            "Answer the diagnostics and complete targeted repairs.",
+            "Write the rectangle-area function from the transfer prompt.",
+            "Explain the difference between parameter names and values supplied by a caller.",
+            "Use a fresh call to demonstrate transfer without the worked solution."
+          ],
+          "evidence": "Diagnostics and a new pure function."
+        },
+        {
+          "id": "foundations.day05.b07",
+          "minutes": 35,
+          "title": "Package a reusable calculation",
+          "actions": [
+            "Save functions and example calls together.",
+            "Write each function’s inputs, output, and assumptions in plain language.",
+            "Assess the independent rubric and record assistance.",
+            "Record actual time and schedule a later fresh function task."
+          ],
+          "evidence": "Source, contracts, tests, and assessment."
+        }
+      ],
+      "conceptExplanation": "A function gives a reusable calculation a name and a contract. The contract says what inputs it expects and what result it returns. Defining a function with def does not immediately run its body. Python records the definition. A later call supplies arguments and executes the indented statements. The function definition must be executed before the program tries to call that name.\n\nIn def remaining_minutes(target_minutes, active_minutes):, the names inside parentheses are parameters. They are local names for values supplied by a particular call. Calling remaining_minutes(360, 120) supplies the arguments 360 and 120. Inside that call, target_minutes refers to 360 and active_minutes refers to 120. A second call gets its own parameter values; changing the caller's variable name does not change what a parameter means.\n\nThe return statement sends a value back to the caller and finishes that function call. The caller can store the returned value, use it in another calculation, or print it. Printing and returning are different actions. print displays something; it does not automatically make that displayed quantity the function's result. A function that reaches its end without a return provides None, Python's special no-value result. A later attempt to use that as a number can fail.\n\nToday's functions are pure calculations: they use their arguments and return a result without asking for input, printing, or changing outside state. This boundary makes them easier to test. You can call the same calculation with many inputs without simulating a conversation in the terminal. Keep user interaction in the surrounding program.\n\nPurity does not make a formula correct by itself. Specify units, accepted ranges, and the meaning of a negative result. Then compare returned values with predictions. A remaining-time helper may deliberately return a negative value for an above-target plan. Whether the application rejects that plan is a separate policy decision; do not hide it inside an unexplained arithmetic shortcut.",
+      "syntaxReference": [
+        {
+          "syntax": "def name(parameter_one, parameter_two):",
+          "meaning": "Define a function; indent its body by four spaces. Parameter names receive arguments at call time."
+        },
+        {
+          "syntax": "return expression",
+          "meaning": "Evaluate the expression, send its value to the caller, and finish this function call."
+        },
+        {
+          "syntax": "answer = name(360, 120)",
+          "meaning": "Call the function with two arguments and store the returned value."
+        },
+        {
+          "syntax": "None",
+          "meaning": "A special no-value result, including the implicit result of a function without a return statement."
+        }
+      ],
+      "workedExample": {
+        "language": "python",
+        "fileName": "budget_functions.py",
+        "code": "def add_study_blocks(first_minutes, second_minutes, third_minutes):\n    return first_minutes + second_minutes + third_minutes\n\n\ndef remaining_minutes(target_minutes, active_minutes):\n    return target_minutes - active_minutes\n\n\nactive_minutes = add_study_blocks(90, 120, 150)\nbreak_minutes = 90\nelapsed_minutes = active_minutes + break_minutes\nremaining = remaining_minutes(360, active_minutes)\n\nprint(\"Active study minutes:\", active_minutes)\nprint(\"Elapsed minutes:\", elapsed_minutes)\nprint(\"Remaining active minutes:\", remaining)\nprint(\"A different plan leaves:\", remaining_minutes(360, 120), \"active minutes\")\n",
+        "stdin": "",
+        "expectedOutput": "Active study minutes: 360\nElapsed minutes: 450\nRemaining active minutes: 0\nA different plan leaves: 240 active minutes\n",
+        "assumptions": [
+          "Arguments are whole-number minute values.",
+          "The remaining-time function returns a signed difference; it does not enforce a planning policy.",
+          "Input and printing remain outside the functions.",
+          "Each function returns one value; tuples, lists, and classes are not needed."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 6
+        }
+      },
+      "independentTask": {
+        "prompt": "Create calculation_helpers.py with elapsed_minutes(active_minutes, break_minutes) and remaining_minutes(target_minutes, active_minutes). Each must return one calculated value and contain no input() or print(). Below the definitions, call both functions with several cases and print the returned results. Document the signed meaning of remaining minutes.",
+        "hints": [
+          "Define the input and output quantities before writing the function.",
+          "Use return, not print, to give a value back to the caller.",
+          "Test using new arguments; do not edit the function body for each case."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day05.r01",
+            "requirement": "Both functions are defined before they are called.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day05.r02",
+            "requirement": "Parameters determine the calculations without relying on unrelated outer variables.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day05.r03",
+            "requirement": "Each function returns the correct numeric value and contains no input/output operation.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day05.r04",
+            "requirement": "Tests cover zero, exact-target, and above-target cases.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day05.r05",
+            "requirement": "The learner explains argument, parameter, return, and the difference from print.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "call": "elapsed_minutes(0, 0)",
+            "expected": 0,
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "call": "elapsed_minutes(360, 90)",
+            "expected": 450,
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "call": "remaining_minutes(360, 0)",
+            "expected": 360,
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "call": "remaining_minutes(360, 360)",
+            "expected": 0,
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "call": "remaining_minutes(360, 380)",
+            "expected": -20,
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day05.q01",
+          "prompt": "A function is defined but never called. Does Python execute its body while reading the def statement?",
+          "answer": "No. The definition makes the function available; a call executes its body.",
+          "reason": "Definition and execution are separate events.",
+          "misconception": "Writing a function definition immediately runs its calculation.",
+          "repairExercise": "Put a print statement inside a tiny function. Run once without calling it, then add a call and compare output."
+        },
+        {
+          "id": "foundations.day05.q02",
+          "prompt": "A function prints 30 but has no return statement. What value does result = that_function() store?",
+          "answer": "None, even though 30 was displayed.",
+          "reason": "Displayed output and a returned value are different channels.",
+          "misconception": "print and return are interchangeable.",
+          "repairExercise": "Write one function that prints a sum and another that returns it. Store and print both call results, then explain the difference."
+        },
+        {
+          "id": "foundations.day05.q03",
+          "prompt": "In remaining_minutes(360, 120), with parameters target_minutes and active_minutes, which parameter receives 120? What is returned?",
+          "answer": "active_minutes receives 120; the function returns 240.",
+          "reason": "Arguments are matched to these parameters by their positions in the call.",
+          "misconception": "Parameter names must match the names used by the caller.",
+          "repairExercise": "Use differently named caller variables holding 300 and 80. Trace a remaining_minutes call and predict 220."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "Define rectangle_area(width, height) for nonnegative integer dimensions in the same length unit. Return the area without printing inside the function. Call it for a 3-by-4 rectangle and a 0-by-9 rectangle.",
+        "expected": "12 and 0 square units.",
+        "passCondition": "A pure function returns both values; the explanation distinguishes dimensions, multiplication, and area units."
+      },
+      "misconceptionRepair": {
+        "trigger": "A calculation displays the right number but its caller receives None, or a function ignores its arguments.",
+        "exercise": "Trace the caller, parameter values, return expression, and stored result separately. Remove unrelated outer names from the calculation.",
+        "recheck": "Call with two fresh argument pairs and use the returned values in another expression."
+      },
+      "endArtifacts": [
+        "budget_functions.py",
+        "calculation_helpers.py",
+        "rectangle_area.py",
+        "day-05-notes.txt: function contracts, call traces, expected/actual tests"
+      ],
+      "optionalResource": {
+        "title": "Python Tutorial: Defining Functions",
+        "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
+        "scope": "Read the basic def, parameter, and return explanation. Advanced argument forms are optional.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    },
+    {
+      "id": "foundations.day06",
+      "day": 6,
+      "title": "Deliver a small program with an honest test record",
+      "outcome": "Build a three-block planning tool that handles malformed numeric text, validates its constraints, and explains planned, available, and unassigned study time.",
+      "prerequisiteLessonIds": [
+        "foundations.day05"
+      ],
+      "prerequisiteSkillIds": [
+        "python.convert-valid-integer-input",
+        "python.if-elif-else",
+        "python.validate-integer-ranges",
+        "python.for-range",
+        "python.accumulate-running-total",
+        "python.parameters-return",
+        "python.pure-calculation"
+      ],
+      "skillIds": [
+        "python.handle-integer-conversion-error",
+        "python.integrate-input-validation",
+        "testing.document-cli-cases"
+      ],
+      "activeMinutes": 360,
+      "breaks": {
+        "minutes": 90,
+        "afterBlockMinutes": [
+          10,
+          10,
+          30,
+          10,
+          20,
+          10
+        ],
+        "elapsedMinutes": 450,
+        "note": "This example reserves 90 break minutes in addition to 360 active minutes. Adjust break placement to your needs; breaks do not count as active study."
+      },
+      "pacingNote": "These are planning estimates, not deadlines. Stop at a meaningful checkpoint, record actual time, and carry unfinished work forward. Split a long block with an additional break when useful.",
+      "blocks": [
+        {
+          "id": "foundations.day06.b01",
+          "minutes": 40,
+          "title": "Write the product contract",
+          "actions": [
+            "Explain the earlier calculator’s input, calculation, and output boundaries.",
+            "Read today’s capacity policy: 360 active minutes available, breaks additional, chosen planning window 1440 minutes.",
+            "List accepted inputs, rejected inputs, and outputs before coding.",
+            "Distinguish available capacity, planned study, actual study, and mastery evidence."
+          ],
+          "evidence": "A one-page input/output/constraint contract."
+        },
+        {
+          "id": "foundations.day06.b02",
+          "minutes": 50,
+          "title": "Handle a conversion failure deliberately",
+          "actions": [
+            "Read the concept explanation and exception mini-lesson.",
+            "Predict int(\"12\") and int(\"twelve\").",
+            "Run the small try/except/else example with both values.",
+            "Explain why ValueError is handled specifically and why the else block is skipped after a conversion error."
+          ],
+          "evidence": "Two conversion traces and a precise error-handling explanation."
+        },
+        {
+          "id": "foundations.day06.b03",
+          "minutes": 60,
+          "title": "Integrate the worked tool",
+          "actions": [
+            "Type the worked program and run its supplied input.",
+            "Trace the accumulator and negative-value flag through all three blocks.",
+            "Explain the order of conversion, range checks, capacity check, and summary.",
+            "Identify the pure function and the surrounding interaction code."
+          ],
+          "evidence": "A working tool and a flow trace."
+        },
+        {
+          "id": "foundations.day06.b04",
+          "minutes": 80,
+          "title": "Build from the independent specification",
+          "actions": [
+            "Start a fresh file and implement the four-block variant.",
+            "Collect values with a loop, use a pure remaining-time helper, and handle ValueError explicitly.",
+            "Reject negative durations, excess break range, excess total window, and excess study capacity.",
+            "Keep valid output inside the success branch and record all assistance."
+          ],
+          "evidence": "An independent command-line program meeting the stated contract."
+        },
+        {
+          "id": "foundations.day06.b05",
+          "minutes": 60,
+          "title": "Produce a credible test record",
+          "actions": [
+            "Predict each normal, boundary, and failure test before running it.",
+            "Record exact input, expected output meaning, actual output, and pass/fail.",
+            "For every failure, identify the cause, repair it, and rerun related cases.",
+            "Confirm rejected inputs do not print a successful plan summary."
+          ],
+          "evidence": "A completed manual test matrix with investigated discrepancies."
+        },
+        {
+          "id": "foundations.day06.b06",
+          "minutes": 40,
+          "title": "Transfer and review the design",
+          "actions": [
+            "Answer the diagnostics and complete any targeted repair.",
+            "Apply the same design to a three-item purchasing budget with integer currency units.",
+            "Explain one deliberate limitation, such as stopping after malformed input instead of retrying.",
+            "Use a fresh transfer attempt for assessment if a solution was revealed earlier."
+          ],
+          "evidence": "Diagnostic reasoning, a transfer design, and limitations."
+        },
+        {
+          "id": "foundations.day06.b07",
+          "minutes": 30,
+          "title": "Package the deliverable",
+          "actions": [
+            "Save the source, usage instructions, sample run, test results, and known limitations.",
+            "Run it once using only your own written instructions.",
+            "Assess every rubric criterion without converting activity completion into mastery.",
+            "Record actual active time and choose a repair task or the next foundation lesson from evidence."
+          ],
+          "evidence": "A reproducible small project and honest assessment record."
+        }
+      ],
+      "conceptExplanation": "A useful deliverable needs a clear contract and evidence that it follows that contract. Today's program accepts three study-block durations and a break allowance. It has 360 active minutes of capacity and a chosen 1440-minute planning window. Capacity is not work completed: a 270-minute plan leaves 90 active minutes unassigned. The program reports this gap rather than inventing filler or claiming that six hours were studied.\n\nThere are two different input problems. Text such as \"twelve\" cannot be converted to an integer and raises ValueError. An integer such as -10 converts successfully but violates a duration rule. Handle conversion failures with try/except and domain rules with comparisons. The indented try block contains operations that may raise the named exception. except ValueError runs when that conversion error occurs. A following else block runs only if the try block finished without that error. This else belongs to try, not to an if statement.\n\nWhen an exception occurs, execution leaves the rest of the try block. The example prints one clear error and stops this interaction; it does not pretend later inputs were read. Catch the specific ValueError rather than every possible exception, because unrelated programming defects should not be hidden behind a misleading input message.\n\nThe loop keeps a running total and a Boolean flag. has_negative_block starts False and becomes True if any study duration is negative. It stays True once such a value has been seen, even if later values are positive. This prevents a negative duration from being concealed by a plausible final sum. The valid branch checks the break range, combined window, and active capacity before displaying a plan.\n\nThe remaining-time helper stays a pure calculation. The interaction code enforces this application's policy. Unlike an earlier signed-target example, this version rejects plans above available capacity; that is an explicit requirement change. Manual tests must therefore cover both ordinary behavior and rejected input. Save expected and actual results separately, and describe what has actually been checked.",
+      "exceptionMiniLesson": {
+        "title": "Conversion failure and successful conversion take different paths",
+        "code": "text = \"twelve\"\n\ntry:\n    minutes = int(text)\nexcept ValueError:\n    print(\"Enter a whole-number minute value.\")\nelse:\n    print(\"Minutes:\", minutes)\n",
+        "expectedOutput": "Enter a whole-number minute value.\n",
+        "variation": "Replace \"twelve\" with \"12\". The output becomes Minutes: 12.",
+        "explanation": "try and except headers use colons and indented bodies. The else attached to try is reached only when conversion succeeds. A successfully converted negative integer still requires a separate range check.",
+        "executionStatus": "executed_verified"
+      },
+      "workedExample": {
+        "language": "python",
+        "fileName": "study_planner_cli.py",
+        "code": "def remaining_minutes(capacity_minutes, planned_minutes):\n    return capacity_minutes - planned_minutes\n\n\nstudy_capacity_minutes = 360\n\ntry:\n    active_minutes = 0\n    has_negative_block = False\n    for block_number in range(1, 4):\n        print(\"Block\", block_number, \"minutes?\")\n        block_minutes = int(input())\n        if block_minutes < 0:\n            has_negative_block = True\n        active_minutes = active_minutes + block_minutes\n    print(\"Break minutes?\")\n    break_minutes = int(input())\nexcept ValueError:\n    print(\"Invalid input: use whole-number minute values.\")\nelse:\n    if has_negative_block:\n        print(\"Invalid: study blocks cannot be negative.\")\n    elif break_minutes < 0:\n        print(\"Invalid: break minutes cannot be negative.\")\n    elif break_minutes > 1440:\n        print(\"Invalid: break allowance exceeds the planning window.\")\n    elif active_minutes + break_minutes > 1440:\n        print(\"Invalid: combined time exceeds the planning window.\")\n    elif active_minutes > study_capacity_minutes:\n        print(\"Invalid: study blocks exceed available active time.\")\n    else:\n        unassigned_minutes = remaining_minutes(study_capacity_minutes, active_minutes)\n        study_plus_breaks = active_minutes + break_minutes\n        print(\"Study planned:\", active_minutes, \"min\")\n        print(\"Study available:\", study_capacity_minutes, \"min\")\n        print(\"Study unassigned:\", unassigned_minutes, \"min\")\n        print(\"Breaks reserved:\", break_minutes, \"min\")\n        print(\"Study plus break allowance:\", study_plus_breaks // 60, \"h\", study_plus_breaks % 60, \"min\")\n",
+        "stdin": "60\n90\n120\n90\n",
+        "expectedOutput": "Block 1 minutes?\nBlock 2 minutes?\nBlock 3 minutes?\nBreak minutes?\nStudy planned: 270 min\nStudy available: 360 min\nStudy unassigned: 90 min\nBreaks reserved: 90 min\nStudy plus break allowance: 6 h 0 min\n",
+        "assumptions": [
+          "Exactly three study entries and one break entry are requested unless conversion fails earlier.",
+          "Inputs represent integer minutes; malformed text is handled with ValueError, while range constraints are checked afterward.",
+          "360 is configured active capacity; it is separate from the chosen 1440-minute total planning window.",
+          "The program stops after an error rather than retrying; the first matching domain error is reported.",
+          "Reserved break minutes are a planning allowance, not recorded activity or a generated break timetable.",
+          "No persistence, authentication, deployment, lists, or third-party packages are required."
+        ],
+        "executionStatus": "executed_verified",
+        "outputNote": "Expected output is program stdout. An interactive terminal may also echo the input you type.",
+        "executionVerification": {
+          "date": "2026-11-04",
+          "runtime": "3.12.14",
+          "method": "Isolated Python subprocess; stdout checked; authored edge cases run.",
+          "casesVerified": 13
+        }
+      },
+      "independentTask": {
+        "prompt": "Create four_block_planner.py from a blank file. Set active capacity to 360 minutes. Collect four study durations in one loop, then a break allowance. Handle malformed integer text with except ValueError. Reject any negative study duration, negative break duration, break allowance above 1440, combined time above 1440, or active total above capacity. For valid input only, print planned study, available study, unassigned study, reserved breaks, and study plus break allowance. Use a pure remaining_minutes helper. Explain that this records a proposed plan, not completed work.",
+        "hints": [
+          "Write the allowed and rejected cases first; separate conversion errors from numeric range errors.",
+          "A Boolean flag can remember whether any entered study duration was negative.",
+          "Keep all successful output in the valid branch and calculate unassigned = capacity - planned."
+        ],
+        "rubric": [
+          {
+            "id": "foundations.day06.r01",
+            "requirement": "One loop collects exactly four study durations and keeps breaks separate.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day06.r02",
+            "requirement": "Malformed integer text is handled with a specific clear error, without a successful summary.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day06.r03",
+            "requirement": "Every stated numeric constraint is enforced, including a negative value hidden by positive values.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day06.r04",
+            "requirement": "Valid summaries conserve planned + unassigned = capacity and add breaks only to elapsed planning.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day06.r05",
+            "requirement": "The remaining-time helper returns its result without input or output side effects.",
+            "critical": true,
+            "required": true
+          },
+          {
+            "id": "foundations.day06.r06",
+            "requirement": "The source, run instructions, actual test results, and limitations let another learner reproduce the tool.",
+            "critical": true,
+            "required": true
+          }
+        ],
+        "tests": [
+          {
+            "input": {
+              "blocks": [
+                60,
+                90,
+                120,
+                90
+              ],
+              "breaks": 90
+            },
+            "expected": "360 planned, 0 unassigned, 90 reserved breaks, 7 h 30 min study plus breaks.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                30,
+                30,
+                30,
+                30
+              ],
+              "breaks": 30
+            },
+            "expected": "120 planned, 240 unassigned, 30 reserved breaks, 2 h 30 min study plus breaks.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "breaks": 0
+            },
+            "expected": "0 planned, 360 unassigned, 0 reserved breaks; no claim of completed study.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                -1,
+                1,
+                100,
+                100
+              ],
+              "breaks": 20
+            },
+            "expected": "Reject negative study duration despite a nonnegative final total.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                90,
+                90,
+                90,
+                91
+              ],
+              "breaks": 0
+            },
+            "expected": "Reject 361 active minutes; no successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "breaks": -1
+            },
+            "expected": "Reject negative break allowance.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "breaks": 1441
+            },
+            "expected": "Reject break allowance above planning window.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "input": {
+              "blocks": [
+                75,
+                75,
+                75,
+                75
+              ],
+              "breaks": 1200
+            },
+            "expected": "Reject combined 1500-minute window.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "inputText": "twelve as the first study input",
+            "expected": "Clear whole-number error; no later prompts or successful summary.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          },
+          {
+            "inputText": "12.5 as the first study input",
+            "expected": "Clear whole-number error; the program does not silently round.",
+            "actualResult": null,
+            "learnerStatus": "not_run"
+          }
+        ],
+        "testNotationNote": "Bracketed block values are a human-readable test specification; Python lists are not needed in the implementation.",
+        "rubricScale": {
+          "0": "Missing or incorrect: the observable requirement is not met.",
+          "1": "Partial or assisted: incomplete, or completed with a substantial hint or revealed solution.",
+          "2": "Independently demonstrated under the stated task conditions."
+        },
+        "passPolicy": "Every required criterion must be independently demonstrated. A failed critical criterion cannot be averaged away. After hints or a revealed solution, use a fresh transfer task for independent evidence."
+      },
+      "diagnostics": [
+        {
+          "id": "foundations.day06.q01",
+          "prompt": "Does except ValueError reject the successfully converted integer -5 as a negative duration?",
+          "answer": "No. -5 converts successfully; a separate comparison must reject it.",
+          "reason": "Conversion validity and domain validity are different checks.",
+          "misconception": "Exception handling replaces range validation.",
+          "repairExercise": "Trace int(\"-5\") and int(\"five\") through the conversion mini-lesson, then write the extra comparison needed for -5."
+        },
+        {
+          "id": "foundations.day06.q02",
+          "prompt": "A valid plan contains 270 study minutes, 90 reserved break minutes, and 360 minutes of active capacity. Has it scheduled six hours of active study?",
+          "answer": "No. It has 270 active minutes planned and 90 active minutes unassigned; study plus break allowance is 360 minutes.",
+          "reason": "Elapsed planning time includes breaks; active capacity does not imply scheduled or completed study.",
+          "misconception": "Available capacity, planned time, and actual study are interchangeable.",
+          "repairExercise": "Draw separate planned-study, unassigned-study, and break boxes. Verify 270 + 90 = 360 capacity and 270 + 90 breaks = 360 elapsed planning."
+        },
+        {
+          "id": "foundations.day06.q03",
+          "prompt": "Why remember that a negative block occurred instead of checking only whether the final active total is nonnegative?",
+          "answer": "Positive later blocks can hide a negative earlier entry in the sum.",
+          "reason": "A valid aggregate does not establish that all individual inputs satisfy the domain rule.",
+          "misconception": "Checking the final total validates every original input.",
+          "repairExercise": "Trace -10, 20, and 30. The total is 40 but the negative-value flag remains True. Repeat with zero and explain why zero is allowed."
+        }
+      ],
+      "transferCheck": {
+        "prompt": "Design a three-item purchasing-budget tool using whole currency units. It has capacity 100, accepts three item costs, rejects malformed text, negative costs, and totals above capacity, and prints spent and unassigned amounts for valid input. There are no break minutes in this domain.",
+        "expected": "Costs 20, 35, 15: 70 spent and 30 unassigned. Costs -1, 20, 30: reject. Costs 40, 40, 21: reject. Text \"ten\": conversion error.",
+        "passCondition": "The design preserves individual-input validation and spent + unassigned = capacity, with errors separated from valid summaries."
+      },
+      "misconceptionRepair": {
+        "trigger": "The program prints a success summary after an error or reports available time as completed study.",
+        "exercise": "Trace one malformed input, one negative input, and one short valid plan through conversion, domain checks, and output. Label which statements can run in each path.",
+        "recheck": "Use fresh input values and show a correct error or conserved valid summary without following the worked solution."
+      },
+      "endArtifacts": [
+        "four_block_planner.py",
+        "README.txt: requirements, exact run command, sample run, limitations",
+        "test-cases.txt: exact inputs, expected results, actual results, verdicts, repairs",
+        "day-06-assessment.txt: independent rubric evidence and next repair or transfer task"
+      ],
+      "optionalResource": {
+        "title": "Python Tutorial: Handling Exceptions",
+        "url": "https://docs.python.org/3/tutorial/errors.html#handling-exceptions",
+        "scope": "Read the ValueError handling pattern and try/except/else explanation. Do not add a broad catch-all handler.",
+        "verification": "not_live_checked",
+        "checkedDate": null
+      }
+    }
+  ]
+}

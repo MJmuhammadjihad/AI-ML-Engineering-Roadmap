@@ -1,0 +1,150 @@
+Edition 03 final verification — 5 November 2026
+Artifact SHA-256: 99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09
+
+$ node --check src/app.js
+
+
+$ node --check src/v3.js
+
+
+$ node tests/test_v3_engines.js
+{"checks":74,"passed":74,"failed":0,"generatedSchedules":500,"assessmentCombinations":36}
+
+
+$ python3 tests/test_v3_content.py
+test_author_validation_never_prefills_learner_test_results (__main__.ContentTests.test_author_validation_never_prefills_learner_test_results) ... ok
+test_daily_minutes_and_authored_blocks_reconcile (__main__.ContentTests.test_daily_minutes_and_authored_blocks_reconcile) ... ok
+test_day01_authored_worked_example (__main__.ContentTests.test_day01_authored_worked_example) ... ok
+test_day02_authored_worked_example (__main__.ContentTests.test_day02_authored_worked_example) ... ok
+test_day02_conversions_around_complete_hours (__main__.ContentTests.test_day02_conversions_around_complete_hours) ... ok
+test_day03_authored_worked_example (__main__.ContentTests.test_day03_authored_worked_example) ... ok
+test_day03_inclusive_boundaries_and_exclusive_classification (__main__.ContentTests.test_day03_inclusive_boundaries_and_exclusive_classification) ... ok
+test_day03_invalid_ranges_never_print_success (__main__.ContentTests.test_day03_invalid_ranges_never_print_success) ... ok
+test_day04_accumulator_keeps_every_iteration (__main__.ContentTests.test_day04_accumulator_keeps_every_iteration) ... ok
+test_day04_authored_worked_example (__main__.ContentTests.test_day04_authored_worked_example) ... ok
+test_day05_authored_worked_example (__main__.ContentTests.test_day05_authored_worked_example) ... ok
+test_day05_pure_helpers_return_values_for_fresh_calls (__main__.ContentTests.test_day05_pure_helpers_return_values_for_fresh_calls) ... ok
+test_day06_authored_worked_example (__main__.ContentTests.test_day06_authored_worked_example) ... ok
+test_day06_malformed_text_stops_at_the_failed_conversion (__main__.ContentTests.test_day06_malformed_text_stops_at_the_failed_conversion) ... ok
+test_day06_rejects_individual_and_combined_invalid_inputs (__main__.ContentTests.test_day06_rejects_individual_and_combined_invalid_inputs) ... ok
+test_day06_valid_plans_conserve_capacity_without_filler (__main__.ContentTests.test_day06_valid_plans_conserve_capacity_without_filler) ... ok
+test_diagnostics_have_specific_repair_and_distinct_ids (__main__.ContentTests.test_diagnostics_have_specific_repair_and_distinct_ids) ... ok
+test_early_lessons_disclose_unhandled_text_conversion (__main__.ContentTests.test_early_lessons_disclose_unhandled_text_conversion) ... ok
+test_exception_mini_lesson_separates_conversion_and_range_rules (__main__.ContentTests.test_exception_mini_lesson_separates_conversion_and_range_rules) ... ok
+test_first_saved_file_example (__main__.ContentTests.test_first_saved_file_example) ... ok
+test_guidance_covers_every_module_with_observable_evidence (__main__.ContentTests.test_guidance_covers_every_module_with_observable_evidence) ... ok
+test_prerequisites_resolve_before_their_dependents (__main__.ContentTests.test_prerequisites_resolve_before_their_dependents) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.554s
+
+OK
+Authored-example checks executed 51 isolated Python processes.
+
+
+$ python3 tests/test_atlas.py
+test_all_views_offline_and_responsive (__main__.AtlasBrowserTests.test_all_views_offline_and_responsive) ... ok
+test_block_length_changes_granularity_not_total_work (__main__.AtlasBrowserTests.test_block_length_changes_granularity_not_total_work) ... ok
+test_calendar_export_contains_every_planned_day (__main__.AtlasBrowserTests.test_calendar_export_contains_every_planned_day) ... ok
+test_command_search_and_focus_reading (__main__.AtlasBrowserTests.test_command_search_and_focus_reading) ... ok
+test_day_budget_and_rest_days_change_without_losing_work (__main__.AtlasBrowserTests.test_day_budget_and_rest_days_change_without_losing_work) ... ok
+test_diagnostic_explains_misconception_and_persists (__main__.AtlasBrowserTests.test_diagnostic_explains_misconception_and_persists) ... ok
+test_every_module_opens_five_substantive_sessions (__main__.AtlasBrowserTests.test_every_module_opens_five_substantive_sessions) ... ok
+test_export_import_round_trip_and_rejects_inherited_route (__main__.AtlasBrowserTests.test_export_import_round_trip_and_rejects_inherited_route) ... ok
+test_html_example_download_preserves_source_characters (__main__.AtlasBrowserTests.test_html_example_download_preserves_source_characters) ... ok
+test_import_date_limits_and_mastery_consistency (__main__.AtlasBrowserTests.test_import_date_limits_and_mastery_consistency) ... ok
+test_labs_use_correct_numeric_models (__main__.AtlasBrowserTests.test_labs_use_correct_numeric_models) ... ok
+test_logged_time_reduces_today_capacity_and_undo_preserves_notes (__main__.AtlasBrowserTests.test_logged_time_reduces_today_capacity_and_undo_preserves_notes) ... ok
+test_malformed_progress_cannot_create_unknown_activity_keys (__main__.AtlasBrowserTests.test_malformed_progress_cannot_create_unknown_activity_keys) ... ok
+test_manual_progress_is_preserved_after_prior_time_log (__main__.AtlasBrowserTests.test_manual_progress_is_preserved_after_prior_time_log) ... ok
+test_old_progress_migrates_without_losing_work (__main__.AtlasBrowserTests.test_old_progress_migrates_without_losing_work) ... ok
+test_overdue_recall_stays_until_recorded (__main__.AtlasBrowserTests.test_overdue_recall_stays_until_recorded) ... ok
+test_partial_capstone_logging_survives_rebase_and_reload (__main__.AtlasBrowserTests.test_partial_capstone_logging_survives_rebase_and_reload) ... ok
+test_practice_mastery_evidence_and_persistence (__main__.AtlasBrowserTests.test_practice_mastery_evidence_and_persistence) ... ok
+test_review_time_is_loggable_without_claiming_mastery (__main__.AtlasBrowserTests.test_review_time_is_loggable_without_claiming_mastery) ... ok
+test_routes_obey_dependencies_and_conserve_study_minutes (__main__.AtlasBrowserTests.test_routes_obey_dependencies_and_conserve_study_minutes) ... ok
+test_search_keeps_focus_and_filters_results (__main__.AtlasBrowserTests.test_search_keeps_focus_and_filters_results) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 30.684s
+
+OK
+
+
+$ python3 tests/test_v3_browser.py
+test_all_six_lessons_have_complete_work_and_assessment_sections (__main__.V3BrowserTests.test_all_six_lessons_have_complete_work_and_assessment_sections) ... ok
+test_assisted_success_stays_practice_and_independent_attempt_unlocks (__main__.V3BrowserTests.test_assisted_success_stays_practice_and_independent_attempt_unlocks) ... ok
+test_concept_search_includes_new_foundation_lessons (__main__.V3BrowserTests.test_concept_search_includes_new_foundation_lessons) ... ERROR
+test_current_research_shows_sources_job_sample_and_scope (__main__.V3BrowserTests.test_current_research_shows_sources_job_sample_and_scope) ... ok
+test_denied_storage_allows_work_and_json_export (__main__.V3BrowserTests.test_denied_storage_allows_work_and_json_export) ... ok
+test_downloaded_worked_example_matches_visible_curriculum (__main__.V3BrowserTests.test_downloaded_worked_example_matches_visible_curriculum) ... ok
+test_each_module_has_a_distinct_transfer_task_and_repair (__main__.V3BrowserTests.test_each_module_has_a_distinct_transfer_task_and_repair) ... ok
+test_earlier_editions_are_preserved_byte_for_byte (__main__.V3BrowserTests.test_earlier_editions_are_preserved_byte_for_byte) ... ok
+test_editing_a_submitted_assessment_removes_stale_success_feedback (__main__.V3BrowserTests.test_editing_a_submitted_assessment_removes_stale_success_feedback) ... ok
+test_elapsed_mode_applies_to_core_and_zero_capacity_does_not_loop (__main__.V3BrowserTests.test_elapsed_mode_applies_to_core_and_zero_capacity_does_not_loop) ... ok
+test_elapsed_mode_reconciles_budget_and_whole_authored_blocks (__main__.V3BrowserTests.test_elapsed_mode_reconciles_budget_and_whole_authored_blocks) ... ok
+test_export_import_round_trip_preserves_foundation_evidence (__main__.V3BrowserTests.test_export_import_round_trip_preserves_foundation_evidence) ... ok
+test_foundation_and_core_work_share_remaining_daily_capacity (__main__.V3BrowserTests.test_foundation_and_core_work_share_remaining_daily_capacity) ... ok
+test_imported_notes_are_text_and_not_executable_markup (__main__.V3BrowserTests.test_imported_notes_are_text_and_not_executable_markup) ... ok
+test_invalid_actual_minutes_do_not_mutate_progress (__main__.V3BrowserTests.test_invalid_actual_minutes_do_not_mutate_progress) ... ok
+test_invalid_import_preserves_existing_progress (__main__.V3BrowserTests.test_invalid_import_preserves_existing_progress) ... ok
+test_keyboard_skip_link_and_lesson_contents_keep_focus_visible (__main__.V3BrowserTests.test_keyboard_skip_link_and_lesson_contents_keep_focus_visible) ... ok
+test_legacy_migration_retains_original_save_and_notes (__main__.V3BrowserTests.test_legacy_migration_retains_original_save_and_notes) ... ok
+test_logging_reopening_and_undo_preserve_correct_time_meaning (__main__.V3BrowserTests.test_logging_reopening_and_undo_preserve_correct_time_meaning) ... ok
+test_missing_and_failed_evidence_remain_distinct (__main__.V3BrowserTests.test_missing_and_failed_evidence_remain_distinct) ... ok
+test_practice_transfer_action_restores_context_after_focused_reading (__main__.V3BrowserTests.test_practice_transfer_action_restores_context_after_focused_reading) ... ok
+test_primary_navigation_and_all_utility_views_work_offline (__main__.V3BrowserTests.test_primary_navigation_and_all_utility_views_work_offline) ... ok
+test_print_layout_retains_lesson_content_and_hides_workspace_controls (__main__.V3BrowserTests.test_print_layout_retains_lesson_content_and_hides_workspace_controls) ... ok
+test_read_ahead_available_without_false_prerequisite_completion (__main__.V3BrowserTests.test_read_ahead_available_without_false_prerequisite_completion) ... ok
+test_revealing_diagnostics_never_grants_mastery (__main__.V3BrowserTests.test_revealing_diagnostics_never_grants_mastery) ... ok
+test_small_viewports_and_text_zoom_do_not_overflow (__main__.V3BrowserTests.test_small_viewports_and_text_zoom_do_not_overflow) ... ok
+test_today_has_one_beginner_next_step_and_honest_time_totals (__main__.V3BrowserTests.test_today_has_one_beginner_next_step_and_honest_time_totals) ... ok
+
+======================================================================
+ERROR: test_concept_search_includes_new_foundation_lessons (__main__.V3BrowserTests.test_concept_search_includes_new_foundation_lessons)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/AI-ML-Engineering-Roadmap/tests/test_v3_browser.py", line 434, in test_concept_search_includes_new_foundation_lessons
+    self.assertNotIn("undefined", current.inner_text())
+                                  ^^^^^^^
+NameError: name 'current' is not defined
+
+----------------------------------------------------------------------
+Ran 27 tests in 31.222s
+
+FAILED (errors=1)
+
+
+Final browser rerun after correcting test assertion placement
+test_all_six_lessons_have_complete_work_and_assessment_sections (__main__.V3BrowserTests.test_all_six_lessons_have_complete_work_and_assessment_sections) ... ok
+test_assisted_success_stays_practice_and_independent_attempt_unlocks (__main__.V3BrowserTests.test_assisted_success_stays_practice_and_independent_attempt_unlocks) ... ok
+test_concept_search_includes_new_foundation_lessons (__main__.V3BrowserTests.test_concept_search_includes_new_foundation_lessons) ... ok
+test_current_research_shows_sources_job_sample_and_scope (__main__.V3BrowserTests.test_current_research_shows_sources_job_sample_and_scope) ... ok
+test_denied_storage_allows_work_and_json_export (__main__.V3BrowserTests.test_denied_storage_allows_work_and_json_export) ... ok
+test_downloaded_worked_example_matches_visible_curriculum (__main__.V3BrowserTests.test_downloaded_worked_example_matches_visible_curriculum) ... ok
+test_each_module_has_a_distinct_transfer_task_and_repair (__main__.V3BrowserTests.test_each_module_has_a_distinct_transfer_task_and_repair) ... ok
+test_earlier_editions_are_preserved_byte_for_byte (__main__.V3BrowserTests.test_earlier_editions_are_preserved_byte_for_byte) ... ok
+test_editing_a_submitted_assessment_removes_stale_success_feedback (__main__.V3BrowserTests.test_editing_a_submitted_assessment_removes_stale_success_feedback) ... ok
+test_elapsed_mode_applies_to_core_and_zero_capacity_does_not_loop (__main__.V3BrowserTests.test_elapsed_mode_applies_to_core_and_zero_capacity_does_not_loop) ... ok
+test_elapsed_mode_reconciles_budget_and_whole_authored_blocks (__main__.V3BrowserTests.test_elapsed_mode_reconciles_budget_and_whole_authored_blocks) ... ok
+test_export_import_round_trip_preserves_foundation_evidence (__main__.V3BrowserTests.test_export_import_round_trip_preserves_foundation_evidence) ... ok
+test_foundation_and_core_work_share_remaining_daily_capacity (__main__.V3BrowserTests.test_foundation_and_core_work_share_remaining_daily_capacity) ... ok
+test_imported_notes_are_text_and_not_executable_markup (__main__.V3BrowserTests.test_imported_notes_are_text_and_not_executable_markup) ... ok
+test_invalid_actual_minutes_do_not_mutate_progress (__main__.V3BrowserTests.test_invalid_actual_minutes_do_not_mutate_progress) ... ok
+test_invalid_import_preserves_existing_progress (__main__.V3BrowserTests.test_invalid_import_preserves_existing_progress) ... ok
+test_keyboard_skip_link_and_lesson_contents_keep_focus_visible (__main__.V3BrowserTests.test_keyboard_skip_link_and_lesson_contents_keep_focus_visible) ... ok
+test_legacy_migration_retains_original_save_and_notes (__main__.V3BrowserTests.test_legacy_migration_retains_original_save_and_notes) ... ok
+test_logging_reopening_and_undo_preserve_correct_time_meaning (__main__.V3BrowserTests.test_logging_reopening_and_undo_preserve_correct_time_meaning) ... ok
+test_missing_and_failed_evidence_remain_distinct (__main__.V3BrowserTests.test_missing_and_failed_evidence_remain_distinct) ... ok
+test_practice_transfer_action_restores_context_after_focused_reading (__main__.V3BrowserTests.test_practice_transfer_action_restores_context_after_focused_reading) ... ok
+test_primary_navigation_and_all_utility_views_work_offline (__main__.V3BrowserTests.test_primary_navigation_and_all_utility_views_work_offline) ... ok
+test_print_layout_retains_lesson_content_and_hides_workspace_controls (__main__.V3BrowserTests.test_print_layout_retains_lesson_content_and_hides_workspace_controls) ... ok
+test_read_ahead_available_without_false_prerequisite_completion (__main__.V3BrowserTests.test_read_ahead_available_without_false_prerequisite_completion) ... ok
+test_revealing_diagnostics_never_grants_mastery (__main__.V3BrowserTests.test_revealing_diagnostics_never_grants_mastery) ... ok
+test_small_viewports_and_text_zoom_do_not_overflow (__main__.V3BrowserTests.test_small_viewports_and_text_zoom_do_not_overflow) ... ok
+test_today_has_one_beginner_next_step_and_honest_time_totals (__main__.V3BrowserTests.test_today_has_one_beginner_next_step_and_honest_time_totals) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 31.249s
+
+OK

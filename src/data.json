@@ -1,10 +1,11 @@
 {
   "meta": {
-    "edition": "2.0",
+    "edition": "3.0",
     "reviewed": "2026-10-28",
     "audience": "Complete beginner; six focused hours/day; global career aspirations",
-    "researchLimit": "No current job posting sample was obtained; labor-market websites were blocked.",
-    "curriculumUpdated": "2026-10-29"
+    "researchLimit": "Targeted qualitative sample: ten job descriptions from three technology employers, plus scoped primary reports. This is not a representative global vacancy survey.",
+    "curriculumUpdated": "2026-11-05",
+    "marketReviewed": "2026-11-04"
   },
   "modules": [
     {
