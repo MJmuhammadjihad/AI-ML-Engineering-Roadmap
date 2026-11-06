@@ -6,7 +6,7 @@
 
 Start from zero with six guided foundation days. Build toward machine learning and AI engineering through 41 modules, 205 further learning sessions, hands-on projects, and checks that ask you to explain what you built.
 
-**[Download edition 03](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3.html)** · [Preview the interface](docs/assets/atlas-today.png) · [Explore the curriculum](src/data.json) · [Contribute](CONTRIBUTING.md)
+**[Download edition 03](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3.html)** · [Watch the 32-second tour](docs/TOUR.md) · [Explore the curriculum](docs/CURRICULUM.md) · [Contribute](CONTRIBUTING.md)
 
 No account. No API key. No install to use the app. Progress stays in your browser, with JSON export when you want to move it.
 
@@ -45,7 +45,7 @@ The planner keeps time spent, completion, assisted practice, and self-reported i
 
 | Edition | Focus | Portable HTML | Editable source |
 | --- | --- | --- | --- |
-| **03 · current** | Guided foundations, daily workspace, deeper transfer checks | [Download](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3.html) | [ZIP](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.0/first-principles-atlas-v3-source.zip) |
+| **03 · current** | Guided foundations, daily workspace, deeper transfer checks | [Download](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3.html) | [ZIP](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3-source.zip) |
 | 02 | Expanded curriculum, worked examples, diagnostics | [HTML](dist/first-principles-atlas-v2.html) | [ZIP](dist/first-principles-atlas-v2-source.zip) |
 | 01 | Original 36-module atlas | [HTML](dist/first-principles-atlas-v1.html) | [ZIP](dist/first-principles-atlas-v1-source.zip) |
 
@@ -87,3 +87,7 @@ Try a lesson and tell us where you got stuck. [Report a bug](https://github.com/
 If the atlas is useful to you, **star the repository** to bookmark it and share it with someone learning AI or ML. Specific feedback is especially valuable: which lesson you tried, what you built, and what would make the next step clearer.
 
 [Shareable introductions and a demo script](docs/SHARING.md) · [Release notes](CHANGELOG.md) · [Validation details](VALIDATION.md)
+
+## License
+
+The original code, curriculum, documentation, and project assets are available under the [MIT License](LICENSE). You may use, modify, redistribute, and use them commercially, with the copyright and license notice retained. Linked third-party courses, resources, and attributed quotations remain subject to their respective rights and licenses.

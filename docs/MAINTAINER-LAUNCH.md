@@ -54,10 +54,10 @@ On your GitHub profile, choose **Customize your pins** and pin this repository i
 
 ## 4. Make sharing useful
 
-The **Publish edition 03 release** workflow uploads the committed, checksum-verified HTML, source ZIP, manifest, and checksums when the `v3.0.0` tag is pushed. It uses GitHub's repository token because the cloud environment's credential was rejected by GitHub's separate asset-upload endpoint. The workflow can also be rerun manually on the existing tag; a draft is published after all asset uploads succeed.
+The **Publish edition 03 release** workflow uploads the committed, checksum-verified HTML, source ZIP, manifest, MIT license, tour video, and checksums when a `v3.x.y` tag is pushed. Add its release notes in `docs/RELEASE-v3.x.y.md` before tagging. It uses GitHub's repository token because the cloud environment's credential was rejected by GitHub's separate asset-upload endpoint. The workflow can also be run manually on an existing new tag. A draft is published after all asset uploads succeed; an already published release is left unchanged.
 
 Use [SHARING.md](SHARING.md) for a short introduction, a technical-community draft, a LinkedIn draft, and a 45-second demo script. Adapt one to the audience, disclose your connection, and invite feedback on a specific lesson. No promotional messages have been sent on your behalf.
 
-Choose a license deliberately before describing the project as open source. Source visibility alone does not grant general reuse rights. Until a license is added, the launch copy says the source is editable and available rather than claiming an open-source license.
+The original project material is now available under the [MIT License](../LICENSE), as requested by the repository owner. Retain the copyright and license notice when redistributing it. Third-party resources and attributed quotations retain their respective rights and licenses.
 
 After sharing, check the repository's **Insights → Traffic** while the data is available and keep a dated private record. Prioritize real lesson feedback, successful use, and useful contributions alongside stars. No number of stars or level of engagement is guaranteed.

@@ -67,7 +67,10 @@ def build():
     app = (SRC / 'app.js').read_text(encoding='utf-8')
     assert app.count('/*__V3_APP__*/') == 1, 'Missing edition 03 integration marker'
     app = app.replace('/*__V3_APP__*/', (SRC / 'v3.js').read_text(encoding='utf-8'))
+    license_text = (ROOT / 'LICENSE').read_text(encoding='utf-8').strip()
+    assert '--' not in license_text, 'License must be safe inside an HTML comment'
     replacements = {
+        '<!--__LICENSE__-->': '<!--\n' + license_text + '\n\nApplies to original project material. Third-party resources and attributed\nquotations retain their respective rights and licenses.\n-->',
         '/*__STYLES__*/': (SRC / 'styles.css').read_text(encoding='utf-8'),
         '/*__DATA__*/': 'window.ATLAS_DATA=' + payload + ';',
         '/*__ENGINES__*/': '\n'.join((SRC / name).read_text(encoding='utf-8') for name in ['planner.js', 'assessment.js']),

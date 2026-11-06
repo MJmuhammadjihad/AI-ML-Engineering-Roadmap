@@ -1,3 +1,14 @@
+# v3.0.1 — 6 November 2026
+
+- Added the MIT license for original code, curriculum, documentation, and project assets, including the full notice inside the portable HTML and source ZIP.
+- Added generated, readable curriculum indexes covering all six foundation days, 41 modules, and 205 further sessions, with stable prerequisite links and outcomes.
+- Added a 32-second captioned recording of the real app, a written tour, and a user-controlled video player in the showcase.
+- Corrected contributor verification instructions so the versioned browser suite tests freshly packaged application changes.
+- Added curriculum freshness checks and browser checks for the new catalog, licensing, and media presentation. Existing runtime code and learning content are unchanged.
+- Preserved the published v3.0.0 release and all original edition 01/02 artifacts.
+
+---
+
 # Repository showcase — 5 November 2026
 
 - Rewrote the README around the beginner experience, accurate feature counts, real screenshots, direct downloads, and contribution entry points.

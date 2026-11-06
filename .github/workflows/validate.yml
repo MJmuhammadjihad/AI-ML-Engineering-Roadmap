@@ -36,6 +36,7 @@ jobs:
 
       - name: Rebuild and verify the published HTML
         run: |
+          python3 scripts/build_curriculum.py --check
           python3 build.py
           git diff --exit-code -- dist/first-principles-atlas.html
           cmp dist/first-principles-atlas.html dist/first-principles-atlas-v3.html

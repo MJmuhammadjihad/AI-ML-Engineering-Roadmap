@@ -4,7 +4,7 @@ Use these drafts after trying the roadmap yourself. Adapt them to your own voice
 
 **Repository:** https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap
 
-Link readers to the README for the current preview and download options. Before adding a hosted-demo link to a post, verify that it opens in a signed-out browser on both desktop and mobile.
+Link readers to the README for the current preview and download options. A [32-second captioned MP4 and written tour](TOUR.md) are ready to share, and the [readable curriculum](CURRICULUM.md) lets people inspect the content before downloading. Original project material is [MIT-licensed](../LICENSE). Before adding a hosted-demo link to a post, verify that it opens in a signed-out browser on both desktop and mobile.
 
 ## The short introduction
 
@@ -76,7 +76,7 @@ Use a clean demonstration profile and avoid displaying personal notes. Do not re
 - [ ] Set the repository About description, relevant topics, and a verified website link. Pin it on your GitHub profile if it is a project you want to feature.
 - [ ] Upload a repository social-preview image in GitHub settings. Check how the public repository URL appears when shared; previews can be cached.
 - [ ] Publish a release with concise changes, the versioned HTML, source archive, and a link to the validation record when release publishing is available.
-- [ ] Review licensing before calling the project open source or inviting redistribution under a particular license.
+- [x] Publish the MIT license for original project material. Keep attribution and license notices when sharing copies; third-party resources retain their own terms.
 - [ ] Choose a small number of relevant communities that allow project posts. Share a useful walkthrough or learning insight, disclose your connection to the project, and invite one specific kind of feedback.
 - [ ] Respond thoughtfully to real questions and bug reports. Turn recurring confusion into better explanations, examples, or setup instructions.
 - [ ] Share subsequent updates when they solve a concrete problem. Credit contributors and explain what changed.
@@ -105,4 +105,4 @@ A modest invitation in the README is enough: “If this helps you learn, a star 
 | Local progress, no app analytics | A hosting provider can still receive ordinary HTTP requests when serving the app. |
 | Research-informed curriculum with dated sources | The job sample is a targeted qualitative sample, not a representative global hiring survey or forecast of individual employment. |
 | Tested behavior with a published validation record | Do not imply universal browser support, accessibility certification, or proven learner outcomes. |
-| Editable source is available | Use an open-source license claim only after a suitable license is actually present. |
+| MIT-licensed original project material | Retain the copyright and license notice. Linked resources and attributed quotations retain their respective rights and licenses. |

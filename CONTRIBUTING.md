@@ -21,7 +21,8 @@ Use the [bug report](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadma
 | Module transfer tasks, rubrics, and repairs | `src/module-guidance.json` |
 | Interface and lesson interactions | `src/app.js`, `src/v3.js`, `src/shell.html` |
 | Appearance and responsive layout | `src/styles.css` |
-| Public showcase and preview assets | `site/`, `docs/assets/`, `scripts/capture_previews.py` |
+| Public showcase and preview assets | `site/`, `docs/assets/`, `scripts/capture_previews.py`, `scripts/record_walkthrough.py` |
+| Readable curriculum index | `scripts/build_curriculum.py` generates `docs/CURRICULUM.md` and `site/curriculum.html` from the curriculum JSON |
 | Scheduling and assessment logic | `src/planner.js`, `src/assessment.js` |
 | Dated job-market analysis and source ledger | `research/v3-market-research.md`, `research/v3-market-evidence.json` |
 
@@ -49,6 +50,7 @@ Run checks that match the change:
 | Public showcase | `python3 tests/test_site.py`; inspect desktop/mobile previews and any changed copy or links. |
 
 ```sh
+python3 package.py
 node --check src/app.js
 node --check src/v3.js
 python3 tests/test_atlas.py
@@ -57,7 +59,9 @@ python3 tests/test_v3_browser.py
 
 Browser checks require the Python `playwright` package and Chromium. In your Python environment, install them with `python3 -m pip install playwright` and `python3 -m playwright install chromium`. Set `CHROMIUM_PATH` if using another installed Chromium executable. The suites serve the distributed HTML on loopback and block external requests. See [VALIDATION.md](VALIDATION.md) for current coverage and environment limitations.
 
-Use `python3 package.py` when preparing release artifacts. This rebuilds edition 03, its latest aliases, manifests, and source archives; it does not run tests. Keep edition 01 and 02 artifacts unchanged. In a pull request, state whether generated artifacts were rebuilt and list any checks you could not run.
+`build.py` updates only the unversioned preview HTML. Run `python3 package.py` **before browser verification after an application edit**: the edition 03 browser suite loads the versioned HTML, so packaging ensures it tests the current source. Packaging rebuilds edition 03, its latest aliases, manifests, and source archives; it does not run tests. Keep edition 01 and 02 artifacts unchanged. In a pull request, state whether generated artifacts were rebuilt and list any checks you could not run.
+
+After editing curriculum JSON, also run `python3 scripts/build_curriculum.py`. CI uses `--check` to ensure the readable indexes match the app's curriculum. For documentation-only or showcase-only changes, the app does not need to be repackaged unless preparing a new source release.
 
 ## Keep the learning experience trustworthy
 
@@ -70,3 +74,7 @@ Use `python3 package.py` when preparing release artifacts. This rebuilds edition
 - Share only the smallest relevant reproduction. Remove personal notes, credentials, and other private information from screenshots or exported progress.
 
 Small, focused pull requests are easier to review. Describe the learner's problem, the resulting behavior, and the checks you performed. For visual changes, a screenshot of the affected view helps; for a content correction, the supporting source or runnable example helps.
+
+## License and attribution
+
+Original project material is MIT-licensed; see [LICENSE](LICENSE). Contributions should be material you can submit under the same license. Preserve existing copyright notices, source citations, and the rights of linked or quoted third-party materials.

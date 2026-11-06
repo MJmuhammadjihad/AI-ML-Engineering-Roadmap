@@ -2,14 +2,20 @@ name: Publish edition 03 release
 
 on:
   push:
-    tags: [v3.0.0]
+    tags: ['v3.*']
   workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish
+        required: true
+        default: v3.0.1
+        type: string
 
 permissions:
   contents: read
 
 concurrency:
-  group: release-v3.0.0
+  group: release-${{ github.event.inputs.tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -18,11 +24,16 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
     steps:
+      - name: Validate the requested edition 03 tag
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v3\.[0-9]+\.[0-9]+$ ]] || { echo 'Expected a v3.x.y tag'; exit 1; }
       - name: Check out the tagged release
         uses: actions/checkout@v4
         with:
-          ref: v3.0.0
+          ref: ${{ env.RELEASE_TAG }}
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
@@ -39,14 +50,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          if ! gh release view v3.0.0 >/dev/null 2>&1; then
-            gh release create v3.0.0 --verify-tag --draft \
-              --title 'First Principles · Edition 03 — AI & ML Learning Atlas' \
-              --notes-file docs/RELEASE-v3.0.0.md
+          if draft=$(gh release view "$RELEASE_TAG" --json isDraft --jq '.isDraft' 2>/dev/null); then
+            if [ "$draft" = false ]; then
+              echo 'This release is already published. Its files will remain unchanged.'
+              exit 0
+            fi
+          else
+            gh release create "$RELEASE_TAG" --verify-tag --draft \
+              --title "First Principles · $RELEASE_TAG — MIT-licensed AI & ML Atlas" \
+              --notes-file "docs/RELEASE-${RELEASE_TAG}.md"
           fi
-          gh release upload v3.0.0 --clobber \
+          gh release upload "$RELEASE_TAG" --clobber \
             dist/first-principles-atlas-v3.html \
             dist/first-principles-atlas-v3-source.zip \
             dist/manifest-v3.json \
-            dist/checksums-v3.txt
-          gh release edit v3.0.0 --draft=false --latest
+            dist/checksums-v3.txt \
+            dist/LICENSE \
+            dist/atlas-tour.mp4
+          gh release edit "$RELEASE_TAG" --draft=false --latest

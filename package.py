@@ -7,11 +7,13 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 from build import build
+from scripts.build_curriculum import build_curriculum
 
 ROOT = Path(__file__).resolve().parent
 
 
 def package():
+    build_curriculum()
     build()
     html = ROOT / 'dist' / 'first-principles-atlas.html'
     versioned_html = html.with_name('first-principles-atlas-v3.html')
@@ -21,6 +23,8 @@ def package():
     market = json.loads((ROOT / 'research/v3-market-evidence.json').read_text(encoding='utf-8'))
     manifest = {
         'edition': data['meta']['edition'],
+        'distribution': '3.0.1',
+        'license': 'MIT',
         'artifact': versioned_html.name,
         'bytes': html.stat().st_size,
         'sha256': hashlib.sha256(html.read_bytes()).hexdigest(),
@@ -64,7 +68,9 @@ def package():
         assert archive.testzip() is None
         assert archive.read('first-principles-atlas/dist/' + versioned_html.name) == html.read_bytes()
     shutil.copyfile(bundle, ROOT / 'dist/first-principles-atlas-source.zip')
-    checksummed = [versioned_html, bundle, ROOT / 'dist/manifest-v3.json']
+    shutil.copyfile(ROOT / 'LICENSE', ROOT / 'dist/LICENSE')
+    shutil.copyfile(ROOT / 'docs/assets/atlas-tour.mp4', ROOT / 'dist/atlas-tour.mp4')
+    checksummed = [versioned_html, bundle, ROOT / 'dist/manifest-v3.json', ROOT / 'dist/LICENSE', ROOT / 'dist/atlas-tour.mp4']
     (ROOT / 'dist/checksums-v3.txt').write_text(''.join(
         f'{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}\n' for path in checksummed
     ), encoding='utf-8')

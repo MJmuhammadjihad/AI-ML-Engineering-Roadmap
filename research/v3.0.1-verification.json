@@ -1,0 +1,30 @@
+{
+  "distribution": "3.0.1",
+  "validated": "2026-11-06",
+  "timezone": "Asia/Dhaka",
+  "artifact": "dist/first-principles-atlas-v3.html",
+  "bytes": 1030613,
+  "sha256": "a98811b78e756488ecb7bf2a19c9ba3aad9e9ca5c3855c04fafc3628803ac5b9",
+  "license": "MIT",
+  "onlyHtmlChange": "Embedded full MIT notice and original-material scope statement",
+  "originalHtmlSha256": "99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09",
+  "checks": {
+    "originalBrowserTests": 21,
+    "edition03BrowserTests": 27,
+    "showcaseBrowserTests": 11,
+    "contentTests": 22,
+    "isolatedPythonProcesses": 51,
+    "engineChecks": 74,
+    "seededSchedules": 500,
+    "assessmentCombinations": 36,
+    "generatedCurriculumFreshness": "passed",
+    "videoPlayback": "32 seconds; 1440x1000 H.264; verified in Chromium",
+    "unexpectedExternalBrowserRequests": 0,
+    "browserJavaScriptErrors": 0
+  },
+  "limits": [
+    "Direct-file storage remains unverified in the managed browser.",
+    "Chromium checks do not certify accessibility or exhaustive cross-browser support.",
+    "GitHub Pages still requires owner activation."
+  ]
+}

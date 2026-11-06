@@ -1,8 +1,10 @@
 {
   "edition": "3.0",
+  "distribution": "3.0.1",
+  "license": "MIT",
   "artifact": "first-principles-atlas-v3.html",
-  "bytes": 1029400,
-  "sha256": "99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09",
+  "bytes": 1030613,
+  "sha256": "a98811b78e756488ecb7bf2a19c9ba3aad9e9ca5c3855c04fafc3628803ac5b9",
   "content": {
     "modules": 41,
     "sessions": 205,

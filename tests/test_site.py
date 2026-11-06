@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+import json
 import os
 from pathlib import Path
 import shutil
@@ -183,11 +184,11 @@ class ShowcaseTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate("document.activeElement.textContent.trim()"), "Skip to content")
         self.page.keyboard.press("Enter")
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "main")
-        summary = self.page.locator("details summary").first
+        summary = self.page.locator(".faq-list details summary").first
         summary.focus()
         self.page.keyboard.press("Enter")
         self.assertTrue(summary.evaluate("el => el.parentElement.open"))
-        self.assertTrue(self.page.locator("details").first.locator("p").is_visible())
+        self.assertTrue(self.page.locator(".faq-list details").first.locator("p").is_visible())
         self.page.keyboard.press("Space")
         self.assertFalse(summary.evaluate("el => el.parentElement.open"))
 
@@ -221,7 +222,67 @@ class ShowcaseTests(unittest.TestCase):
         sitemap = self.context.request.get(self.url + "sitemap.xml")
         self.assertEqual(sitemap.status, 200)
         urls = [node.text for node in ET.fromstring(sitemap.body()).iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
-        self.assertEqual(set(urls), {SITE_URL, SITE_URL + "app/"})
+        self.assertEqual(set(urls), {SITE_URL, SITE_URL + "app/", SITE_URL + "curriculum.html"})
+
+    def test_catalog_covers_the_actual_curriculum_and_prerequisites(self):
+        self.page.get_by_role('link', name='Curriculum', exact=True).click()
+        data = json.loads((ROOT / 'src/data.json').read_text())
+        self.assertEqual(self.page.locator('.foundation-preview').count(), 6)
+        self.assertEqual(self.page.locator('.module-preview').count(), len(data['modules']))
+        self.assertEqual(self.page.locator('.module-detail-grid ol li').count(), 205)
+        ids = self.page.locator('[id]').evaluate_all('els => els.map(el => el.id)')
+        self.assertEqual(len(ids), len(set(ids)))
+        for module in data['modules']:
+            with self.subTest(module=module['id']):
+                card = self.page.locator('#' + module['id'])
+                self.assertEqual(card.locator('h3').inner_text(), module['title'])
+                self.assertEqual(card.locator('ol li').all_text_contents(), [lesson['title'] for lesson in module['lessons']])
+                self.assertEqual(card.locator('ul li').all_text_contents(), module['outcomes'])
+                links = card.locator('.module-prereqs a').evaluate_all('els => els.map(el => el.getAttribute("href"))')
+                self.assertEqual(links, ['#' + mid for mid in module['prerequisites']])
+        for link in self.page.locator('a[href^="#"]').all():
+            self.assertIn(link.get_attribute('href')[1:], ids)
+        self.assertEqual(self.page.locator('link[rel="canonical"]').get_attribute('href'), SITE_URL + 'curriculum.html')
+
+    def test_catalog_is_responsive_and_works_without_javascript(self):
+        context = self.make_context(java_script_enabled=False)
+        page = context.new_page()
+        page.goto(self.url + 'curriculum.html')
+        page.keyboard.press('Tab')
+        page.keyboard.press('Enter')
+        self.assertEqual(page.evaluate('document.activeElement.id'), 'main')
+        page.locator('#c01 summary').focus()
+        page.keyboard.press('Enter')
+        self.assertTrue(page.locator('#c01 details').get_attribute('open') is not None)
+        self.assertTrue(page.locator('#c01 ol').is_visible())
+        for width in (320, 390, 768, 1440):
+            with self.subTest(width=width):
+                page.set_viewport_size({'width': width, 'height': 900})
+                size = page.evaluate('({width:innerWidth,scroll:document.documentElement.scrollWidth})')
+                self.assertLessEqual(size['scroll'], size['width'] + 1)
+        self.assertEqual(page.locator('script').count(), 0)
+
+    def test_tour_is_user_controlled_and_license_is_portable(self):
+        video = self.page.locator('video')
+        self.assertTrue(video.get_attribute('controls') is not None)
+        self.assertIsNone(video.get_attribute('autoplay'))
+        self.assertEqual(video.get_attribute('preload'), 'none')
+        self.assertEqual(self.page.locator('#tour-transcript li').count(), 6)
+        summary = self.page.locator('.tour-preview summary')
+        summary.focus()
+        self.page.keyboard.press('Enter')
+        self.assertTrue(video.is_visible())
+        self.assertTrue(self.page.locator('#tour-transcript').is_visible())
+        self.assertTrue(video.evaluate('v => v.paused'))
+        media = self.context.request.get(self.url + 'assets/atlas-tour.mp4')
+        self.assertEqual(media.status, 200)
+        self.assertEqual(media.body()[4:8], b'ftyp')
+        self.assertEqual(media.body(), (ROOT / 'docs/assets/atlas-tour.mp4').read_bytes())
+        license_text = (ROOT / 'LICENSE').read_text().strip()
+        response = self.context.request.get(self.url + 'license.txt')
+        self.assertEqual(response.status, 200)
+        self.assertEqual(response.text().strip(), license_text)
+        self.assertIn(license_text, (ROOT / 'dist/first-principles-atlas-v3.html').read_text())
 
 
 if __name__ == "__main__":

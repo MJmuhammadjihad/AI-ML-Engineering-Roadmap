@@ -1,4 +1,12 @@
-# Showcase validation · 5 November 2026
+# Curriculum and tour update · 6 November 2026
+
+The showcase suite now passes **11 tests**. In addition to the eight original checks below, it checks that the generated catalog includes all 41 modules and 205 sessions with the exact source titles, outcomes, and prerequisite links; that the catalog works with keyboard navigation and JavaScript disabled at 320/390/768/1440 widths; and that the tour has controls, no autoplay, a written equivalent, a valid served MP4, and an accessible MIT license download.
+
+The 32-second video was played in Chromium and inspected visually. The catalog's desktop/mobile layouts were also inspected. The portable HTML now embeds the MIT notice; its current identity and full rerun results are in [VALIDATION.md](../VALIDATION.md). The GitHub Pages activation boundary remains unchanged.
+
+---
+
+# Original showcase validation · 5 November 2026
 
 The repository presentation update adds a static landing page, screenshots, sharing materials, contribution forms, source-package contents, and GitHub Actions workflows. It does not change the learning application. Edition 03 remains SHA-256 `99e2347f73040202825627bb462f58c49c3730f8d0ad4411093edac97470ba09`; the original application checks and limits remain in [VALIDATION.md](../VALIDATION.md).
 

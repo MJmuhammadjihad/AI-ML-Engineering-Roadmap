@@ -7,6 +7,7 @@ import shutil
 
 from build import build
 from package import package
+from scripts.build_curriculum import build_curriculum
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / '_site'
@@ -14,6 +15,7 @@ SITE_URL = 'https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/'
 
 
 def build_site():
+    build_curriculum()
     # A source ZIP cannot contain itself. Recreate its download when building
     # from an extracted archive rather than from a complete Git checkout.
     if not (ROOT / 'dist/first-principles-atlas-v3-source.zip').is_file():
@@ -30,6 +32,7 @@ def build_site():
         shutil.rmtree(OUTPUT)
     shutil.copytree(ROOT / 'site', OUTPUT)
     shutil.copytree(ROOT / 'docs/assets', OUTPUT / 'assets')
+    shutil.copyfile(ROOT / 'LICENSE', OUTPUT / 'license.txt')
     (OUTPUT / 'app').mkdir()
     shutil.copyfile(app, OUTPUT / 'app/index.html')
     (OUTPUT / 'downloads').mkdir()
@@ -45,6 +48,7 @@ def build_site():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         f'  <url><loc>{SITE_URL}</loc></url>\n'
         f'  <url><loc>{SITE_URL}app/</loc></url>\n'
+        f'  <url><loc>{SITE_URL}curriculum.html</loc></url>\n'
         '</urlset>\n'
     )
     print(f'Built showcase at {OUTPUT}; hosted app SHA-256: {manifest["sha256"]}')

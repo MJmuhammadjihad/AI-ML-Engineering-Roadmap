@@ -1,4 +1,32 @@
-# Edition 03 validation record
+# Distribution 3.0.1 validation — 6 November 2026
+
+The currently distributed HTML is **1,030,613 bytes**, SHA-256:
+
+`a98811b78e756488ecb7bf2a19c9ba3aad9e9ca5c3855c04fafc3628803ac5b9`
+
+Its only change from the original edition 03 HTML is the embedded MIT license notice and scope statement. Removing that comment reproduces the original v3.0.0 HTML byte for byte. Application runtime code and curriculum are unchanged; the original v3.0.0 release and edition 01/02 artifacts are preserved.
+
+Checks rerun against this distribution:
+
+| Check | Result |
+| --- | --- |
+| Application browser regressions | 48 passed: 21 original and 27 edition 03 |
+| Showcase, curriculum catalog, and media presentation | 11 passed |
+| Content and Python examples | 22 passed; 51 isolated Python processes |
+| Planner and assessment engines | 74 passed; 500 seeded schedules and 36 assessment combinations |
+| JavaScript syntax | Passed |
+| Generated curriculum freshness | Markdown and HTML match the source JSON |
+| License portability | Full MIT notice present in standalone HTML, root license, source ZIP, and hosted license download |
+| Source archive | Integrity checked; fresh extraction builds the same licensed HTML and complete showcase |
+| Tour video | 32-second 1440 × 1000 H.264 MP4; playback verified in Chromium; no autoplay; written tour provided |
+
+The catalog checks cover all 41 modules, 205 session titles, prerequisites, outcomes, keyboard operation, JavaScript-disabled use, and layouts at 320/390/768/1440 pixels. Screenshots of its desktop/mobile layout were inspected. Browser checks reported no JavaScript errors or unexpected external requests. Existing direct-file, cross-browser, and accessibility limits below still apply.
+
+See [the distribution verification record](research/v3.0.1-verification.json) and [test output](research/v3.0.1-test-results.txt). The original edition 03 validation remains below as a historical record.
+
+---
+
+# Original edition 03 validation record
 
 Validated **5 November 2026**. The standalone HTML is **1,029,400 bytes** with SHA-256:
 
