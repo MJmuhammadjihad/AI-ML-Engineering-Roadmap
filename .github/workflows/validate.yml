@@ -53,16 +53,24 @@ jobs:
         run: python3 tests/test_v3_content.py
 
       - name: Install the browser test runner
+        timeout-minutes: 10
         run: |
           python3 -m pip install 'playwright==1.62.0'
-          python3 -m playwright install --with-deps chromium
           python3 - <<'PY'
           import os
+          import shutil
+          import subprocess
+          import sys
           from playwright.sync_api import sync_playwright
 
-          with sync_playwright() as playwright:
-              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
-                  env.write(f'CHROMIUM_PATH={playwright.chromium.executable_path}\n')
+          browser = shutil.which('google-chrome') or shutil.which('chromium')
+          if browser is None:
+              subprocess.run([sys.executable, '-m', 'playwright', 'install', '--with-deps', 'chromium'], check=True)
+              with sync_playwright() as playwright:
+                  browser = playwright.chromium.executable_path
+          subprocess.run([browser, '--version'], check=True)
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
+              env.write(f'CHROMIUM_PATH={browser}\n')
           PY
 
       - name: Run original browser regressions
