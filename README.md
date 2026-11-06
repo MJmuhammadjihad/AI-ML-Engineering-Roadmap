@@ -6,15 +6,15 @@
 
 Start from zero with six guided foundation days. Build toward machine learning and AI engineering through 41 modules, 205 further learning sessions, hands-on projects, and checks that ask you to explain what you built.
 
-**[Download edition 03](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3.html)** · [Watch the 32-second tour](docs/TOUR.md) · [Explore the curriculum](docs/CURRICULUM.md) · [Contribute](CONTRIBUTING.md)
+**[Open the roadmap](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/)** · **[Download edition 03](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3.html)** · [Watch the 32-second tour](docs/TOUR.md) · [Explore the curriculum](docs/CURRICULUM.md) · [Contribute](CONTRIBUTING.md)
 
 No account. No API key. No install to use the app. Progress stays in your browser, with JSON export when you want to move it.
 
-[![First Principles daily workspace, showing the first beginner lesson and a six-hour active-study plan](docs/assets/atlas-today.png)](docs/assets/atlas-today.png)
+[![First Principles daily workspace, showing the first beginner lesson and a six-hour active-study plan](docs/assets/atlas-today.png)](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/)
 
 ## Start in three steps
 
-1. **Download the HTML** and open the saved file in a modern browser.
+1. **[Open the roadmap online](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/)**, or download the HTML and open the saved file in a modern browser.
 2. **Choose Today → Start this lesson.** The first lesson walks you through saving and running a small Python program. Adjust your study budget to fit your day; the default is six active hours, with breaks additional.
 3. **Build, explain, and keep your evidence.** Work through the checks, record what you can do independently, and export a progress backup before switching browsers or devices.
 
@@ -78,7 +78,7 @@ Open `http://127.0.0.1:8000/dist/first-principles-atlas.html`.
 - **Release packaging:** `python3 package.py` builds versioned artifacts, manifests, and source ZIPs.
 - **Development and checks:** [CONTRIBUTING.md](CONTRIBUTING.md) and [VALIDATION.md](VALIDATION.md).
 
-The showcase and GitHub Pages workflow are included. Hosted access is pending repository-owner enablement; [publishing instructions](docs/MAINTAINER-LAUNCH.md) cover the remaining settings.
+The [live showcase](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/) and [curriculum catalog](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/curriculum.html) are published through GitHub Pages. Pushes to `main` deploy automatically. See the [publishing guide](docs/MAINTAINER-LAUNCH.md) for redeployment and repository presentation settings.
 
 ## Help the next learner
 

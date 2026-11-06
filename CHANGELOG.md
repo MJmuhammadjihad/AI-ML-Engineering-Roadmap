@@ -1,3 +1,11 @@
+# Live website — 6 November 2026
+
+- Published the showcase, learning app, curriculum catalog, downloads, MIT license, and media through GitHub Pages after owner activation.
+- Verified the hosted files against the release artifacts and checked the landing page, first lesson, and HTML download in fresh desktop/mobile browser sessions.
+- Added live links to the README, latest release notes, and sharing materials. Published release files remain unchanged.
+
+---
+
 # v3.0.1 — 6 November 2026
 
 - Added the MIT license for original code, curriculum, documentation, and project assets, including the full notice inside the portable HTML and source ZIP.

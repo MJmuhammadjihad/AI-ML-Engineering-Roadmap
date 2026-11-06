@@ -1,6 +1,6 @@
 # First Principles in 32 seconds
 
-**[Watch or download the MP4](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/atlas-tour.mp4)** · [Browse the curriculum](CURRICULUM.md) · [Download the app](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/first-principles-atlas-v3.html)
+**[Play the tour online](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/assets/atlas-tour.mp4)** · [Download the MP4](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/atlas-tour.mp4) · [Browse the curriculum](CURRICULUM.md) · [Open the app](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/)
 
 [![Actual First Principles daily workspace; follow the link to the captioned video tour](assets/atlas-today.png)](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/releases/download/v3.0.1/atlas-tour.mp4)
 

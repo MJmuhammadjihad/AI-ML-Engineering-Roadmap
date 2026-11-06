@@ -4,6 +4,8 @@ The original code, curriculum, documentation, and project assets are now availab
 
 ## Try it
 
+**[Open the roadmap online](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/)** · [Visit the showcase](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/)
+
 Download **`first-principles-atlas-v3.html`** below and open the saved file in a modern browser. Choose **Today → Start this lesson**. The portable HTML now embeds the complete MIT notice so the license travels with the file.
 
 - **[Browse the readable curriculum](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/docs/CURRICULUM.md):** six guided foundation days, all 41 modules, 205 further session titles, prerequisites, outcomes, and module projects. Generated from the app's curriculum.
@@ -15,4 +17,4 @@ This patch adds the license and repository/showcase materials. The learning appl
 
 See [VALIDATION.md](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/VALIDATION.md) for the current artifact hash, executed checks, and browser/storage limits. Study allocations are budgets, not completion or employment guarantees.
 
-The live showcase still needs the repository owner to enable GitHub Pages. [The setup guide](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/docs/MAINTAINER-LAUNCH.md) lists the remaining account settings.
+The [live showcase](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/) is now published through GitHub Pages. It includes the app, a readable curriculum catalog, downloads, and the captioned tour. [The publishing guide](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/blob/main/docs/MAINTAINER-LAUNCH.md) covers redeployment and repository presentation settings.

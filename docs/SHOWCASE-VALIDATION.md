@@ -1,3 +1,15 @@
+# Live deployment verified · 6 November 2026
+
+The owner enabled GitHub Pages, and [deployment 42153865774](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/actions/runs/42153865774) completed both its build and deploy jobs. The [public showcase](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/) is live over HTTPS.
+
+Eight public endpoints—the landing page, curriculum catalog, app, portable HTML download, manifest, MIT license, social preview, and tour video—returned HTTP 200 and matched their published source bytes. The hosted app has SHA-256 `a98811b78e756488ecb7bf2a19c9ba3aad9e9ca5c3855c04fafc3628803ac5b9`.
+
+Fresh browser sessions at 1440px and 390px verified the live landing page, responsive layout, actual HTML download, application launch, and first foundation lesson. Both downloads matched the release HTML. The sessions reported no JavaScript errors or requests outside the project site. TLS verification remained enabled. This is live Chromium smoke coverage; the broader local suite and its limits remain documented below.
+
+The README and current release notes now link to the live site. Older release archives and the dated pre-activation records below are retained as historical snapshots. Repository About/topics changes remain account-level settings; see the [publishing guide](MAINTAINER-LAUNCH.md).
+
+---
+
 # Curriculum and tour update · 6 November 2026
 
 The showcase suite now passes **11 tests**. In addition to the eight original checks below, it checks that the generated catalog includes all 41 modules and 205 sessions with the exact source titles, outcomes, and prerequisite links; that the catalog works with keyboard navigation and JavaScript disabled at 320/390/768/1440 widths; and that the tour has controls, no autoplay, a written equivalent, a valid served MP4, and an accessible MIT license download.

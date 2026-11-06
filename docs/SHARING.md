@@ -4,7 +4,11 @@ Use these drafts after trying the roadmap yourself. Adapt them to your own voice
 
 **Repository:** https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap
 
-Link readers to the README for the current preview and download options. A [32-second captioned MP4 and written tour](TOUR.md) are ready to share, and the [readable curriculum](CURRICULUM.md) lets people inspect the content before downloading. Original project material is [MIT-licensed](../LICENSE). Before adding a hosted-demo link to a post, verify that it opens in a signed-out browser on both desktop and mobile.
+**Live showcase:** https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/
+
+**Start learning:** https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/
+
+Link readers to the live showcase to try the app, or to the README for source and download options. A [32-second captioned MP4 and written tour](TOUR.md) are ready to share, and the [readable curriculum](CURRICULUM.md) lets people inspect the content before downloading. Original project material is [MIT-licensed](../LICENSE). The live site was verified in fresh desktop and mobile browser sessions on 6 November 2026; recheck links when preparing a later launch post.
 
 ## The short introduction
 

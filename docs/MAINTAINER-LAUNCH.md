@@ -1,16 +1,18 @@
-# Finish the GitHub showcase setup
+# Maintain the GitHub showcase
 
-The repository contains a designed landing page, real UI screenshots, a social-preview image, contribution forms, and build/deployment workflows. The integration used for this update can publish repository contents, but GitHub returned HTTP 403 (`Resource not accessible by integration`) for changing repository settings and enabling Pages. These remaining steps use the repository owner's GitHub account.
+The [live showcase](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/) is published and verified as of **6 November 2026**. The repository owner enabled GitHub Pages, and [the first live deployment](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/actions/runs/42153865774) completed both its build and deployment jobs. The [learning app](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/app/), curriculum catalog, downloads, license, and media are available over HTTPS.
 
-## 1. Enable the live demo
+The integration can publish repository contents and deploy to the enabled site. Repository About/topics settings still require the owner's GitHub account because those API requests return HTTP 403 (`Resource not accessible by integration`). The optional presentation steps below keep their prepared copy in one place.
 
-1. Open **[Settings → Pages](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/settings/pages)**.
-2. Under **Build and deployment → Source**, select **GitHub Actions**.
+## 1. Deploy or recover the live site
+
+1. For a new fork or if hosting is disabled, open **[Settings → Pages](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/settings/pages)**.
+2. Under **Build and deployment → Source**, select **GitHub Actions**. This is already configured for this repository.
 3. Open **[Actions → Publish demo](https://github.com/MJmuhammadjihad/AI-ML-Engineering-Roadmap/actions/workflows/pages.yml)** and choose **Run workflow** on `main`.
 4. Wait for the deployment job to succeed. Open `https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/` while signed out. Try **Open the roadmap**, the first lesson, and **Download HTML** on desktop and mobile.
-5. After verifying the site, add **[Open the live roadmap](https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/)** to the README's first row of links and remove its pending-hosting note. Add the same URL as the repository website.
+5. Keep the README's live links current. Use `https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/` as the repository website in About.
 
-Until Pages is enabled, the workflow builds and uploads the complete site artifact and skips deployment. Once enabled, subsequent pushes to `main` deploy automatically. The app served at `/app/` is byte-identical to the portable edition 03 HTML. It uses browser-local progress; moving between hosted and downloaded copies requires JSON export/import.
+Pushes to `main` deploy automatically. If Pages is disabled later, the workflow builds and uploads the complete site artifact and skips deployment. The app served at `/app/` is byte-identical to the portable edition 03 HTML. It uses browser-local progress; moving between hosted and downloaded copies requires JSON export/import.
 
 To preview the site locally:
 
