@@ -12,7 +12,7 @@ The integration can publish repository contents and deploy to the enabled site. 
 4. Wait for the deployment job to succeed. Open `https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/` while signed out. Try **Open the roadmap**, the first lesson, and **Download HTML** on desktop and mobile.
 5. Keep the README's live links current. Use `https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/` as the repository website in About.
 
-Pushes to `main` deploy automatically. If Pages is disabled later, the workflow builds and uploads the complete site artifact and skips deployment. The app served at `/app/` is byte-identical to the portable edition 03 HTML. It uses browser-local progress; moving between hosted and downloaded copies requires JSON export/import.
+Pushes to `main` deploy automatically after the full validation workflow passes, including content, engine, and browser checks. A failed check prevents the site from being built or deployed. If Pages is disabled later, the workflow builds and uploads the complete site artifact after validation and skips deployment. The app served at `/app/` is byte-identical to the portable edition 03 HTML. It uses browser-local progress; moving between hosted and downloaded copies requires JSON export/import.
 
 To preview the site locally:
 
@@ -27,26 +27,22 @@ Open `http://127.0.0.1:8000/`. The custom 404 is configured for the GitHub proje
 
 On the repository's main page, click the gear beside **About**. The old description lists different module/route/lab counts; replace it with:
 
-> Interactive AI & ML roadmap for beginners: 6 guided foundation days, 41 modules, 205 sessions, 5 career routes, and local progress tracking in one portable HTML app.
+> An offline-first AI & ML learning atlas: six guided foundation days, 41 modules, five career routes, interactive labs, and local progress tracking.
 
 Add relevant topics:
 
 ```text
-ai-roadmap
+ai
 machine-learning
-artificial-intelligence
 learning-roadmap
-python
-ml-engineering
-deep-learning
-self-study
-data-science
-offline-first
-generative-ai
+computer-science
 education
+offline-first
+javascript
+python
 ```
 
-Set the website only after the Pages deployment is verified. Topics help people find relevant projects; adding unrelated popular keywords would make the listing less useful.
+Use `https://mjmuhammadjihad.github.io/AI-ML-Engineering-Roadmap/` as the website. This copy is also recorded in [`repository-details.json`](../repository-details.json); that file documents the intended settings and does not apply them automatically. Topics help people find relevant projects; adding unrelated popular keywords would make the listing less useful.
 
 ## 3. Set the social preview and profile showcase
 
