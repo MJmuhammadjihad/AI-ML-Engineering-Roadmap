@@ -42,9 +42,11 @@ jobs:
           if [ "$enabled" != true ]; then
             echo 'The showcase built successfully. Enable GitHub Pages with GitHub Actions in repository Settings, then rerun this workflow. See docs/MAINTAINER-LAUNCH.md.' >> "$GITHUB_STEP_SUMMARY"
           fi
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+          # Preserve the generated .nojekyll marker with v4+ hidden-file defaults.
+          include-hidden-files: true
 
   deploy:
     needs: build
